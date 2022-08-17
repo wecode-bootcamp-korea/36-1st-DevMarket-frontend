@@ -7,7 +7,7 @@ const Carousel = () => {
   useEffect(() => {
     const interval = setTimeout(() => {
       nextBtn();
-    }, 2000);
+    }, 3000);
     return () => clearTimeout(interval);
   });
 
