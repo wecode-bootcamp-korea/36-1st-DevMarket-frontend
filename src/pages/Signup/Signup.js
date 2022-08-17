@@ -44,46 +44,18 @@ function Signup() {
             <span>Dev</span>Market 광장
           </h2>
           <h2 className="pageTitle">회원정보를 입력 후, 가입을 완료해주세요</h2>
-          <div className="username">
-            <p>이름</p>
-            <input
-              id="name"
-              type="text"
-              placeholder="이름"
-              onChange={handleUserInfo}
-              onKeyUp={activateButton}
-            />
-          </div>
-          <div className="username">
-            <p>생년월일</p>
-            <input
-              id="birthdate"
-              type="text"
-              placeholder="년/월/일"
-              onChange={handleUserInfo}
-              onKeyUp={activateButton}
-            />
-          </div>
-          <div className="username">
-            <p>휴대폰번호</p>
-            <input
-              id="phoneNumber"
-              type="text"
-              placeholder="010-1234-5678"
-              onChange={handleUserInfo}
-              onKeyUp={activateButton}
-            />
-          </div>
-          <div className="username">
-            <p>아이디</p>
-            <input
-              id="username"
-              type="text"
-              placeholder="영문 혹은 영문+숫자, 4~20자"
-              onChange={handleUserInfo}
-              onKeyUp={activateButton}
-            />
-          </div>
+          {INPUT_LIST.map(input => (
+            <div key={input.key} className="username">
+              <p>{input.name}</p>
+              <input
+                id={input.id}
+                type="text"
+                placeholder={input.placeholder}
+                onChange={handleUserInfo}
+                onKeyUp={activateButton}
+              />
+            </div>
+          ))}
           <div className="username">
             <p>비밀번호</p>
             <input
@@ -139,3 +111,30 @@ function Signup() {
 }
 
 export default Signup;
+
+const INPUT_LIST = [
+  {
+    key: '1',
+    id: 'name',
+    name: '이름',
+    placeholder: '이름',
+  },
+  {
+    key: '2',
+    id: 'birthdate',
+    name: '생년월일',
+    placeholder: '년/월/일',
+  },
+  {
+    key: '3',
+    id: 'phoneNumber',
+    name: '휴대폰번호',
+    placeholder: '010-1234-5678',
+  },
+  {
+    key: '4',
+    id: 'username',
+    name: '아이디',
+    placeholder: '영문 혹은 영문+숫자, 4~20자',
+  },
+];
