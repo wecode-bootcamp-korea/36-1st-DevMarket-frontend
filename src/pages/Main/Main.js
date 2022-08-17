@@ -43,9 +43,16 @@ function Main() {
           </div>
         </div>
         <section className="productList">
-          {productList.map(productInfo => {
-            return <Product {...productInfo} key={productInfo.id} />;
-          })}
+          <Product />
+          <Product />
+          <Product />
+          <Product />
+          <Product />
+          <Product />
+          <Product />
+          <Product />
+          <Product />
+          <Product />
         </section>
       </div>
     </div>
