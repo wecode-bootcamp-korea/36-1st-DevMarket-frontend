@@ -4,7 +4,6 @@ import './Main.scss';
 
 function Main() {
   const [productList, setProductList] = useState([]);
-  console.log(productList);
 
   useEffect(() => {
     fetch()
@@ -12,7 +11,6 @@ function Main() {
       .then(result => setProductList(result));
   }, []);
 
-  console.log(productList);
   return (
     <div className="mainContainer">
       <div className="innerContainer">
