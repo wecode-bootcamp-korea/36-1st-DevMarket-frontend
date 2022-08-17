@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Login.scss';
 
 function Login() {
+  const navigate = useNavigate();
+  const [userInfo, setUserInfo] = useState({ username: '', password: '' });
+
+  const activateButton =
+    userInfo.username.length >= 4 && userInfo.password.length >= 10;
+
+  const handleUserInfo = e => {
+    setUserInfo({ ...userInfo, [e.target.id]: e.target.value });
+  };
+
+  const goToMain = () => {
+    navigate('/');
+  };
+
   return (
     <div className="container">
       <div className="innerContainer">
@@ -9,12 +24,24 @@ function Login() {
           <h2 className="Logo">
             <span>Dev</span>Market 광장
           </h2>
-          <h1 className="pageTitle">사장님 통합 로그인</h1>
+          <h1 className="pageTitle">로그인</h1>
           <p className="description">
-            배민사장님광장 아이디로 모든 배민 사장님 서비스를 이용할 수 있습니다
+            DevMarket 광장 아이디로 모든 DevMarket 서비스를 이용할 수 있습니다
           </p>
-          <input type="text" placeholder="아이디" />
-          <input type="password" placeholder="비밀번호" />
+          <input
+            id="username"
+            type="text"
+            placeholder="아이디"
+            onChange={handleUserInfo}
+            onKeyUp={activateButton}
+          />
+          <input
+            id="password"
+            type="password"
+            placeholder="비밀번호"
+            onChange={handleUserInfo}
+            onKeyUp={activateButton}
+          />
           <div className="innerNav">
             <div className="saveIdInput">
               <input type="checkbox" />
@@ -26,7 +53,9 @@ function Login() {
               <p>회원가입</p>
             </div>
           </div>
-          <button>로그인</button>
+          <button type="button" disabled={!activateButton} onClick={goToMain}>
+            로그인
+          </button>
           <p className="teamName">DevMarket Team Corp.</p>
         </div>
       </div>

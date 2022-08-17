@@ -69,7 +69,6 @@
                     position: relative;
                     top: 3px;
                     cursor: pointer;
-                    -webkit-appearance:none;
                 }
                 p {
                     font-size: 14px;
@@ -105,6 +104,12 @@
             border: 0px;
             padding: 0px 16px;
             cursor: pointer;
+            &:active {
+                transform: scale(0.99);
+            }
+            &:disabled {
+                opacity: 0.5;
+            }
         }
         .teamName {
             margin-top: 40px;
