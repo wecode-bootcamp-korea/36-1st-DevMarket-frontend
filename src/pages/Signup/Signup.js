@@ -15,15 +15,18 @@ function Signup() {
     emailBack: '',
   });
 
-  const activateButton =
-    userInfo.name.length >= 2 &&
-    userInfo.birthdate.length === 10 &&
-    userInfo.phoneNumber.length === 13 &&
-    userInfo.username.length >= 4 &&
-    userInfo.password.length >= 10 &&
-    userInfo.rePassword === userInfo.password &&
-    userInfo.emailFront >= 4 &&
-    userInfo.emailBack >= 4;
+  const activateButton = () => {
+    return (
+      userInfo.name.length >= 2 &&
+      userInfo.birthdate.length === 10 &&
+      userInfo.phoneNumber.length === 13 &&
+      userInfo.username.length >= 4 &&
+      userInfo.password.length >= 10 &&
+      userInfo.rePassword === userInfo.password &&
+      userInfo.emailFront.length >= 4 &&
+      userInfo.emailBack.length >= 4
+    );
+  };
 
   const handleUserInfo = e => {
     setUserInfo({ ...userInfo, [e.target.id]: e.target.value });
@@ -103,7 +106,7 @@ function Signup() {
             <div className="emailInput">
               <input
                 id="emailFront"
-                type="password"
+                type="text"
                 placeholder="이메일 앞자리"
                 onChange={handleUserInfo}
                 onKeyUp={activateButton}
@@ -125,7 +128,7 @@ function Signup() {
               <option value="yahoo.com">yahoo.com</option>
             </select>
           </div>
-          <button disabled={!activateButton} onClick={goToMain}>
+          <button disabled={!activateButton()} onClick={goToMain}>
             완료
           </button>
           <p className="teamName">DevMarket Team Corp.</p>
