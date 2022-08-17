@@ -1,3 +1,31 @@
-.nav_Top {
-  color: #cccccc;
+@import '../../../styles/variables.scss';
+
+.navTop {
+  list-style-type: disc;
+  @include flex(space-between, center);
+  height: 46px;
+  .navUl {
+    height: 46px;
+    display: flex;
+    align-items: center;
+
+    .list {
+      color: #c0c0c0;
+      font-size: 12px;
+      line-height: 18px;
+      font-weight: 500;
+      padding-right: 9px;
+
+      a,
+      a:hover,
+      a:focus,
+      a:active {
+        text-decoration: none;
+        color: #c0c0c0;
+      }
+    }
+    .list:last-child {
+      padding-right: 0px;
+    }
+  }
 }

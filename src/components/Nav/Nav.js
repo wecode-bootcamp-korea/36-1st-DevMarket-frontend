@@ -1,6 +1,7 @@
 import React from 'react';
 import './Nav.scss';
 import NavTop from './NavComponent/NavTop';
+import NavBottom from './NavComponent/NavBottom';
 // import { NavLink } from 'react-router-dom';
 
 const Nav = () => {
@@ -8,6 +9,7 @@ const Nav = () => {
     <nav className="nav_Main">
       <div className="nav_Inner">
         <NavTop />
+        <NavBottom />
       </div>
       {/* <div>
         <NavLink to="/">Home</NavLink>
