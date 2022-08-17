@@ -4,6 +4,7 @@ import './Footer.scss';
 function Footer() {
   return (
     <footer className="footer">
+      <div className="line"></div>
       <div className="topFooter">
         <ul>
           <li>공지사항</li>
