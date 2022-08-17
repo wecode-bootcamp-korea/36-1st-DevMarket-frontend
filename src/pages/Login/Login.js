@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './Login.scss';
 
 function Login() {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState({ username: '', password: '' });
 
-  const activateButton =
-    userInfo.username.length >= 4 && userInfo.password.length >= 10;
+  const activateButton = () => {
+    return userInfo.username.length >= 4 && userInfo.password.length >= 10;
+  };
 
   const handleUserInfo = e => {
     setUserInfo({ ...userInfo, [e.target.id]: e.target.value });
@@ -50,10 +51,10 @@ function Login() {
             <div className="findIdPassword">
               <p>아이디</p>
               <p>비밀번호 찾기</p>
-              <p>회원가입</p>
+              <Link to="/signup">회원가입</Link>
             </div>
           </div>
-          <button type="button" disabled={!activateButton} onClick={goToMain}>
+          <button type="button" disabled={!activateButton()} onClick={goToMain}>
             로그인
           </button>
           <p className="teamName">DevMarket Team Corp.</p>

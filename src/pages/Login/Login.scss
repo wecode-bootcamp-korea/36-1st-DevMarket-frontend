@@ -53,6 +53,12 @@
             border: 1px solid rgb(215, 219, 230);
             background: rgb(255, 255, 255);
             margin-bottom: 12px;
+            &::-webkit-input-placeholder {
+                color: rgb(200, 200, 200);
+            }
+            &:focus::-webkit-input-placeholder {
+                color: transparent;
+            }
         }
         .innerNav {
             @include flex(space-between, center);
@@ -83,12 +89,13 @@
                     margin-right: 8px;
                     height: 100%;
                 }
-                p {
+                p, a {
                     font-weight: 700;
                     font-size: 12px;
                     color: rgb(142, 146, 159);
                     cursor: pointer;
                     letter-spacing: normal;
+                    text-decoration: none;
                 }
             }
         }
