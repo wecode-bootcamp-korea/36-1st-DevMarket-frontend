@@ -15,7 +15,7 @@ const Carousel = () => {
     setCount(count => (count < 9 ? count + 1 : (count = 0)));
   };
   const prevBtn = () => {
-    setCount(count => count - 1);
+    setCount(count => (count > 0 ? count - 1 : null));
   };
 
   console.log(count);
