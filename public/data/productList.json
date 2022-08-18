@@ -1,62 +1,72 @@
 [
   {
     "id": 1,
-    "pork": "목살",
+    "name": "목살",
     "price": "10,000원",
+    "weight": "5kg",
     "image": "./images/List/pork.jpg"
   },
   {
     "id": 2,
-    "pork": "갈비살",
+    "name": "갈비살",
     "price": "10,000원",
+    "weight": "2kg",
     "image": "./images/List/pork.jpg"
   },
   {
     "id": 3,
-    "pork": "갈매기살",
+    "name": "갈매기살",
     "price": "10,000원",
+    "weight": "8kg",
     "image": "./images/List/pork.jpg"
   },
   {
     "id": 4,
-    "pork": "등심",
+    "name": "등심",
     "price": "10,000원",
+    "weight": "56kg",
     "image": "./images/List/pork.jpg"
   },
   {
     "id": 5,
-    "pork": "오겹살",
+    "name": "오겹살",
+    "weight": "81kg",
     "price": "10,000원",
     "image": "./images/List/pork.jpg"
   },
   {
     "id": 6,
-    "pork": "삼겹살",
+    "name": "삼겹살",
     "price": "10,000원",
+    "weight": "3456kg",
     "image": "./images/List/pork.jpg"
   },
   {
     "id": 7,
-    "pork": "등갈비",
+    "name": "등갈비",
     "price": "10,000원",
+    "weight": "234kg",
     "image": "./images/List/pork.jpg"
   },
   {
     "id": 8,
-    "pork": "항정살",
+    "name": "항정살",
     "price": "10,000원",
+    "weight": "52kg",
     "image": "./images/List/pork.jpg"
   },
   {
     "id": 9,
-    "pork": "항정살",
+    "name": "항정살",
     "price": "10,000원",
+    "weight": "23kg",
     "image": "./images/List/pork.jpg"
   },
   {
     "id": 10,
-    "pork": "항정살",
+    "name": "항정살",
     "price": "10,000원",
+    "weight": "288kg",
     "image": "./images/List/pork.jpg"
   }
 ]

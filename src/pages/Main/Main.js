@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import Product from './Product/Product';
+import Pagination from './Pagination/Pagination';
 import './Main.scss';
 
 function Main() {
   const [productList, setProductList] = useState([]);
+  const [limit, setLimit] = useState(10);
+  const [page, setPage] = useState(1);
+  const offset = (page - 1) * limit;
 
   useEffect(() => {
-    fetch()
+    fetch('/data/product.json')
       .then(response => response.json())
       .then(result => setProductList(result));
   }, []);
@@ -43,17 +47,18 @@ function Main() {
           </div>
         </div>
         <section className="productList">
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
+          {productList.map(productInfo => {
+            return <Product {...productInfo} key={productInfo.id} />;
+          })}
         </section>
+        <footer>
+          <Pagination
+            total={productList.length}
+            limit={limit}
+            page={page}
+            setPage={setPage}
+          />
+        </footer>
       </div>
     </div>
   );

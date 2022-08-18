@@ -1,16 +1,16 @@
 import React from 'react';
 import './Product.scss';
 
-const Product = ({ pork, price, image }) => {
+const Product = ({ name, weight, price, image }) => {
   return (
     <div className="productContainer">
       <div className="imageContainer">
-        <img src="/images/List/pork.jpg" alt="pork" />
+        <img src={image} alt="pork" />
       </div>
       <div className="productDescription">
-        <p className="name">항정살</p>
-        <p>1kg</p>
-        <p className="cost">10,000원</p>
+        <p className="name">{name}</p>
+        <p>{weight}</p>
+        <p className="cost">{price}</p>
       </div>
     </div>
   );
