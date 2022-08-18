@@ -2,14 +2,16 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import './DetailPage.scss';
 
 function DetailPage() {
   return (
-    <div className="main-wrap">
-      <section className="inner-container">
-        <div className="left-col">
-          <section className="product-img">
+    <div className="mainWrap">
+      <section className="innerContainer">
+        <div className="leftCol">
+          <section className="productImg">
             <div />
             <img src="./images/duck.jpg" alt="coffee" />
           </section>
@@ -29,12 +31,46 @@ function DetailPage() {
               <img src="./images/detail.jpg" alt="detail" />
             </div>
           </div>
+          <div className="sellerInfoWrap">
+            <h2>판매자 정보</h2>
+            <div className="sellerInfo">
+              <ul>
+                <li>판매자 이름</li>
+                <li>정원호</li>
+              </ul>
+              <ul>
+                <li>전화번호</li>
+                <li>010-1234-5678</li>
+              </ul>
+              <ul>
+                <li>이메일</li>
+                <li>cwonho16@gmail.com</li>
+              </ul>
+            </div>
+          </div>
+          <div className="sellerInfoWrap">
+            <h2>안내사항</h2>
+            <div className="sellerInfo">
+              <ul>
+                <li>판매자 이름</li>
+                <li>정원호</li>
+              </ul>
+              <ul>
+                <li>전화번호</li>
+                <li>010-1234-5678</li>
+              </ul>
+              <ul>
+                <li>이메일</li>
+                <li>cwonho16@gmail.com</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div className="right-col">
-          <section className="section-top">
-            <h1 className="product-name">[든든] 오리 장난감</h1>
-            <div className="ship-card">
-              <div className="inner-card">
+        <div className="rightCol">
+          <section className="sectionTop">
+            <h1 className="productName">[든든] 오리 장난감</h1>
+            <div className="shipCard">
+              <div className="innerCard">
                 <div className="productInfo">
                   <ul>
                     <li>중량</li>
@@ -56,7 +92,7 @@ function DetailPage() {
               </div>
             </div>
           </section>
-          <section className="section-bottom">
+          <section className="sectionBottom">
             <div className="quantityUI">
               <span>주문수량</span>
               <div className="quantityBar">
@@ -71,9 +107,9 @@ function DetailPage() {
             </div>
             <div className="costInfo">
               <span>총 합계금액</span>
-              <div className="costInfo-right">
+              <div className="costInfoRight">
                 <span>1kg 당 900원 / 1ea</span>
-                <div className="right-bottom">
+                <div className="rightBottom">
                   <span className="discount">4%</span>
                   <span className="cost">44,550원</span>
                 </div>
@@ -87,6 +123,34 @@ function DetailPage() {
           </section>
         </div>
       </section>
+      <div className="recentViews">
+        <h2>최근 본 상품</h2>
+        <div className="numberOfViews">4</div>
+        <div className="itemList">
+          <button>
+            <FontAwesomeIcon icon={faAngleUp} />
+          </button>
+          <div className="itemBox">
+            <ul>
+              <li>
+                <img src="./images/duck.jpg" alt="duck" />
+              </li>
+              <li>
+                <img src="./images/duck.jpg" alt="duck" />
+              </li>
+              <li>
+                <img src="./images/duck.jpg" alt="duck" />
+              </li>
+              <li>
+                <img src="./images/duck.jpg" alt="duck" />
+              </li>
+            </ul>
+          </div>
+          <button>
+            <FontAwesomeIcon icon={faAngleDown} />
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
