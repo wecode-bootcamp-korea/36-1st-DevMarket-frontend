@@ -1,0 +1,76 @@
+@import '../../styles/variables.scss';
+.cart {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 80px;
+  width: 1080px;
+  font-size: 17px;
+  .cartTitle {
+    @include flex(center, center);
+    height: 120px;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .cart2Box {
+    @include flex(space-between, null);
+    .box1 {
+      width: 712px;
+      // height: 600px;
+      .box1Top {
+        @include flex(space-between, center);
+        width: 100%;
+        height: 50px;
+        border-bottom: 1.3px solid black;
+        .box1TopLeft {
+          @include flex(null, center);
+          .checkBox {
+            width: 22px;
+            height: 22px;
+            border: 1px solid red;
+            accent-color: #24a5a1;
+          }
+          .checkText {
+            margin-left: 4px;
+            font-size: 20px;
+            font-weight: bold;
+          }
+        }
+        .cancelBtn {
+          width: 75px;
+          height: 32px;
+          background-color: white;
+          border: 1px solid gray;
+          border-radius: 4px;
+          font-size: 16px;
+        }
+      }
+      .box1Bottom {
+        height: 100%;
+      }
+    }
+  }
+  .totalPrice {
+    @include flex(center, center);
+    flex-direction: column;
+    width: 712px;
+    height: 92px;
+    margin-top: -6px;
+    padding: 24px;
+    border-radius: 5px;
+    background-color: #f6f6f6;
+    color: rgb(81, 81, 81);
+    .totalTop {
+      display: flex;
+      font-size: 15px;
+      .totalPriceSmall {
+        color: black;
+        font-weight: bold;
+      }
+    }
+    .totalBottom {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #2bc1bc;
+    }
+  }
+}

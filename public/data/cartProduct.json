@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "img": "https://cdn-mart.baemin.com/sellergoods/bulk/20220210-104136/23349-main-01.jpg",
+    "title": "마이디벨 프리미엄 크런치 7mm (코팅 슈스트링) 2kg",
+    "price": 40240,
+    "number": 1
+  },
+  {
+    "id": 2,
+    "img": "https://cdn-mart.baemin.com/sellergoods/main/b4edc575-fa5b-472e-a733-fda7d8a65fcf.jpg",
+    "title": "밀키스마 멸균우유3.5% 1L 팩 12개",
+    "price": 20600,
+    "number": 1
+  },
+  {
+    "id": 3,
+    "img": "https://cdn-mart.baemin.com/sellergoods/main/b75bac68-ccdc-43e8-ac0f-29e053f81dd1.jpg",
+    "title": "냉동 다진마늘 (중국산) 1kg",
+    "price": 2500,
+    "number": 1
+  },
+  {
+    "id": 4,
+    "img": "https://cdn-mart.baemin.com/sellergoods/main/e31f3870-f759-458d-8358-8b43142e4fff.png",
+    "title": "썬리취 베이커리체다슬라이스치즈100매 1.8kg",
+    "price": 40240,
+    "number": 1
+  }
+]

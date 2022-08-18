@@ -1,0 +1,89 @@
+@import '../../styles/variables.scss';
+@import '../../styles/reset.scss';
+
+.cartProduct {
+  @include flex(baseline, center);
+  width: 712px;
+  padding: 24px 0;
+  border-bottom: 1px solid rgb(222, 222, 222);
+  .checkBox {
+    width: 24px;
+    height: 24px;
+    accent-color: #24a5a1;
+  }
+  .imgBorder {
+    width: 88px;
+    height: 88px;
+    margin-left: 16px;
+    border: 1px solid rgb(222, 222, 222);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 0 auto;
+    img {
+      width: 88px;
+    }
+  }
+  .productInfo {
+    display: flex;
+    width: 568px;
+    margin-left: 16px;
+    .pInfo1 {
+      width: 316px;
+      p {
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 20px;
+      }
+      .moveDetail {
+        @include flex(center, center);
+        width: 116px;
+        height: 36px;
+        margin-top: 16px;
+        border-radius: 30px;
+        border: 1px solid gray;
+      }
+    }
+    .pInfo2 {
+      @include flex(space-between, center);
+      width: 252px;
+      .countBar {
+        @include flex(center, center);
+        width: 112px;
+        height: 40px;
+        margin-left: 10px;
+        border: 1px solid rgb(222, 222, 222);
+        border-radius: 4px;
+        background-color: white;
+        .minus,
+        .plus {
+          width: 36px;
+          height: 40;
+          background-color: white;
+          border: none;
+          font-size: 20px;
+        }
+        .numCount {
+          width: 30px;
+          border: none;
+          background-color: white;
+          font-size: 20px;
+          text-align: center;
+        }
+      }
+      .priceBox {
+        @include flex(center, center);
+        p {
+          font-size: 15px;
+          font-weight: bold;
+        }
+        .cancelBtn {
+          margin-left: 16px;
+          border: none;
+          background-color: transparent;
+          color: gray;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}
