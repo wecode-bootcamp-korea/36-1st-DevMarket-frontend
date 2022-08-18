@@ -72,8 +72,17 @@ function DetailPage() {
             <div className="costInfo">
               <span>총 합계금액</span>
               <div className="costInfo-right">
-                <span>1kg 당 900원</span>
+                <span>1kg 당 900원 / 1ea</span>
+                <div className="right-bottom">
+                  <span className="discount">4%</span>
+                  <span className="cost">44,550원</span>
+                </div>
+                <span className="discountPrice">46,800원</span>
               </div>
+            </div>
+            <div className="orderButtons">
+              <button className="addCart">장바구니 담기</button>
+              <button className="buyItem">바로구매</button>
             </div>
           </section>
         </div>
