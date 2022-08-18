@@ -30,7 +30,7 @@ function DetailPage() {
         <div className="leftCol">
           <section className="productImg">
             <div />
-            <img src="./images/duck.jpg" alt="coffee" />
+            <img src="./images/minions.jpg" alt="minions" />
           </section>
           <div className="productDetailWrap">
             <div className="detailNavBar">
@@ -89,7 +89,7 @@ function DetailPage() {
         </div>
         <div className="rightCol">
           <section className="sectionTop">
-            <h1 className="productName">[든든] 오리 장난감</h1>
+            <h1 className="productName">[Minions] 미니언즈 장난감</h1>
             <div className="shipCard">
               <div className="innerCard">
                 <div className="productInfo">
@@ -154,16 +154,16 @@ function DetailPage() {
           <div className="itemBox">
             <ul>
               <li>
-                <img src="./images/duck.jpg" alt="duck" />
+                <img src="./images/minions.jpg" alt="minions" />
               </li>
               <li>
-                <img src="./images/duck.jpg" alt="duck" />
+                <img src="./images/minions.jpg" alt="minions" />
               </li>
               <li>
-                <img src="./images/duck.jpg" alt="duck" />
+                <img src="./images/minions.jpg" alt="minions" />
               </li>
               <li>
-                <img src="./images/duck.jpg" alt="duck" />
+                <img src="./images/minions.jpg" alt="minions" />
               </li>
             </ul>
           </div>
