@@ -1,12 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import ProductDetail from './components/ProductDetail/ProductDetail';
+import ProductReview from './components/ProductReview/ProductReview';
+import ProductInquiry from './components/ProductInquiry/ProductInquiry';
 import './DetailPage.scss';
 
 function DetailPage() {
+  const [currentId, setCurrentId] = useState(1);
+
+  const clickHandler = id => {
+    setCurrentId(id);
+  };
+
+  const MAPPING_OBJ = {
+    1: <ProductDetail />,
+    2: <ProductReview />,
+    3: <ProductInquiry />,
+  };
+
+  const TAB_ARR = ['상품 상세', '상품 후기', '상품 문의'];
+
   return (
     <div className="mainWrap">
       <section className="innerContainer">
@@ -17,54 +34,58 @@ function DetailPage() {
           </section>
           <div className="productDetailWrap">
             <div className="detailNavBar">
-              <div className="navTab">
-                <span>상품 상세</span>
-              </div>
-              <div className="navTab">
-                <span>상품 후기 (207)</span>
-              </div>
-              <div className="navTab">
-                <span>1:1 문의</span>
-              </div>
+              {TAB_ARR.map((tab, index) => {
+                return (
+                  <div
+                    className="navTab"
+                    key={tab + index}
+                    onClick={() => clickHandler(index + 1)}
+                  >
+                    <span>{tab}</span>
+                  </div>
+                );
+              })}
             </div>
-            <div className="productDetail">
-              <img src="./images/detail.jpg" alt="detail" />
-            </div>
+            {MAPPING_OBJ[currentId]}
           </div>
-          <div className="sellerInfoWrap">
-            <h2>판매자 정보</h2>
-            <div className="sellerInfo">
-              <ul>
-                <li>판매자 이름</li>
-                <li>정원호</li>
-              </ul>
-              <ul>
-                <li>전화번호</li>
-                <li>010-1234-5678</li>
-              </ul>
-              <ul>
-                <li>이메일</li>
-                <li>cwonho16@gmail.com</li>
-              </ul>
+          {currentId === 1 && (
+            <div className="sellerInfoWrap">
+              <h2>판매자 정보</h2>
+              <div className="sellerInfo">
+                <ul>
+                  <li>판매자 이름</li>
+                  <li>정원호</li>
+                </ul>
+                <ul>
+                  <li>전화번호</li>
+                  <li>010-1234-5678</li>
+                </ul>
+                <ul>
+                  <li>이메일</li>
+                  <li>cwonho16@gmail.com</li>
+                </ul>
+              </div>
             </div>
-          </div>
-          <div className="sellerInfoWrap">
-            <h2>안내사항</h2>
-            <div className="sellerInfo">
-              <ul>
-                <li>판매자 이름</li>
-                <li>정원호</li>
-              </ul>
-              <ul>
-                <li>전화번호</li>
-                <li>010-1234-5678</li>
-              </ul>
-              <ul>
-                <li>이메일</li>
-                <li>cwonho16@gmail.com</li>
-              </ul>
+          )}
+          {currentId === 1 && (
+            <div className="sellerInfoWrap">
+              <h2>안내사항</h2>
+              <div className="sellerInfo">
+                <ul>
+                  <li>판매자 이름</li>
+                  <li>정원호</li>
+                </ul>
+                <ul>
+                  <li>전화번호</li>
+                  <li>010-1234-5678</li>
+                </ul>
+                <ul>
+                  <li>이메일</li>
+                  <li>cwonho16@gmail.com</li>
+                </ul>
+              </div>
             </div>
-          </div>
+          )}
         </div>
         <div className="rightCol">
           <section className="sectionTop">
