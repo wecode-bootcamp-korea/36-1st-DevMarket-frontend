@@ -18,8 +18,6 @@ const Carousel = () => {
     setCount(count => (count > 0 ? count - 1 : null));
   };
 
-  console.log(count);
-
   return (
     <div className="carousel">
       <div className="container">
