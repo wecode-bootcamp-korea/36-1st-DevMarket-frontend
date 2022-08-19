@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -10,6 +11,7 @@ import ProductInquiry from './components/ProductInquiry/ProductInquiry';
 import './DetailPage.scss';
 
 function DetailPage() {
+  const navigate = useNavigate();
   const [currentId, setCurrentId] = useState(1);
   const [quantity, setQuantity] = useState(1);
 
@@ -23,6 +25,10 @@ function DetailPage() {
 
   const clickHandler = id => {
     setCurrentId(id);
+  };
+
+  const goToCart = () => {
+    navigate('/cart');
   };
 
   const MAPPING_OBJ = {
@@ -157,8 +163,12 @@ function DetailPage() {
               </div>
             </div>
             <div className="orderButtons">
-              <button className="addCart">장바구니 담기</button>
-              <button className="buyItem">바로구매</button>
+              <button className="addCart" onClick={goToCart}>
+                장바구니 담기
+              </button>
+              <button className="buyItem" onClick={goToCart}>
+                바로구매
+              </button>
             </div>
           </section>
         </div>
