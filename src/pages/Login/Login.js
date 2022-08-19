@@ -23,8 +23,21 @@ function Login() {
         password: userInfo.password,
       }),
     })
-      .then(response => response.json())
-      .then(data => console.log(data));
+      .then(response => {
+        if (response.ok === true) {
+          return response.json();
+        }
+        throw new Error('통신실패');
+      })
+      .catch(error => console.log(error))
+      .then(data => {
+        if (data.message === 'success') {
+          localStorage.setItem('token', data.token);
+          goToMain();
+        } else if (data.message === 'invalid') {
+          alert('아이디 또는 비밀번호를 확인해주세요');
+        }
+      });
   };
 
   const goToMain = () => {
