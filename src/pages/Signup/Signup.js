@@ -49,6 +49,7 @@ function Signup() {
               <p>{input.name}</p>
               <input
                 id={input.id}
+                className="signUpInputs"
                 type="text"
                 placeholder={input.placeholder}
                 onChange={handleUserInfo}
@@ -60,6 +61,7 @@ function Signup() {
             <p>비밀번호</p>
             <input
               id="password"
+              className="signUpInputs"
               type="password"
               placeholder="영어,숫자,특수문자 중 2가지 이상 10~20자"
               onChange={handleUserInfo}
@@ -67,6 +69,7 @@ function Signup() {
             />
             <input
               id="rePassword"
+              className="signUpInputs"
               type="password"
               placeholder="비밀번호 재입력"
               onChange={handleUserInfo}
@@ -78,6 +81,7 @@ function Signup() {
             <div className="emailInput">
               <input
                 id="emailFront"
+                className="signUpInputs"
                 type="text"
                 placeholder="이메일 앞자리"
                 onChange={handleUserInfo}
@@ -86,6 +90,7 @@ function Signup() {
               <span>@</span>
               <input
                 id="emailBack"
+                className="signUpInputs"
                 type="text"
                 placeholder="이메일 뒷자리"
                 onChange={handleUserInfo}
@@ -100,7 +105,11 @@ function Signup() {
               <option value="yahoo.com">yahoo.com</option>
             </select>
           </div>
-          <button disabled={!activateButton()} onClick={goToMain}>
+          <button
+            className="doneButton"
+            disabled={!activateButton()}
+            onClick={goToMain}
+          >
             완료
           </button>
           <p className="teamName">DevMarket Team Corp.</p>
@@ -114,25 +123,25 @@ export default Signup;
 
 const INPUT_LIST = [
   {
-    key: '1',
+    key: 1,
     id: 'name',
     name: '이름',
     placeholder: '이름',
   },
   {
-    key: '2',
+    key: 2,
     id: 'birthdate',
     name: '생년월일',
     placeholder: '년/월/일',
   },
   {
-    key: '3',
+    key: 3,
     id: 'phoneNumber',
     name: '휴대폰번호',
     placeholder: '010-1234-5678',
   },
   {
-    key: '4',
+    key: 4,
     id: 'username',
     name: '아이디',
     placeholder: '영문 혹은 영문+숫자, 4~20자',
