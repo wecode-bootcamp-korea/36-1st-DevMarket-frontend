@@ -14,6 +14,19 @@ function Login() {
     setUserInfo({ ...userInfo, [e.target.id]: e.target.value });
   };
 
+  const handleLogin = () => {
+    fetch('http://10.58.5.80:3000/users/signin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        userName: userInfo.username,
+        password: userInfo.password,
+      }),
+    })
+      .then(response => response.json())
+      .then(data => console.log(data));
+  };
+
   const goToMain = () => {
     navigate('/');
   };
@@ -54,7 +67,11 @@ function Login() {
               <Link to="/signup">회원가입</Link>
             </div>
           </div>
-          <button type="button" disabled={!activateButton()} onClick={goToMain}>
+          <button
+            type="button"
+            disabled={!activateButton()}
+            onClick={handleLogin}
+          >
             로그인
           </button>
           <p className="teamName">DevMarket Team Corp.</p>
