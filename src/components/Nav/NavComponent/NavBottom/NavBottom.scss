@@ -1,5 +1,5 @@
-@import '../../../styles/variables.scss';
-@import '../../../styles/common.scss';
+@import '../../../../styles/variables.scss';
+@import '../../../../styles/common.scss';
 
 .navBottom {
   @include flex(space-between, center);
@@ -107,15 +107,6 @@
           color: rgb(51, 51, 51);
         }
       }
-    }
-  }
-  .dropdown {
-    position: absolute;
-    top: 80px;
-    border: 1px solid rgb(51, 51, 51);
-    box-shadow: rgb(0 0 0 / 10%) 0px 4px 12px 0px;
-
-    .firstSec {
     }
   }
 }

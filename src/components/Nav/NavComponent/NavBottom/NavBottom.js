@@ -3,18 +3,14 @@ import { useState } from 'react';
 import './NavBottom.scss';
 import Arcodian from './ Arcodian';
 
-function NavBottom() {
-  const [clasname, setClassname] = useState('arcodian');
+function NavBottom({ click, changeclass }) {
   const [input, setInput] = useState(false);
-  const click = () => {
-    clasname === 'arcodian' ? setClassname('click') : setClassname('arcodian');
-  };
   const getValue = e => setInput(e.target.value);
 
   return (
     <div className="navBottom">
       <div className="navLeft">
-        <Arcodian click={click} changeclass={clasname} />
+        <Arcodian click={() => click(changeclass)} changeclass={changeclass} />
         <ul className="navUl">
           <li className="list">든든배송 &middot; </li>
           <li className="list">상회가만든 &middot; </li>
@@ -31,16 +27,16 @@ function NavBottom() {
       </div>
       <div className="navBottomRight">
         <form className="search">
-          {input ? null : <i class="fa-solid fa-magnifying-glass" />}
+          {input ? null : <i className="fa-solid fa-magnifying-glass" />}
           <input
             type="search"
             maxLength="50"
-            autocomplete="off"
+            autoComplete="off"
             placeholder="상품명으로 찾아보세요"
             onChange={getValue}
           />
           <div className="naviconWrap">
-            <a src="#" alt="navicon">
+            <a src="#">
               <img
                 className="navIcon"
                 src="/images/Nav/user.png"
@@ -50,7 +46,7 @@ function NavBottom() {
             </a>
           </div>
           <div className="naviconWrap">
-            <a src="#" alt="navicon">
+            <a src="#">
               <img
                 className="navIcon"
                 src="/images/Nav/shopping-cart.png"

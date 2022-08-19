@@ -1,28 +1,29 @@
 import React from 'react';
+import { useState } from 'react';
 import './Nav.scss';
-import NavTop from './NavComponent/NavTop';
-import NavBottom from './NavComponent/NavBottom';
-// import { NavLink } from 'react-router-dom';
+import NavTop from './NavComponent/NavTop/NavTop';
+import NavBottom from './NavComponent/NavBottom/NavBottom';
+import Dropdown from './NavComponent/NavBottom/Dropdown/Dropdown';
 
 const Nav = () => {
+  const [classname, setClassname] = useState('click');
+  const click = type => {
+    classname === 'arcodian' ? setClassname('click') : setClassname('arcodian');
+  };
+
   return (
-    <nav className="nav_Main">
-      <div className="nav_Inner">
-        <NavTop />
-        <NavBottom />
+    <nav>
+      <div className="navMain">
+        <div className="navInner">
+          <NavTop />
+          <NavBottom click={click} changeclass={classname} />
+        </div>
       </div>
-      {/* <div>
-        <NavLink to="/">Home</NavLink>
+      <div className="navDropdown">
+        <div className="navDropdownInner">
+          {classname !== 'click' && <Dropdown />}
+        </div>
       </div>
-      <div>
-        <NavLink to="/recommend">Recommend</NavLink>
-      </div>
-      <div>
-        <NavLink to="/search">Search</NavLink>
-      </div>
-      <div>
-        <NavLink to="/mypage">MyPage</NavLink>
-      </div> */}
     </nav>
   );
 };
