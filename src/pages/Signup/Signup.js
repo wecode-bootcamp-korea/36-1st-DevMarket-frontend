@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Signup.scss';
 
@@ -11,8 +11,7 @@ function Signup() {
     username: '',
     password: '',
     rePassword: '',
-    emailFront: '',
-    emailBack: '',
+    email: '',
   });
 
   const activateButton = () => {
@@ -23,9 +22,25 @@ function Signup() {
       userInfo.username.length >= 4 &&
       userInfo.password.length >= 10 &&
       userInfo.rePassword === userInfo.password &&
-      userInfo.emailFront.length >= 4 &&
-      userInfo.emailBack.length >= 4
+      userInfo.email.includes('@')
     );
+  };
+
+  const handleSignup = () => {
+    fetch('http://10.58.5.80:3000/users/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        userName: userInfo.username,
+        password: userInfo.password,
+        name: userInfo.name,
+        email: userInfo.email,
+        phoneNumber: userInfo.phoneNumber,
+        birth: userInfo.birthdate,
+      }),
+    })
+      .then(response => response.json())
+      .then(data => console.log(data));
   };
 
   const handleUserInfo = e => {
@@ -80,19 +95,10 @@ function Signup() {
             <p>이메일</p>
             <div className="emailInput">
               <input
-                id="emailFront"
+                id="email"
                 className="signUpInputs"
                 type="text"
                 placeholder="이메일 앞자리"
-                onChange={handleUserInfo}
-                onKeyUp={activateButton}
-              />
-              <span>@</span>
-              <input
-                id="emailBack"
-                className="signUpInputs"
-                type="text"
-                placeholder="이메일 뒷자리"
                 onChange={handleUserInfo}
                 onKeyUp={activateButton}
               />
@@ -108,7 +114,7 @@ function Signup() {
           <button
             className="doneButton"
             disabled={!activateButton()}
-            onClick={goToMain}
+            onClick={handleSignup}
           >
             완료
           </button>

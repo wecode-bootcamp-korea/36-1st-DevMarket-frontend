@@ -63,7 +63,7 @@
         .emailInput {
             @include flex(space-between, center);
             input {
-                width: 45%;
+                width: 100%;
                 display: inline-block;
             }
             span {
