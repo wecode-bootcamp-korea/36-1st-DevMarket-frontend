@@ -38,9 +38,7 @@ function ProductReview() {
         />
         <button className="submitReview">등록하기</button>
       </form>
-      {reviewArray.map(review => (
-        <WriteReview key={review.index} {...review} />
-      ))}
+      <WriteReview reviewInput={reviewArray} />
       {reviewList.map(review => (
         <SingleReview key={review.id} {...review} />
       ))}
