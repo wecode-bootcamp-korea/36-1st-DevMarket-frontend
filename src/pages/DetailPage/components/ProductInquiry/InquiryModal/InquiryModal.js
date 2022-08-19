@@ -22,7 +22,7 @@ function InquiryModal({ handleX }) {
           <section className="sectionBottom">
             <h1 className="titleThree">이메일 정보</h1>
             <input className="inquiryTitle" placeholder="이메일" />
-            <p className="answerBack">! 문의 등록시 이메일로 답변 드립니다</p>
+            <p className="answerBack">! 문의 등록시 이메일로 답변 드립니다.</p>
           </section>
           <button className="submitInquiry">등록하기</button>
         </div>

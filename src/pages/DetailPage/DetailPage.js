@@ -11,6 +11,15 @@ import './DetailPage.scss';
 
 function DetailPage() {
   const [currentId, setCurrentId] = useState(1);
+  const [quantity, setQuantity] = useState(1);
+
+  const handleQuantityClick = e => {
+    if (e.target.id === 'minus' && quantity !== 1) {
+      setQuantity(curr => curr - 1);
+    } else if (e.target.id === 'plus') {
+      setQuantity(curr => curr + 1);
+    }
+  };
 
   const clickHandler = id => {
     setCurrentId(id);
@@ -118,11 +127,19 @@ function DetailPage() {
               <span>주문수량</span>
               <div className="quantityBar">
                 <button className="handleQuantity">
-                  <FontAwesomeIcon icon={faMinus} />
+                  <FontAwesomeIcon
+                    id="minus"
+                    icon={faMinus}
+                    onClick={handleQuantityClick}
+                  />
                 </button>
-                <input value="1" />
+                <input value={quantity} />
                 <button className="handleQuantity">
-                  <FontAwesomeIcon icon={faPlus} />
+                  <FontAwesomeIcon
+                    id="plus"
+                    icon={faPlus}
+                    onClick={handleQuantityClick}
+                  />
                 </button>
               </div>
             </div>
@@ -132,9 +149,11 @@ function DetailPage() {
                 <span>1kg 당 900원 / 1ea</span>
                 <div className="rightBottom">
                   <span className="discount">4%</span>
-                  <span className="cost">44,550원</span>
+                  <span className="cost">{44550 * quantity + '원'}</span>
                 </div>
-                <span className="discountPrice">46,800원</span>
+                <span className="discountPrice">
+                  {44550 * quantity * (1 - 0.04) + '원'}
+                </span>
               </div>
             </div>
             <div className="orderButtons">
