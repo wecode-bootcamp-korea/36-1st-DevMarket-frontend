@@ -11,15 +11,12 @@ function Main() {
   const limit = searchParams.get('limit');
 
   useEffect(() => {
-    fetch(
-      `http://10.58.7.228:3000/products/all?_start=${offset}&_limit=${limit}`,
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    )
+    fetch(`http://10.58.7.228:3000/products/all?_start=${offset}&_limit=10`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
       .then(response => response.json())
       .then(result => setProductList(result));
   }, [offset, limit]);
@@ -65,6 +62,7 @@ function Main() {
       <div>
         <button onClick={() => movePage(1)}>1</button>
         <button onClick={() => movePage(2)}>2</button>
+        <button onClick={() => movePage(3)}>3</button>
       </div>
     </div>
   );
