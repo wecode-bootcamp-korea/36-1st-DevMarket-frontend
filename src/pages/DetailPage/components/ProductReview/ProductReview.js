@@ -30,6 +30,14 @@ function ProductReview() {
     );
   };
 
+  /* 엔터키 눌르면 등록 되는거 구현중
+  const handleEnterPress = e => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      submitReview();
+    }
+  };
+  */
+
   useEffect(() => {
     fetch('./data/reviews.json')
       .then(res => res.json())
@@ -44,13 +52,13 @@ function ProductReview() {
           placeholder="내용을 입력해주세요"
           onChange={handleReviewInput}
           value={review}
+          // onKeyDown={handleEnterPress}
         />
         <button className="submitReview">등록하기</button>
       </form>
       {reviewArray.map(review => (
         <WriteReview
           review={review}
-          setReview={setReview}
           key={review.id}
           removeReview={removeReview}
         />

@@ -5,7 +5,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import '../WriteReview/WriteReview.scss';
 
-function WriteReview({ review, removeReview, setReview }) {
+function WriteReview({ review, removeReview }) {
   const [edit, setEdit] = useState(false);
   const [editInput, setEditInput] = useState('');
   const [editPost, setEditPost] = useState(false);
