@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import Product from './Product/Product';
-import Pagination from './Pagination/Pagination';
+import { useSearchParams } from 'react-router-dom';
+import { BUTTON_LIST } from './uiData';
 import './Main.scss';
 
 function Main() {
   const [productList, setProductList] = useState([]);
-  const [limit, setLimit] = useState(10);
-  const [page, setPage] = useState(1);
-  const offset = (page - 1) * limit;
+  const [searchParams, setSearchParams] = useSearchParams();
+  const offset = searchParams.get('offset');
+  const limit = searchParams.get('limit');
 
   useEffect(() => {
-    fetch('/data/product.json')
+    fetch(`data/productList.json?_start=${offset}&_limit=${limit}`)
       .then(response => response.json())
       .then(result => setProductList(result));
-  }, []);
+  }, [offset, limit]);
+  const movePage = pageNumber => {
+    searchParams.set('offset', (pageNumber - 1) * 10);
+    setSearchParams(searchParams);
+  };
 
   return (
     <div className="mainContainer">
@@ -28,21 +33,18 @@ function Main() {
               <span>든든배송</span>
             </div>
             <div className="filterButtons">
-              <ul>
-                <li>
-                  <button>인기상품순</button>
-                </li>
-                <li>
-                  <button>kg당 단가순</button>
-                </li>
-                <li>
-                  <button>개당 단가순</button>
-                </li>
-                <li>
-                  <button>낮은 가격순</button>
-                </li>
+              <ul className="listFrame">
+                {BUTTON_LIST.map(buttonList => {
+                  return (
+                    <li className="list" key={buttonList.id}>
+                      <button className="btnFrame">
+                        {buttonList.buttonName}
+                      </button>
+                    </li>
+                  );
+                })}
               </ul>
-              <button>필터</button>
+              <button className="filterFrame">필터</button>
             </div>
           </div>
         </div>
@@ -51,14 +53,10 @@ function Main() {
             return <Product {...productInfo} key={productInfo.id} />;
           })}
         </section>
-        <footer>
-          <Pagination
-            total={productList.length}
-            limit={limit}
-            page={page}
-            setPage={setPage}
-          />
-        </footer>
+      </div>
+      <div>
+        <button onClick={() => movePage(1)}>1</button>
+        <button onClick={() => movePage(2)}>2</button>
       </div>
     </div>
   );

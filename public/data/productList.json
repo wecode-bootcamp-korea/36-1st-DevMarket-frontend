@@ -68,5 +68,19 @@
     "price": "10,000원",
     "weight": "288kg",
     "image": "./images/List/pork.jpg"
+  },
+  {
+    "id": 9,
+    "name": "항정살",
+    "price": "10,000원",
+    "weight": "23kg",
+    "image": "./images/List/pork.jpg"
+  },
+  {
+    "id": 9,
+    "name": "항정살",
+    "price": "10,000원",
+    "weight": "23kg",
+    "image": "./images/List/pork.jpg"
   }
 ]
