@@ -1,20 +1,25 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import '../WriteReview/WriteReview.scss';
 
-function WriteReview({ reviewInput }) {
+function WriteReview({ review, removeReview }) {
   return (
-    <>
-      {reviewInput.map(review => (
-        <section className="singleReview">
-          <div className="reviewer">
-            <span className="name">정**</span>
-            <span className="time">2022.08.19</span>
-          </div>
-          <div className="reviewContent">
-            <span className="content">{review}</span>
-          </div>
-        </section>
-      ))}
-    </>
+    <section key={review.id} className="singleReview">
+      <div className="reviewer">
+        <div>
+          <span className="name">정**</span>
+          <span className="time">2022.08.19</span>
+        </div>
+        <FontAwesomeIcon
+          className="xMark"
+          onClick={() => removeReview(review.id)}
+          icon={faXmark}
+        />
+      </div>
+      <div className="reviewContent">
+        <span className="content">{review.review}</span>
+      </div>
+    </section>
   );
 }
 

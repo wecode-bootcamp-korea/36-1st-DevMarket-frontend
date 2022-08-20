@@ -5,20 +5,29 @@ import '../ProductReview/ProductReview.scss';
 
 function ProductReview() {
   const [reviewList, setReviewList] = useState([]);
-  const [review, setReview] = useState([]);
+  const [review, setReview] = useState('');
   const [reviewArray, setReviewArray] = useState([]);
 
   const submitReview = event => {
     event.preventDefault();
+    const id = Date.now();
     if (review === '') {
       return;
     }
-    setReviewArray([review, ...reviewArray]);
+    setReviewArray([{ id, review }, ...reviewArray]);
     setReview('');
   };
 
   const handleReviewInput = event => {
     setReview(event.target.value);
+  };
+
+  const removeReview = id => {
+    setReviewArray(
+      reviewArray.filter(review => {
+        return review.id !== id;
+      })
+    );
   };
 
   useEffect(() => {
@@ -38,7 +47,13 @@ function ProductReview() {
         />
         <button className="submitReview">등록하기</button>
       </form>
-      <WriteReview reviewInput={reviewArray} />
+      {reviewArray.map(review => (
+        <WriteReview
+          review={review}
+          key={review.id}
+          removeReview={removeReview}
+        />
+      ))}
       {reviewList.map(review => (
         <SingleReview key={review.id} {...review} />
       ))}

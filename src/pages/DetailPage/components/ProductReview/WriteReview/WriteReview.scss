@@ -6,7 +6,7 @@
     @include flex(center, null);
 }
 .reviewer {
-    @include flex(flex-start, null);
+    @include flex(space-between, null);
     .name {
         font-size: 15px;
         font-weight: 500;
