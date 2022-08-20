@@ -44,6 +44,16 @@ function ProductReview() {
       .then(setReviewList);
   }, []);
 
+  useEffect(() => {
+    fetch('http://10.58.0.32:3000/users/signin', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ authorizationl: }),
+    })
+      .then(response => response.json())
+      .then(data => console.log(data));
+  }, []);
+
   return (
     <div className="productReview">
       <form className="writeReviewWrapper" onSubmit={submitReview}>
