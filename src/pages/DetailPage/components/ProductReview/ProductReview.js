@@ -50,6 +50,7 @@ function ProductReview() {
       {reviewArray.map(review => (
         <WriteReview
           review={review}
+          setReview={setReview}
           key={review.id}
           removeReview={removeReview}
         />

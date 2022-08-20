@@ -1,25 +1,37 @@
 @import '../../../../../styles/variables.scss';
 
 .singleReview {
-    padding: 24px 4px;
-    flex-direction: column;
-    @include flex(center, null);
+  padding: 24px 4px;
+  flex-direction: column;
+  @include flex(center, null);
 }
 .reviewer {
-    @include flex(space-between, null);
-    .name {
-        font-size: 15px;
-        font-weight: 500;
-    }
-    .time {
-        font-size: 13px;
-        margin-left: 8px;
-        color: rgb(187, 187, 187);
-    }
+  @include flex(space-between, null);
+  .name {
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .time {
+    font-size: 13px;
+    margin-left: 8px;
+    color: rgb(187, 187, 187);
+  }
+  .editMark {
+    font-size: 15px;
+    cursor: pointer;
+  }
+  .xMark {
+    margin-left: 20px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+}
+.iconContainer {
+  @include flex(space-between, center);
 }
 .reviewContent {
-    margin-top: 10px;
-    font-size: 14px;
-    line-height: 20px;
-    white-space: pre-wrap;
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  white-space: pre-wrap;
 }
