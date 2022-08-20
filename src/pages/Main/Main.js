@@ -11,7 +11,15 @@ function Main() {
   const limit = searchParams.get('limit');
 
   useEffect(() => {
-    fetch(`data/productList.json?_start=${offset}&_limit=${limit}`)
+    fetch(
+      `http://10.58.7.228:3000/products/all?_start=${offset}&_limit=${limit}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    )
       .then(response => response.json())
       .then(result => setProductList(result));
   }, [offset, limit]);
@@ -50,7 +58,7 @@ function Main() {
         </div>
         <section className="productList">
           {productList.map(productInfo => {
-            return <Product {...productInfo} key={productInfo.id} />;
+            return <Product productInfo={productInfo} key={productInfo.id} />;
           })}
         </section>
       </div>
