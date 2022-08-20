@@ -37,21 +37,26 @@ function ProductReview() {
     }
   };
   */
-
+  /*
   useEffect(() => {
     fetch('./data/reviews.json')
       .then(res => res.json())
       .then(setReviewList);
   }, []);
+  */
 
   useEffect(() => {
-    fetch('http://10.58.0.32:3000/users/signin', {
+    fetch('http://10.58.7.158:3000/products/review/3', {
       method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ authorizationl: }),
+      headers: {
+        'Content-Type': 'application/json',
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjA5OTA2NDUsImV4cCI6MTY2MzU4MjY0NX0.oBeL0UP3fYz7pZM9rgEtE23SxpGHLwzaoJ1OE2dzmus',
+      },
     })
       .then(response => response.json())
-      .then(data => console.log(data));
+      .then(data => setReviewList(data));
+    console.log(reviewList);
   }, []);
 
   return (
@@ -74,7 +79,7 @@ function ProductReview() {
         />
       ))}
       {reviewList.map(review => (
-        <SingleReview key={review.id} {...review} />
+        <SingleReview key={review.id} review={review} />
       ))}
     </div>
   );

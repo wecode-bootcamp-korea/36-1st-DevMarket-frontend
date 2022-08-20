@@ -1,22 +1,23 @@
 import '../SingleReview/SingleReview.scss';
 
-function SingleReview({ name, date, review, answerDate, answer }) {
+function SingleReview({ review }) {
+  const date = Date.now();
   return (
     <section className="singleReview">
       <div className="reviewer">
-        <span className="name">{name}</span>
-        <span className="time">{date}</span>
+        <span className="name">{review.name}</span>
+        <span className="time">2022/08/20</span>
       </div>
       <div className="reviewContent">
-        <span className="content">{review}</span>
+        <span className="content">{review.content}</span>
       </div>
       <div className="reviewAnswer">
         <div className="answerTime">
           <span className="answerDone">답변완료</span>
-          <span className="time">{answerDate}</span>
+          <span className="time">{date}</span>
         </div>
         <div className="answerContent">
-          <span>{answer}</span>
+          <span>비밀 댓글입니다.</span>
         </div>
       </div>
     </section>
