@@ -1,19 +1,26 @@
 @import '../../styles/variables.scss';
-.navMain {
-  @include flex(center, center);
-  border-bottom: 1px solid rgb(221, 221, 221);
-  // position: relative;
-  .navInner {
-    width: 1080px;
-    min-width: 1000px;
-  }
-}
 
-.navDropdown {
-  @include flex(center, center);
+nav {
+  position: fixed;
+  .navMain {
+    background-color: white;
+    @include flex(center, center);
+    border-bottom: 1px solid rgb(221, 221, 221);
+    width: 100vw;
 
-  .navDropdownInner {
-    width: 1080px;
-    min-width: 1000px;
+    .navInner {
+      width: 1080px;
+      min-width: 1000px;
+      position: relative;
+    }
   }
+  // .navDropdown {
+  //   @include flex(center, center);
+
+  //   .navDropdownInner {
+  //     width: 1080px;
+  //     min-width: 1000px;
+
+  //   }
+  // }
 }

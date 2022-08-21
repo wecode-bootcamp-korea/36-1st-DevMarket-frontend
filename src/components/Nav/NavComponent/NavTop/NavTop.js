@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './NavTop.scss';
 
 function NavTop() {
   return (
-    <div className="navTop">
+    <nav className="navTopWrap">
       <ul className="navUl">
         <li className="list">배민사장님광장 &nbsp; |</li>
         <li className="list">배민셀프서비스 &nbsp; |</li>
@@ -12,17 +13,15 @@ function NavTop() {
         <li className="list">배민로봇</li>
       </ul>
       <ul className="navUl">
+        <li className="list">고객센터 &nbsp; |</li>
         <li className="list">
-          <a href="#">고객센터 &nbsp; |</a>
+          <Link to="/login">로그인 &nbsp; |</Link>
         </li>
         <li className="list">
-          <a href="#">로그인 &nbsp; |</a>
-        </li>
-        <li className="list">
-          <a href="#">회원가입 &nbsp; </a>
+          <Link to="/signup">회원가입 &nbsp; </Link>
         </li>
       </ul>
-    </div>
+    </nav>
   );
 }
 

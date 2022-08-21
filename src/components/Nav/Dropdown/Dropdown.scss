@@ -1,20 +1,24 @@
-@import '../../../../../styles/variables.scss';
+@import '../../../styles/variables.scss';
+@import '../../../styles/common.scss';
 
 .dropdown {
   @include flex(flex-start, center);
-  flex-direction: row;
   border: 1px solid rgb(51, 51, 51);
-  box-shadow: rgb(0 0 0 / 10%) 0px 4px 12px 0px;
+  box-shadow: #0000001a 0px 4px 12px 0px;
+  z-index: 1;
   position: absolute;
+  top: 125px;
+  // top: 100%;
+  // left: 0;
+
   .dropdownWrap {
-    @include flex(flex-start, center);
-    flex-direction: column;
+    @include flex(flex-start, '');
+    flex-direction: row;
     min-width: 128px;
     width: 128px;
     height: auto;
     min-height: 396px;
     background: rgb(89, 80, 72);
-    // display: none;
     .dropdownUl {
       // border-right: 1px solid rgb(238, 238, 238);
       width: 100%;
@@ -22,6 +26,17 @@
       font-weight: 500;
       font-size: 16px;
 
+      // .midCatWrap {
+      //   position: absolute;
+      //   left: 128px;
+      //   top: 0px;
+      //   min-width: 128px;
+      //   width: 128px;
+      //   height: 396px;
+      //   min-height: 396px;
+      //   background-color: white;
+      //   color: black;
+      // }
       .dropdownLi {
         @include flex(center, center);
         width: 100%;
@@ -37,8 +52,10 @@
         background: white;
         color: rgb(89, 80, 72);
         font-weight: 500;
+
         span {
           position: relative;
+
           &:before {
             display: block;
             position: absolute;

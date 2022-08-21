@@ -1,10 +1,11 @@
 @import '../../../../styles/variables.scss';
 @import '../../../../styles/common.scss';
 
-.navBottom {
+.navBottomWrap {
   @include flex(space-between, center);
   height: 79px;
   position: relative;
+  background-color: white;
 
   .navLeft,
   .navCenter,
@@ -90,6 +91,9 @@
         width: 80%;
         padding-left: 40px;
         margin-right: 30px;
+        &::placeholder {
+          color: #d6d6d6;
+        }
       }
       .naviconWrap {
         width: 40px;

@@ -8,7 +8,7 @@ function NavBottom({ click, changeclass }) {
   const getValue = e => setInput(e.target.value);
 
   return (
-    <div className="navBottom">
+    <nav className="navBottomWrap">
       <div className="navLeft">
         <Arcodian click={() => click(changeclass)} changeclass={changeclass} />
         <ul className="navUl">
@@ -57,7 +57,7 @@ function NavBottom({ click, changeclass }) {
           </div>
         </form>
       </div>
-    </div>
+    </nav>
   );
 }
 

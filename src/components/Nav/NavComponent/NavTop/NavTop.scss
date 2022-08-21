@@ -1,9 +1,18 @@
 @import '../../../../styles/variables.scss';
 
-.navTop {
-  list-style-type: disc;
+// .navTop {
+//   @include flex(center, center);
+//   width: 100vw;
+//   position: relative;
+
+.navTopWrap {
+  // width: 1080px;
+  // min-width: 1000px;
   @include flex(space-between, center);
   height: 46px;
+  // width: 100vw;
+  position: relative;
+
   .navUl {
     height: 46px;
     display: flex;
@@ -29,3 +38,12 @@
     }
   }
 }
+// }
+
+// .navHide {
+//   display: none;
+//   @include flex(center, center);
+//   width: 100vw;
+//   height: 46px;
+//   background-color: white;
+// }
