@@ -37,14 +37,16 @@ function ProductReview() {
     }
   };
   */
-  /*
+
+  // Mock Data를 활용한 코드
+
   useEffect(() => {
     fetch('./data/reviews.json')
       .then(res => res.json())
       .then(setReviewList);
   }, []);
-  */
 
+  /* 백엔드와 통신할 때 쓸 코드
   useEffect(() => {
     fetch('http://10.58.7.158:3000/products/review/3', {
       method: 'GET',
@@ -56,8 +58,8 @@ function ProductReview() {
     })
       .then(response => response.json())
       .then(data => setReviewList(data));
-    console.log(reviewList);
   }, []);
+  */
 
   return (
     <div className="productReview">
