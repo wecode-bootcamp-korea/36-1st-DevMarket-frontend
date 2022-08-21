@@ -1,25 +1,63 @@
 import React, { useState, useEffect } from 'react';
 import CartProduct from '../../components/CartProduct/CartProduct';
 import OrderForm from '../../components/OrderForm/OrderForm';
+import TotalPrice from '../../components/TotalPrice/TotalPrice';
 import './Cart.scss';
 
 function Cart() {
   const [product, setProduct] = useState([]);
-
-  const [count, setCount] = useState(1);
-  const plusCount = () => {
-    setCount(count => count + 1);
-  };
-  const minusCount = () => {
-    setCount(count => count - 1);
-    return count <= 1 ? setCount(1) : null;
-  };
+  const lastTotalPrice = product.map(item => {
+    return item.price;
+  });
+  const productTotal = lastTotalPrice.reduce((acc, cur) => {
+    return (acc += cur);
+  }, 0);
+  const [total, setTotal] = useState(productTotal);
+  const [deliveryPrice, setDeliveryPrice] = useState(5000);
 
   useEffect(() => {
-    fetch('./data/cartProduct.json')
+    fetch('/data/cartProduct.json')
       .then(response => response.json())
       .then(result => setProduct(result));
   }, []);
+
+  const removeProduct = id => {
+    setProduct(
+      product.filter(product => {
+        return product.id !== id;
+      })
+    );
+  };
+
+  const [checkedObj, setCheckedObj] = useState([]);
+  const childCheck = (id, checked) => {
+    checked
+      ? setCheckedObj([...checkedObj, { id: id, checked: checked }])
+      : setCheckedObj(
+          checkedObj.filter(check => {
+            return check.id !== id;
+          })
+        );
+  };
+  const checkedId = checkedObj.map(item => {
+    return item.id;
+  });
+
+  const removeChild = id => {
+    let removeProducts;
+    id.forEach(
+      item => (removeProducts = product.filter(product => product.id !== item))
+    );
+    id.forEach(
+      item =>
+        (removeProducts = removeProducts.filter(
+          removeProducts => removeProducts.id !== item
+        ))
+    );
+    setProduct(removeProducts);
+  };
+
+  // console.log(checkedId);
   return (
     <div className="cart">
       <div className="cartTitle">
@@ -32,30 +70,40 @@ function Cart() {
               <input type="checkbox" className="checkBox" />
               <p className="checkText">전체선택</p>
             </div>
-            <button className="cancelBtn">선택 삭제</button>
+            <button
+              className="cancelBtn"
+              onClick={() => removeChild(checkedId)}
+            >
+              선택 삭제
+            </button>
           </div>
           <div className="box1Bottom">
             {product.map(product => (
               <CartProduct
                 product={product}
+                setTotal={setTotal}
                 key={product.id}
-                count={count}
-                plusCount={plusCount}
-                minusCount={minusCount}
                 id={product.id}
+                removeProduct={removeProduct}
+                childCheck={childCheck}
               />
             ))}
           </div>
         </div>
-        <OrderForm />
+        <OrderForm
+          total={total}
+          deliveryPrice={deliveryPrice}
+          product={product}
+          productTotal={productTotal}
+        />
       </div>
-      <div className="totalPrice">
-        <div className="totalTop">
-          <p>상품금액 {10000 * count}원 + 배송비 0원 =&nbsp; </p>
-          <p className="totalPriceSmall">총 {10000 * count}원</p>
-        </div>
-        <div className="totalBottom">든든배송 상품 추가하기</div>
-      </div>
+      <TotalPrice
+        total={total}
+        deliveryPrice={deliveryPrice}
+        setTotal={setTotal}
+        product={product}
+        productTotal={productTotal}
+      />
     </div>
   );
 }

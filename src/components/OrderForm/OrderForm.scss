@@ -63,10 +63,15 @@
       @include flex(center, center);
       width: 310px;
       height: 60px;
+      border: none;
       background-color: #2dc8c3;
       color: white;
       font-size: 18px;
       font-weight: bold;
+      &:disabled {
+        background-color: #eeeeee;
+        color: #bbbbbb;
+      }
     }
   }
 }

@@ -1,10 +1,27 @@
 import React, { useState } from 'react';
 import './CartProduct.scss';
 
-const CartProduct = ({ product, count, plusCount, minusCount }) => {
+const CartProduct = ({ product, setTotal, removeProduct, childCheck }) => {
+  const [count, setCount] = useState(1);
+  const minusCount = () => {
+    setCount(count => count - 1);
+    setTotal(num => (num -= product.price));
+  };
+  const plusCount = () => {
+    setCount(count => count + 1);
+    setTotal(num => (num += product.price));
+  };
+  const validation = count => {
+    return count > 1 ? false : true;
+  };
+
   return (
     <div className="cartProduct">
-      <input type="checkbox" className="checkBox" />
+      <input
+        type="checkbox"
+        className="checkBox"
+        onClick={e => childCheck(product.id, e.target.checked)}
+      />
       <div className="imgBorder">
         <img src={product.img} />
       </div>
@@ -16,7 +33,11 @@ const CartProduct = ({ product, count, plusCount, minusCount }) => {
 
         <div className="pInfo2">
           <div className="countBar">
-            <button className="minus" onClick={minusCount}>
+            <button
+              className="minus"
+              onClick={minusCount}
+              disabled={validation(count)}
+            >
               –
             </button>
             <input value={count} className="numCount" />
@@ -26,7 +47,12 @@ const CartProduct = ({ product, count, plusCount, minusCount }) => {
           </div>
           <div className="priceBox">
             <p>{product.price * count}원</p>
-            <button className="cancelBtn">✕</button>
+            <button
+              className="cancelBtn"
+              onClick={() => removeProduct(product.id)}
+            >
+              ✕
+            </button>
           </div>
         </div>
       </div>

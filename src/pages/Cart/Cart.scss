@@ -39,38 +39,17 @@
           width: 75px;
           height: 32px;
           background-color: white;
-          border: 1px solid gray;
+          border: 1px solid rgb(219, 219, 219);
           border-radius: 4px;
           font-size: 16px;
+          &:disabled {
+            background-color: rgb(248, 248, 248);
+          }
         }
       }
       .box1Bottom {
         height: 100%;
       }
-    }
-  }
-  .totalPrice {
-    @include flex(center, center);
-    flex-direction: column;
-    width: 712px;
-    height: 92px;
-    margin-top: -6px;
-    padding: 24px;
-    border-radius: 5px;
-    background-color: #f6f6f6;
-    color: rgb(81, 81, 81);
-    .totalTop {
-      display: flex;
-      font-size: 15px;
-      .totalPriceSmall {
-        color: black;
-        font-weight: bold;
-      }
-    }
-    .totalBottom {
-      margin-top: 8px;
-      font-size: 14px;
-      color: #2bc1bc;
     }
   }
 }
