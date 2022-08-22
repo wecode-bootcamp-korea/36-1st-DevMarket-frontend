@@ -1,130 +1,138 @@
 @import '../../styles/variables.scss';
 
 @font-face {
-    font-family: BMHANNA;
-    src: url(./BMHANNA_11yrs_ttf.ttf);
+  font-family: BMHANNA;
+  src: url(./BMHANNA_11yrs_ttf.ttf);
 }
 
 .container {
+  @include flex(center, center);
+  width: 100%;
+  height: 100vh;
+  .innerContainer {
+    max-width: 448px;
+    padding: 48px 40px;
+    border: 1px solid rgb(236, 238, 242);
+    border-radius: 5px;
+  }
+  .innestContainer {
     @include flex(center, center);
+    flex-direction: column;
     width: 100%;
-    height: 100vh;
-    .innerContainer {
-        max-width: 448px;
-        padding: 48px 40px;
-        border: 1px solid rgb(236, 238, 242);
-        border-radius: 5px;
+    .Logo {
+      font-family: BMHANNA;
+      font-size: 24px;
+      span {
+        color: #28559a;
+      }
     }
-    .innestContainer {
+    .pageTitle {
+      margin-top: 40px;
+      font-weight: 530;
+      font-size: 28px;
+      line-height: 48px;
+    }
+    .description {
+      margin-top: 8px;
+      margin-bottom: 30px;
+      text-align: center;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      color: rgb(142, 146, 159);
+    }
+    input {
+      width: 100%;
+      border-radius: 5px;
+      padding: 12px;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 24px;
+      outline: none;
+      text-align: left;
+      border: 1px solid rgb(215, 219, 230);
+      background: rgb(255, 255, 255);
+      margin-bottom: 12px;
+      &::-webkit-input-placeholder {
+        color: rgb(200, 200, 200);
+      }
+      &:focus::-webkit-input-placeholder {
+        color: transparent;
+      }
+    }
+    .errorMsg {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 16px;
+      font-size: 12px;
+      color: rgb(244, 84, 82);
+      background-color: rgba(244, 0, 0, 0.1);
+    }
+    .innerNav {
+      @include flex(space-between, center);
+      width: 100%;
+      margin-top: 4px;
+      margin-bottom: 32px;
+      .saveIdInput {
         @include flex(center, center);
-        flex-direction: column;
-        width: 100%;
-        .Logo {
-            font-family: BMHANNA;
-            font-size: 24px;
-            span {
-                color: #28559A;
-            }
-        }
-        .pageTitle {
-            margin-top: 40px;
-            font-weight: 530;
-            font-size: 28px;
-            line-height: 48px;
-        }
-        .description {
-            margin-top: 8px;
-            margin-bottom: 30px;
-            text-align: center;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 24px;
-            color: rgb(142, 146, 159);
-        }
         input {
-            width: 100%;
-            border-radius: 5px;
-            padding: 12px;
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 24px;
-            outline: none;
-            text-align: left;
-            border: 1px solid rgb(215, 219, 230);
-            background: rgb(255, 255, 255);
-            margin-bottom: 12px;
-            &::-webkit-input-placeholder {
-                color: rgb(200, 200, 200);
-            }
-            &:focus::-webkit-input-placeholder {
-                color: transparent;
-            }
+          width: 24px;
+          height: 24px;
+          border-radius: 2px;
+          background: rgb(255, 255, 255);
+          position: relative;
+          top: 3px;
+          cursor: pointer;
         }
-        .innerNav {
-            @include flex(space-between, center);
-            width: 100%;
-            margin-top: 4px;
-            margin-bottom: 32px;
-            .saveIdInput {
-                @include flex(center, center);
-                input {
-                    width: 24px;
-                    height: 24px;
-                    border-radius: 2px;
-                    background: rgb(255, 255, 255);
-                    position: relative;
-                    top: 3px;
-                    cursor: pointer;
-                }
-                p {
-                    font-size: 14px;
-                    cursor: pointer;
-                    color: rgb(51, 51, 51);
-                    padding-left: 6px;
-                }
-            }
-            .findIdPassword {
-                @include flex(space-between, center);
-                :not(:last-child) {
-                    margin-right: 8px;
-                    height: 100%;
-                }
-                p, a {
-                    font-weight: 700;
-                    font-size: 12px;
-                    color: rgb(142, 146, 159);
-                    cursor: pointer;
-                    letter-spacing: normal;
-                    text-decoration: none;
-                }
-            }
+        p {
+          font-size: 14px;
+          cursor: pointer;
+          color: rgb(51, 51, 51);
+          padding-left: 6px;
         }
-        button {
-            width: 100%;
-            height: 56px;
-            background: rgb(61, 92, 255);
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            color: rgb(255, 255, 255);
-            border-radius: 5px;
-            border: 0px;
-            padding: 0px 16px;
-            cursor: pointer;
-            &:active {
-                transform: scale(0.99);
-            }
-            &:disabled {
-                opacity: 0.5;
-            }
+      }
+      .findIdPassword {
+        @include flex(space-between, center);
+        :not(:last-child) {
+          margin-right: 8px;
+          height: 100%;
         }
-        .teamName {
-            margin-top: 40px;
-            font-size: 12px;
-            font-weight: 500;
-            line-height: 20px;
-            color: rgb(142, 146, 159)
+        p,
+        a {
+          font-weight: 700;
+          font-size: 12px;
+          color: rgb(142, 146, 159);
+          cursor: pointer;
+          letter-spacing: normal;
+          text-decoration: none;
         }
+      }
     }
-
+    button {
+      width: 100%;
+      height: 56px;
+      background: rgb(61, 92, 255);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: rgb(255, 255, 255);
+      border-radius: 5px;
+      border: 0px;
+      padding: 0px 16px;
+      cursor: pointer;
+      &:active {
+        transform: scale(0.99);
+      }
+      &:disabled {
+        opacity: 0.5;
+      }
+    }
+    .teamName {
+      margin-top: 40px;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 20px;
+      color: rgb(142, 146, 159);
+    }
+  }
 }

@@ -5,6 +5,7 @@ import './Login.scss';
 function Login() {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState({ username: '', password: '' });
+  const [valLogin, setValLogin] = useState(true);
 
   const activateButton = () => {
     return userInfo.username.length >= 4 && userInfo.password.length >= 10;
@@ -35,8 +36,9 @@ function Login() {
           localStorage.setItem('token', data.token);
           goToMain();
         } else if (data.message === 'invalid') {
-          alert('아이디 또는 비밀번호를 확인해주세요');
+          setValLogin(false);
         }
+        setValLogin(true);
       });
   };
 
@@ -69,6 +71,9 @@ function Login() {
             onChange={handleUserInfo}
             onKeyUp={activateButton}
           />
+          {valLogin === false && (
+            <div className="errorMsg"> ! 아이디/비밀번호를 확인해주세요. </div>
+          )}
           <div className="innerNav">
             <div className="saveIdInput">
               <input type="checkbox" />
