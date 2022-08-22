@@ -3,14 +3,14 @@ import { useState } from 'react';
 import './NavBottom.scss';
 import Arcodian from './ Arcodian';
 
-function NavBottom({ click, changeclass }) {
+function NavBottom({ onClick, changeClassname }) {
   const [input, setInput] = useState(false);
   const getValue = e => setInput(e.target.value);
 
   return (
     <nav className="navBottomWrap">
       <div className="navLeft">
-        <Arcodian click={() => click(changeclass)} changeclass={changeclass} />
+        <Arcodian onClick={onClick} changeClassname={changeClassname} />
         <ul className="navUl">
           <li className="list">든든배송 &middot; </li>
           <li className="list">상회가만든 &middot; </li>

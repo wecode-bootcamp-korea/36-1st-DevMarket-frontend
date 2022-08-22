@@ -1,28 +1,44 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Nav.scss';
 import NavTop from './NavComponent/NavTop/NavTop';
 import NavBottom from './NavComponent/NavBottom/NavBottom';
 import Dropdown from './Dropdown/Dropdown';
+import Arcodian from '../../components/Nav/NavComponent/NavBottom/ Arcodian';
 
 const Nav = () => {
-  const [classname, setClassname] = useState('click');
+  const [showDropDown, setShowDropDown] = useState(false);
   const [scroll, setScroll] = useState(0);
+  const [menuList, setMenuList] = useState([]);
+
+  useEffect(() => {
+    fetch('/data/product.json')
+      .then(response => response.json())
+      .then(result => setMenuList(result));
+  }, []);
+
+  const openCategory = () => {
+    setShowDropDown(!showDropDown);
+  };
+
+  // const click = () => {
+  //   classname === 'arcodian' ? setClassname('click') : setClassname('arcodian');
+  // };
+
   const onScroll = e => {
     setScroll(e.currentTarget.scrollY);
   };
   window.addEventListener('scroll', onScroll);
-
-  const click = () => {
-    classname === 'arcodian' ? setClassname('click') : setClassname('arcodian');
-  };
 
   return (
     <nav style={scroll < 30 ? { top: 0 - scroll } : { top: -30 }}>
       <div className="navMain">
         <div className="navInner">
           <NavTop />
-          <NavBottom click={click} changeclass={classname} />
-          {classname !== 'click' && <Dropdown />}
+          <NavBottom
+            onClick={openCategory}
+            changeClassname={showDropDown ? 'click' : 'arcodian'}
+          />
+          {showDropDown && <Dropdown menuList={menuList} />}
         </div>
       </div>
     </nav>

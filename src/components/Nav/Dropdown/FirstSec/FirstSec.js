@@ -1,9 +1,13 @@
 import React from 'react';
 import './FirstSec.scss';
 
-function FirstSec({ data, hover }) {
+function FirstSec({ data, onHover }) {
   return (
-    <li className="dropdownLi" onMouseEnter={hover}>
+    <li
+      className="dropdownLi"
+      onMouseMove={onHover}
+      // onMouseLeave={mouseLeave}
+    >
       <span>{data}</span>
     </li>
   );
