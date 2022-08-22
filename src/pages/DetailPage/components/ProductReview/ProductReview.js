@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import SingleReview from './SingleReview/SingleReview';
 import WriteReview from './WriteReview/WriteReview';
 import '../ProductReview/ProductReview.scss';
@@ -7,6 +10,9 @@ function ProductReview() {
   const [reviewList, setReviewList] = useState([]);
   const [review, setReview] = useState('');
   const [reviewArray, setReviewArray] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const offset = searchParams.get('offset');
+  const limit = searchParams.get('limit');
 
   const submitReview = event => {
     event.preventDefault();
@@ -39,25 +45,46 @@ function ProductReview() {
   */
 
   // Mock Data를 활용한 코드
-
   useEffect(() => {
-    fetch('./data/reviews.json')
+    fetch(`./data/reviews.json?_start=${offset}&_limit=${limit}`)
       .then(res => res.json())
       .then(setReviewList);
-  }, []);
+  }, [offset, limit]);
 
-  /* 백엔드와 통신할 때 쓸 코드
+  const movePage = pageNumber => {
+    searchParams.set('offset', (pageNumber - 1) * 10);
+    setSearchParams(searchParams);
+  };
+
+  /* 리뷰목록 통신 코드
+  useEffect(() => {
+    fetch(
+      `http://10.58.0.247:3000/products/review/3?_start=${offset}&_limit=${limit}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          authorization:
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjA5OTA2NDUsImV4cCI6MTY2MzU4MjY0NX0.oBeL0UP3fYz7pZM9rgEtE23SxpGHLwzaoJ1OE2dzmus',
+        },
+      }
+    )
+      .then(response => response.json())
+      .then(data => setReviewList(data));
+  }, [offset, limit]);
+  */
+
+  /* 리뷰등록 통신 코드
   useEffect(() => {
     fetch('http://10.58.7.158:3000/products/review/3', {
-      method: 'GET',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         authorization:
           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjA5OTA2NDUsImV4cCI6MTY2MzU4MjY0NX0.oBeL0UP3fYz7pZM9rgEtE23SxpGHLwzaoJ1OE2dzmus',
+        body: JSON.stringify({ content: { review } }),
       },
-    })
-      .then(response => response.json())
-      .then(data => setReviewList(data));
+    });
   }, []);
   */
 
@@ -83,6 +110,24 @@ function ProductReview() {
       {reviewList.map(review => (
         <SingleReview key={review.id} review={review} />
       ))}
+      <div className="pageButtons">
+        <button className="pageButton" onClick={() => movePage(1)}>
+          1
+        </button>
+        <button className="pageButton" onClick={() => movePage(2)}>
+          2
+        </button>
+        <button className="pageButton" onClick={() => movePage(3)}>
+          3
+        </button>
+        <button className="pageButton" onClick={() => movePage(4)}>
+          4
+        </button>
+        <button className="pageButton" onClick={() => movePage(5)}>
+          5
+        </button>
+        <FontAwesomeIcon className="rightIcon" icon={faAngleRight} />
+      </div>
     </div>
   );
 }
