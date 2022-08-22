@@ -7,14 +7,22 @@ function Login() {
   const [userInfo, setUserInfo] = useState({ username: '', password: '' });
   const [valLogin, setValLogin] = useState(true);
 
-  const activateButton = () => {
-    return userInfo.username.length >= 4 && userInfo.password.length >= 10;
-  };
+  const activateButton =
+    userInfo.username.length >= 4 && userInfo.password.length >= 10;
 
   const handleUserInfo = e => {
-    setUserInfo({ ...userInfo, [e.target.id]: e.target.value });
+    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };
 
+  const handleLogin = () => {
+    if (activateButton === true) {
+      goToMain();
+    } else {
+      setValLogin(false);
+    }
+  };
+
+  /* 로그인 통신할 때 사용할 코드
   const handleLogin = () => {
     fetch('http://10.58.7.158:3000/users/signin', {
       method: 'POST',
@@ -28,9 +36,7 @@ function Login() {
         if (response.ok === true) {
           return response.json();
         }
-        throw new Error('통신실패');
       })
-      .catch(error => console.log(error))
       .then(data => {
         if (data.message === 'success') {
           localStorage.setItem('token', data.token);
@@ -38,9 +44,9 @@ function Login() {
         } else if (data.message === 'invalid') {
           setValLogin(false);
         }
-        setValLogin(true);
       });
   };
+    */
 
   const goToMain = () => {
     navigate('/');
@@ -50,44 +56,46 @@ function Login() {
     <div className="container">
       <div className="innerContainer">
         <div className="innestContainer">
-          <h2 className="Logo">
-            <span>Dev</span>Market 광장
+          <h2 className="logo">
+            <span className="teamLogo">Dev</span>Market 광장
           </h2>
           <h1 className="pageTitle">로그인</h1>
           <p className="description">
             DevMarket 광장 아이디로 모든 DevMarket 서비스를 이용할 수 있습니다
           </p>
           <input
-            id="username"
+            className="userInfoInput"
+            name="username"
             type="text"
             placeholder="아이디"
             onChange={handleUserInfo}
-            onKeyUp={activateButton}
           />
           <input
-            id="password"
+            className="userInfoInput"
+            name="password"
             type="password"
             placeholder="비밀번호"
             onChange={handleUserInfo}
-            onKeyUp={activateButton}
           />
           {valLogin === false && (
             <div className="errorMsg"> ! 아이디/비밀번호를 확인해주세요. </div>
           )}
           <div className="innerNav">
             <div className="saveIdInput">
-              <input type="checkbox" />
+              <input className="saveIdBox" type="checkbox" />
               <p>아이디 저장</p>
             </div>
             <div className="findIdPassword">
-              <p>아이디</p>
-              <p>비밀번호 찾기</p>
-              <Link to="/signup">회원가입</Link>
+              <p className="findInfo">아이디</p>
+              <p className="findInfo">비밀번호 찾기</p>
+              <Link className="signUp" to="/signup">
+                회원가입
+              </Link>
             </div>
           </div>
           <button
             type="button"
-            disabled={!activateButton()}
+            disabled={!activateButton}
             onClick={handleLogin}
           >
             로그인
