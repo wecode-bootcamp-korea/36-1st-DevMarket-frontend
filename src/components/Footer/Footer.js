@@ -4,7 +4,7 @@ import './Footer.scss';
 function Footer() {
   return (
     <footer className="footer">
-      <div className="line"></div>
+      <div className="line" />
       <div className="topFooter">
         <ul>
           <li>공지사항</li>
@@ -22,7 +22,7 @@ function Footer() {
           <li>소비자중심경영</li>
         </ul>
       </div>
-      <div className="line"></div>
+      <div className="line" />
       <div className="bottomFooter">
         <div className="bottom1">
           <ul>
