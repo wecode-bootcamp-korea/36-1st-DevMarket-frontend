@@ -9,8 +9,8 @@ const Product = ({ productInfo }) => {
       </div>
       <div className="productDescription">
         <p className="name">{productInfo.name}</p>
-        <p>{productInfo.weight}</p>
-        <p className="cost">{productInfo.price}</p>
+        <p>{productInfo.weight}Kg</p>
+        <p className="cost">{productInfo.price}원</p>
       </div>
     </div>
   );
