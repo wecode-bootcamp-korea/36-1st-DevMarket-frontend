@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { useState } from 'react';
 import './Nav.scss';
 import NavTop from './NavComponent/NavTop/NavTop';

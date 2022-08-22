@@ -36,24 +36,20 @@ function NavBottom({ click, changeclass }) {
             onChange={getValue}
           />
           <div className="naviconWrap">
-            <a src="#">
-              <img
-                className="navIcon"
-                src="/images/Nav/user.png"
-                alt="loginImg"
-              />
-              <p className="navIconTag">나의상회</p>
-            </a>
+            <img
+              className="navIcon"
+              src="/images/Nav/user.png"
+              alt="loginImg"
+            />
+            <p className="navIconTag">나의상회</p>
           </div>
           <div className="naviconWrap">
-            <a src="#">
-              <img
-                className="navIcon"
-                src="/images/Nav/shopping-cart.png"
-                alt="loginImg"
-              />
-              <p className="navIconTag">장바구니</p>
-            </a>
+            <img
+              className="navIcon"
+              src="/images/Nav/shopping-cart.png"
+              alt="loginImg"
+            />
+            <p className="navIconTag">장바구니</p>
           </div>
         </form>
       </div>
