@@ -2,8 +2,15 @@ import React, { useState, useEffect } from 'react';
 import './Carousel.scss';
 
 const Carousel = () => {
-  const [count, setCount] = useState(0);
+  const [imgList, setImgList] = useState([]);
 
+  useEffect(() => {
+    fetch('/data/carousel.json')
+      .then(response => response.json())
+      .then(result => setImgList(result));
+  }, []);
+
+  const [count, setCount] = useState(0);
   useEffect(() => {
     const interval = setTimeout(() => {
       nextBtn();
@@ -25,16 +32,9 @@ const Carousel = () => {
           className="images"
           style={{ transform: `translateX(${count * -1080}px)` }}
         >
-          <img src="/images/carousel/1.png" />
-          <img src="/images/carousel/2.png" />
-          <img src="/images/carousel/3.png" />
-          <img src="/images/carousel/4.png" />
-          <img src="/images/carousel/5.png" />
-          <img src="/images/carousel/6.png" />
-          <img src="/images/carousel/7.png" />
-          <img src="/images/carousel/8.png" />
-          <img src="/images/carousel/9.png" />
-          <img src="/images/carousel/10.png" />
+          {imgList.map(({ id, imgSrc }) => {
+            return <img key={id} src={imgSrc} alt={id} />;
+          })}
         </div>
       </div>
       <button className="prev" onClick={prevBtn}>

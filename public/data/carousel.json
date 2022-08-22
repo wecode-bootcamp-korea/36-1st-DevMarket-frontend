@@ -1,0 +1,12 @@
+[
+  { "id": 1, "imgSrc": "/images/carousel/1.png" },
+  { "id": 2, "imgSrc": "/images/carousel/2.png" },
+  { "id": 3, "imgSrc": "/images/carousel/3.png" },
+  { "id": 4, "imgSrc": "/images/carousel/4.png" },
+  { "id": 5, "imgSrc": "/images/carousel/5.png" },
+  { "id": 6, "imgSrc": "/images/carousel/6.png" },
+  { "id": 7, "imgSrc": "/images/carousel/7.png" },
+  { "id": 8, "imgSrc": "/images/carousel/8.png" },
+  { "id": 9, "imgSrc": "/images/carousel/9.png" },
+  { "id": 10, "imgSrc": "/images/carousel/10.png" }
+]
