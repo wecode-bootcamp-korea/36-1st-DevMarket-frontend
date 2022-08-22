@@ -30,15 +30,19 @@ function Cart() {
   };
 
   const [checkedObj, setCheckedObj] = useState([]);
-  const childCheck = (id, checked) => {
+  const childCheck = (productDetail, checked) => {
     checked
-      ? setCheckedObj([...checkedObj, { id: id, checked: checked }])
+      ? setCheckedObj([
+          ...checkedObj,
+          { id: productDetail.id, checked: checked },
+        ])
       : setCheckedObj(
           checkedObj.filter(check => {
-            return check.id !== id;
+            return check.id !== productDetail.id;
           })
         );
   };
+  console.log(checkedObj);
   const checkedId = checkedObj.map(item => {
     return item.id;
   });
@@ -63,21 +67,22 @@ function Cart() {
       <div className="cartTitle">
         <h1>장바구니</h1>
       </div>
-      <div className="cart2Box">
-        <div className="box1">
-          <div className="box1Top">
-            <div className="box1TopLeft">
-              <input type="checkbox" className="checkBox" />
-              <p className="checkText">전체선택</p>
+      <div className="cartBoxAll">
+        <div className="cart2Box">
+          <div className="box1">
+            <div className="box1Top">
+              <div className="box1TopLeft">
+                <input type="checkbox" className="checkBox" />
+                <p className="checkText">전체선택</p>
+              </div>
+              <button
+                className="cancelBtn"
+                onClick={() => removeChild(checkedId)}
+              >
+                선택 삭제
+              </button>
             </div>
-            <button
-              className="cancelBtn"
-              onClick={() => removeChild(checkedId)}
-            >
-              선택 삭제
-            </button>
-          </div>
-          <div className="box1Bottom">
+
             {product.map(product => (
               <CartProduct
                 product={product}
@@ -89,7 +94,15 @@ function Cart() {
               />
             ))}
           </div>
+          <TotalPrice
+            total={total}
+            deliveryPrice={deliveryPrice}
+            setTotal={setTotal}
+            product={product}
+            productTotal={productTotal}
+          />
         </div>
+
         <OrderForm
           total={total}
           deliveryPrice={deliveryPrice}
@@ -97,13 +110,6 @@ function Cart() {
           productTotal={productTotal}
         />
       </div>
-      <TotalPrice
-        total={total}
-        deliveryPrice={deliveryPrice}
-        setTotal={setTotal}
-        product={product}
-        productTotal={productTotal}
-      />
     </div>
   );
 }

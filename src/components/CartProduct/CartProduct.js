@@ -20,7 +20,7 @@ const CartProduct = ({ product, setTotal, removeProduct, childCheck }) => {
       <input
         type="checkbox"
         className="checkBox"
-        onClick={e => childCheck(product.id, e.target.checked)}
+        onClick={e => childCheck(product, e.target.checked)}
       />
       <div className="imgBorder">
         <img src={product.img} />

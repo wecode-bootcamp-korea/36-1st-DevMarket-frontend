@@ -21,7 +21,7 @@ const OrderForm = ({
         </div>
         <div className="delivery">
           <p>배송비</p>
-          <p>+ 2500원</p>
+          <p>+ {deliveryPrice}원</p>
         </div>
         <div className="middleLine"></div>
         <div className="total">
