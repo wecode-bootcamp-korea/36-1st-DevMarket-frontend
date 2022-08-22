@@ -1,16 +1,8 @@
 @import '../../../../styles/variables.scss';
 
-// .navTop {
-//   @include flex(center, center);
-//   width: 100vw;
-//   position: relative;
-
 .navTopWrap {
-  // width: 1080px;
-  // min-width: 1000px;
   @include flex(space-between, center);
   height: 46px;
-  // width: 100vw;
   position: relative;
 
   .navUl {
@@ -38,12 +30,3 @@
     }
   }
 }
-// }
-
-// .navHide {
-//   display: none;
-//   @include flex(center, center);
-//   width: 100vw;
-//   height: 46px;
-//   background-color: white;
-// }

@@ -3,7 +3,6 @@ import './Nav.scss';
 import NavTop from './NavComponent/NavTop/NavTop';
 import NavBottom from './NavComponent/NavBottom/NavBottom';
 import Dropdown from './Dropdown/Dropdown';
-import Arcodian from '../../components/Nav/NavComponent/NavBottom/ Arcodian';
 
 const Nav = () => {
   const [showDropDown, setShowDropDown] = useState(false);
@@ -19,10 +18,6 @@ const Nav = () => {
   const openCategory = () => {
     setShowDropDown(!showDropDown);
   };
-
-  // const click = () => {
-  //   classname === 'arcodian' ? setClassname('click') : setClassname('arcodian');
-  // };
 
   const onScroll = e => {
     setScroll(e.currentTarget.scrollY);

@@ -3,11 +3,7 @@ import './FirstSec.scss';
 
 function FirstSec({ data, onHover }) {
   return (
-    <li
-      className="dropdownLi"
-      onMouseMove={onHover}
-      // onMouseLeave={mouseLeave}
-    >
+    <li onMouseMove={onHover}>
       <span>{data}</span>
     </li>
   );
