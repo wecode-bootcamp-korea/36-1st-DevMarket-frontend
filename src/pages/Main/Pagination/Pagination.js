@@ -11,7 +11,7 @@ function Pagination() {
   const limit = searchParams.get('limit');
 
   useEffect(() => {
-    fetch(`http://10.58.2.46:3000/products/all?_start=${offset}&_limit=10`, {
+    fetch(`http://10.58.2.46:3000/products/all`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

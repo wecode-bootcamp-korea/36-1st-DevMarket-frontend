@@ -17,12 +17,20 @@
     margin-top: 8px;
     .name {
       margin-bottom: 4px;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .weight {
+      font-size: 12px;
+      line-height: 18px;
+      color: rgb(136, 136, 136);
     }
     .cost {
       margin-top: 4px;
       font-weight: 700;
       font-size: 18px;
       line-height: 28px;
+      color: rgb(51, 51, 51);
     }
   }
 }
