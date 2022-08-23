@@ -2,11 +2,10 @@ import React from 'react';
 import './OrderForm.scss';
 
 const OrderForm = ({
-  total,
   deliveryPrice,
   product,
-  productTotal,
   validation,
+  checkedProductTotal,
 }) => {
   return (
     <div className="orderForm">
@@ -17,7 +16,7 @@ const OrderForm = ({
       <div className="orderInfo">
         <div className="productPrice">
           <p>배송 상품금액</p>
-          <p>{productTotal + total}</p>
+          <p>{checkedProductTotal}</p>
         </div>
         <div className="delivery">
           <p>배송비</p>
@@ -27,14 +26,15 @@ const OrderForm = ({
         <div className="total">
           <p>예상 주문금액</p>
           <p className="totalPriceText">
-            {productTotal + total + deliveryPrice}원
+            {checkedProductTotal + deliveryPrice}원
           </p>
         </div>
         <div className="middleLine"></div>
       </div>
       <div className="orderBtnBox">
         <button className="orderBtn" disabled={validation}>
-          총 {product.length}건 주문하기({productTotal + total + deliveryPrice}
+          총 {product.length}건 주문하기(
+          {checkedProductTotal + deliveryPrice}
           원)
         </button>
       </div>

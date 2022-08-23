@@ -1,26 +1,29 @@
 import React, { useState } from 'react';
 import './CartProduct.scss';
 
-const CartProduct = ({ product, setTotal, removeProduct, childCheck }) => {
+const CartProduct = ({ product, removeProduct, childCheckRemove }) => {
   const [count, setCount] = useState(1);
   const minusCount = () => {
     setCount(count => count - 1);
-    setTotal(num => (num -= product.price));
   };
   const plusCount = () => {
     setCount(count => count + 1);
-    setTotal(num => (num += product.price));
   };
   const validation = count => {
     return count > 1 ? false : true;
   };
 
+  const [checkBoolean, setCheckBoolean] = useState(true);
   return (
     <div className="cartProduct">
       <input
         type="checkbox"
         className="checkBox"
-        onClick={e => childCheck(product, e.target.checked)}
+        checked={checkBoolean}
+        onChange={e => {
+          childCheckRemove(product, e.target.checked);
+          setCheckBoolean(e.target.checked);
+        }}
       />
       <div className="imgBorder">
         <img src={product.img} />
@@ -40,13 +43,13 @@ const CartProduct = ({ product, setTotal, removeProduct, childCheck }) => {
             >
               –
             </button>
-            <input value={count} className="numCount" />
+            <div className="numCount">{count}</div>
             <button className="plus" onClick={plusCount}>
               ﹢
             </button>
           </div>
           <div className="priceBox">
-            <p>{product.price * count}원</p>
+            <p>원</p>
             <button
               className="cancelBtn"
               onClick={() => removeProduct(product.id)}

@@ -6,6 +6,19 @@ import './Cart.scss';
 
 function Cart() {
   const [product, setProduct] = useState([]);
+  const [checkedArr, setCheckedArr] = useState([]);
+  useEffect(() => {
+    fetch('/data/cartProduct.json')
+      .then(response => response.json())
+      .then(result => {
+        setProduct(result);
+        setCheckedArr(
+          result.map(item => {
+            return { ...item, checked: true };
+          })
+        );
+      });
+  }, []);
   const lastTotalPrice = product.map(item => {
     return item.price;
   });
@@ -15,12 +28,6 @@ function Cart() {
   const [total, setTotal] = useState(productTotal);
   const [deliveryPrice, setDeliveryPrice] = useState(5000);
 
-  useEffect(() => {
-    fetch('/data/cartProduct.json')
-      .then(response => response.json())
-      .then(result => setProduct(result));
-  }, []);
-
   const removeProduct = id => {
     setProduct(
       product.filter(product => {
@@ -29,21 +36,25 @@ function Cart() {
     );
   };
 
-  const [checkedObj, setCheckedObj] = useState([]);
-  const childCheck = (productDetail, checked) => {
+  const checkedPriceList = checkedArr.map(product => {
+    return product.price;
+  });
+
+  const checkedProductTotal = checkedPriceList.reduce((acc, cur) => {
+    return (acc += cur);
+  }, 0);
+  console.log(checkedProductTotal);
+  const childCheckRemove = (productDetail, checked) => {
     checked
-      ? setCheckedObj([
-          ...checkedObj,
-          { id: productDetail.id, checked: checked },
-        ])
-      : setCheckedObj(
-          checkedObj.filter(check => {
+      ? setCheckedArr([...checkedArr, { ...productDetail, checked: checked }])
+      : setCheckedArr(
+          checkedArr.filter(check => {
             return check.id !== productDetail.id;
           })
         );
   };
-  console.log(checkedObj);
-  const checkedId = checkedObj.map(item => {
+
+  const checkedId = checkedArr.map(item => {
     return item.id;
   });
 
@@ -61,7 +72,8 @@ function Cart() {
     setProduct(removeProducts);
   };
 
-  // console.log(checkedId);
+  console.log(checkedProductTotal);
+
   return (
     <div className="cart">
       <div className="cartTitle">
@@ -85,29 +97,25 @@ function Cart() {
 
             {product.map(product => (
               <CartProduct
-                product={product}
-                setTotal={setTotal}
                 key={product.id}
                 id={product.id}
+                product={product}
                 removeProduct={removeProduct}
-                childCheck={childCheck}
+                childCheckRemove={childCheckRemove}
               />
             ))}
           </div>
           <TotalPrice
-            total={total}
             deliveryPrice={deliveryPrice}
-            setTotal={setTotal}
             product={product}
-            productTotal={productTotal}
+            checkedProductTotal={checkedProductTotal}
           />
         </div>
 
         <OrderForm
-          total={total}
           deliveryPrice={deliveryPrice}
           product={product}
-          productTotal={productTotal}
+          checkedProductTotal={checkedProductTotal}
         />
       </div>
     </div>
