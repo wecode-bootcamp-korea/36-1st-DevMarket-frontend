@@ -12,6 +12,7 @@ function Signup() {
     password: '',
     rePassword: '',
     email: '',
+    emailBack: '',
   });
 
   const {
@@ -22,6 +23,7 @@ function Signup() {
     password,
     rePassword,
     email,
+    emailBack,
   } = userInfo;
 
   const activateButton =
@@ -55,10 +57,15 @@ function Signup() {
   const onEmailSelect = () => {
     const emailSelect = document.getElementsByTagName('select');
     const emailBack = document.getElementsByClassName('emailBack');
-    if (emailSelect[0].options.selectedIndex !== 0) {
+    const selectedIndex = emailSelect[0].options.selectedIndex;
+    const selectedValue = emailSelect[0].options[selectedIndex].value;
+    if (selectedIndex !== 0) {
       emailBack.email.disabled = true;
+      userInfo.email = userInfo.email + selectedValue;
+      console.log(userInfo.email);
     } else {
       emailBack.email.disabled = false;
+      userInfo.email = userInfo.email + userInfo.emailBack;
     }
   };
 
@@ -119,10 +126,10 @@ function Signup() {
                 onChange={handleUserInfo}
               />
               <input
-                name="email"
+                name="emailBack"
                 className="signUpInputs emailBack"
                 type="text"
-                placeholder="이메일 앞자리"
+                placeholder="이메일 뒷자리"
                 onChange={handleUserInfo}
               />
             </div>
