@@ -31,14 +31,6 @@ function DetailPage() {
     navigate('/cart');
   };
 
-  const MAPPING_OBJ = {
-    1: <ProductDetail />,
-    2: <ProductReview />,
-    3: <ProductInquiry />,
-  };
-
-  const TAB_ARR = ['상품 상세', '상품 후기', '상품 문의'];
-
   return (
     <div className="mainWrap">
       <section className="innerContainer">
@@ -206,3 +198,11 @@ function DetailPage() {
 }
 
 export default DetailPage;
+
+const MAPPING_OBJ = {
+  1: <ProductDetail />,
+  2: <ProductReview />,
+  3: <ProductInquiry />,
+};
+
+const TAB_ARR = ['상품 상세', '상품 후기', '상품 문의'];

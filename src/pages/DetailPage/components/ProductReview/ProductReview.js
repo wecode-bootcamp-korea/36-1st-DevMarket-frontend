@@ -13,10 +13,11 @@ function ProductReview() {
   const [searchParams, setSearchParams] = useSearchParams();
   const offset = searchParams.get('offset');
   const limit = searchParams.get('limit');
+  const [id, setId] = useState(0);
 
   const submitReview = event => {
     event.preventDefault();
-    const id = Date.now();
+    setId(curr => curr + 1);
     if (review === '') {
       return;
     }

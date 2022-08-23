@@ -22,7 +22,7 @@ function ProductInquiry() {
       <button className="inquiryButton" onClick={handleButtonClick}>
         상품문의 남기기
       </button>
-      {modal === true ? <InquiryModal handleX={handleXClick} /> : null}
+      {modal && <InquiryModal handleX={handleXClick} />}
     </div>
   );
 }
