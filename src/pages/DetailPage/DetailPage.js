@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -14,6 +14,16 @@ function DetailPage() {
   const navigate = useNavigate();
   const [currentId, setCurrentId] = useState(1);
   const [quantity, setQuantity] = useState(1);
+  const [product, setProduct] = useState();
+
+  const params = useParams();
+  const productId = params.id;
+
+  useEffect(() => {
+    fetch(`http://${productId}`)
+      .then(response => response.json())
+      .then(result => setProduct(result));
+  }, []);
 
   const handleQuantityClick = e => {
     if (e.target.id === 'minus' && quantity !== 1) {
