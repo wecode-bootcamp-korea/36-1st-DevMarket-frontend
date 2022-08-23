@@ -14,37 +14,57 @@ function Signup() {
     email: '',
   });
 
-  const activateButton = () => {
-    return (
-      userInfo.name.length >= 2 &&
-      userInfo.birthdate.length === 10 &&
-      userInfo.phoneNumber.length === 13 &&
-      userInfo.username.length >= 4 &&
-      userInfo.password.length >= 10 &&
-      userInfo.rePassword === userInfo.password &&
-      userInfo.email.includes('@')
-    );
-  };
+  const {
+    name,
+    birthdate,
+    phoneNumber,
+    username,
+    password,
+    rePassword,
+    email,
+  } = userInfo;
+
+  const activateButton =
+    name.length >= 2 &&
+    birthdate.length === 10 &&
+    phoneNumber.length === 13 &&
+    username.length >= 4 &&
+    password.length >= 10 &&
+    rePassword === password &&
+    email.includes('@');
 
   const handleSignup = () => {
     fetch('http://10.58.5.80:3000/users/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        userName: userInfo.username,
-        password: userInfo.password,
-        name: userInfo.name,
-        email: userInfo.email,
-        phoneNumber: userInfo.phoneNumber,
-        birth: userInfo.birthdate,
+        userName: username,
+        password: password,
+        name: name,
+        email: email,
+        phoneNumber: phoneNumber,
+        birth: birthdate,
       }),
-    })
+    });
+    /*
       .then(response => response.json())
       .then(data => console.log(data));
+    */
+  };
+
+  const onEmailSelect = () => {
+    const emailSelect = document.getElementsByTagName('select');
+    const emailBack = document.getElementsByClassName('emailBack');
+    if (emailSelect[0].options.selectedIndex !== 0) {
+      emailBack.email.disabled = true;
+    } else {
+      emailBack.email.disabled = false;
+    }
   };
 
   const handleUserInfo = e => {
-    setUserInfo({ ...userInfo, [e.target.id]: e.target.value });
+    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+    console.log(userInfo.email);
   };
 
   const goToMain = () => {
@@ -63,47 +83,50 @@ function Signup() {
             <div key={input.key} className="username">
               <p>{input.name}</p>
               <input
-                id={input.id}
+                name={input.id}
                 className="signUpInputs"
                 type="text"
                 placeholder={input.placeholder}
                 onChange={handleUserInfo}
-                onKeyUp={activateButton}
               />
             </div>
           ))}
           <div className="username">
             <p>비밀번호</p>
             <input
-              id="password"
+              name="password"
               className="signUpInputs"
               type="password"
               placeholder="영어,숫자,특수문자 중 2가지 이상 10~20자"
               onChange={handleUserInfo}
-              onKeyUp={activateButton}
             />
             <input
-              id="rePassword"
+              name="rePassword"
               className="signUpInputs"
               type="password"
               placeholder="비밀번호 재입력"
               onChange={handleUserInfo}
-              onKeyUp={activateButton}
             />
           </div>
           <div className="username">
             <p>이메일</p>
-            <div className="emailInput">
+            <div className="emailInputs">
               <input
-                id="email"
-                className="signUpInputs"
+                name="email"
+                className="signUpInputs emailFront"
                 type="text"
                 placeholder="이메일 앞자리"
                 onChange={handleUserInfo}
-                onKeyUp={activateButton}
+              />
+              <input
+                name="email"
+                className="signUpInputs emailBack"
+                type="text"
+                placeholder="이메일 앞자리"
+                onChange={handleUserInfo}
               />
             </div>
-            <select id="emailOptions">
+            <select id="emailOptions" onChange={onEmailSelect}>
               <option value="직접입력">직접입력</option>
               <option value="gmail.com">gmail.com</option>
               <option value="naver.com">naver.com</option>
@@ -113,7 +136,7 @@ function Signup() {
           </div>
           <button
             className="doneButton"
-            disabled={!activateButton()}
+            disabled={!activateButton}
             onClick={handleSignup}
           >
             완료
@@ -138,7 +161,7 @@ const INPUT_LIST = [
     key: 2,
     id: 'birthdate',
     name: '생년월일',
-    placeholder: '년/월/일',
+    placeholder: '1998/08/24',
   },
   {
     key: 3,
