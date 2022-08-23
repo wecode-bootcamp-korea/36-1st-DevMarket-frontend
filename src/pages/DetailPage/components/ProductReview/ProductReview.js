@@ -11,7 +11,7 @@ function ProductReview() {
   const [review, setReview] = useState('');
   const [reviewArray, setReviewArray] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const offset = searchParams.get('offset');
+  const start = searchParams.get('offset');
   const limit = searchParams.get('limit');
   const [id, setId] = useState(0);
 
@@ -45,6 +45,7 @@ function ProductReview() {
   };
   */
 
+  /*
   // Mock Data를 활용한 코드
   useEffect(() => {
     fetch(`./data/reviews.json?_start=${offset}&_limit=${limit}`)
@@ -52,15 +53,16 @@ function ProductReview() {
       .then(setReviewList);
   }, [offset, limit]);
 
+  */
   const movePage = pageNumber => {
-    searchParams.set('offset', (pageNumber - 1) * 10);
+    searchParams.set('offset', (pageNumber - 1) * 40);
     setSearchParams(searchParams);
   };
 
-  /* 리뷰목록 통신 코드
+  // 리뷰목록 통신 코드
   useEffect(() => {
     fetch(
-      `http://10.58.0.247:3000/products/review/3?_start=${offset}&_limit=${limit}`,
+      `http://10.58.5.151:3000/products/review/3?_start=${start}&_limit=40`,
       {
         method: 'GET',
         headers: {
@@ -72,22 +74,19 @@ function ProductReview() {
     )
       .then(response => response.json())
       .then(data => setReviewList(data));
-  }, [offset, limit]);
-  */
+  }, [start, limit]);
 
-  /* 리뷰등록 통신 코드
-  useEffect(() => {
-    fetch('http://10.58.7.158:3000/products/review/3', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjA5OTA2NDUsImV4cCI6MTY2MzU4MjY0NX0.oBeL0UP3fYz7pZM9rgEtE23SxpGHLwzaoJ1OE2dzmus',
-        body: JSON.stringify({ content: { review } }),
-      },
-    });
-  }, []);
-  */
+  // 리뷰등록 통신 코드
+
+  const onPostReview = fetch('http://10.58.5.151:3000/products/review/3', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjA5OTA2NDUsImV4cCI6MTY2MzU4MjY0NX0.oBeL0UP3fYz7pZM9rgEtE23SxpGHLwzaoJ1OE2dzmus',
+      body: JSON.stringify({ content: { review } }),
+    },
+  });
 
   return (
     <div className="productReview">
@@ -99,7 +98,9 @@ function ProductReview() {
           value={review}
           // onKeyDown={handleEnterPress}
         />
-        <button className="submitReview">등록하기</button>
+        <button className="submitReview" onClick={onPostReview}>
+          등록하기
+        </button>
       </form>
       {reviewArray.map(review => (
         <WriteReview

@@ -14,6 +14,8 @@ function DetailPage() {
   const navigate = useNavigate();
   const [currentId, setCurrentId] = useState(1);
   const [quantity, setQuantity] = useState(1);
+
+  /*
   const [product, setProduct] = useState();
 
   const params = useParams();
@@ -24,7 +26,7 @@ function DetailPage() {
       .then(response => response.json())
       .then(result => setProduct(result));
   }, []);
-
+*/
   const handleQuantityClick = e => {
     if (e.target.id === 'minus' && quantity !== 1) {
       setQuantity(curr => curr - 1);
