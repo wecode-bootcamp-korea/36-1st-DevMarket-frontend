@@ -7,7 +7,7 @@ const Product = ({ productInfo }) => {
   return (
     <div className="productContainer">
       <div className="imageContainer">
-        <img src={productInfo.image} alt="pork" />
+        <img src={productInfo.image} alt="이미지" />
       </div>
       <div className="productDescription">
         <p className="name">{productInfo.name}</p>

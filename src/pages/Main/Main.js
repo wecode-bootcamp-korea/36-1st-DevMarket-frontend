@@ -1,11 +1,11 @@
 import React from 'react';
-import Pagination from '../../components/Pagination/Pagination';
+import List from '../../components/List/List';
 import './Main.scss';
 
 function Main() {
   return (
     <div>
-      <Pagination />
+      <List />
     </div>
   );
 }

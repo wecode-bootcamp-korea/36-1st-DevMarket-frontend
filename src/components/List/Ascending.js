@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import Product from '../../pages/Main/Product/Product';
-import { useSearchParams } from 'react-router-dom';
-import './Pagination.scss';
-import { PAGE_BUTTONS } from '../Pagination/buttons';
+import { useSearchParams, useNavigate } from 'react-router-dom';
+import './Ascending.scss';
+import { PAGE_BUTTONS } from './buttons';
 
-function Pagination() {
+function Ascending() {
   const [productList, setProductList] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const [offset, setOffset] = useState(0);
   const limit = searchParams.get('limit');
+  const navigate = useNavigate();
+  const descendingList = () => {
+    navigate('/descending');
+  };
+  const ascendingList = () => {
+    navigate('/ascending');
+  };
 
   useEffect(() => {
     fetch(
-      `http://10.58.5.120:3000/products/all?${
+      `http://10.58.5.120:3000/products/Ascending?${
         offset === 'none' ? `` : `_start=${offset}&_limit=30`
       }`,
       {
@@ -22,6 +29,7 @@ function Pagination() {
       .then(response => response.json())
       .then(result => setProductList(result));
   }, [offset, limit]);
+
   const movePage = pageNumber => {
     const maxLimit = 30;
     const settingOffset = (pageNumber - 1) * 10;
@@ -46,10 +54,14 @@ function Pagination() {
             <div className="filterButtons">
               <ul className="listFrame">
                 <li className="list">
-                  <button className="btnFrame">높은 가격순</button>
+                  <button className="btnFrame" onClick={ascendingList}>
+                    낮은 가격순
+                  </button>
                 </li>
                 <li className="list">
-                  <button className="btnFrame">낮은 가격순</button>
+                  <button className="btnFrame" onClick={descendingList}>
+                    높은 가격순
+                  </button>
                 </li>
               </ul>
             </div>
@@ -76,4 +88,4 @@ function Pagination() {
   );
 }
 
-export default Pagination;
+export default Ascending;
