@@ -1,8 +1,149 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Signup.scss';
 
 function Signup() {
-  return <div>Signup</div>;
+  const navigate = useNavigate();
+  const [userInfo, setUserInfo] = useState({
+    name: '',
+    birthdate: 0,
+    phoneNumber: 0,
+    username: '',
+    password: '',
+    rePassword: '',
+    email: '',
+  });
+
+  const {
+    name,
+    birthdate,
+    phoneNumber,
+    username,
+    password,
+    rePassword,
+    email,
+  } = userInfo;
+
+  const activateButton =
+    name.length >= 2 &&
+    birthdate.length === 10 &&
+    phoneNumber.length === 13 &&
+    username.length >= 4 &&
+    password.length >= 10 &&
+    rePassword === password &&
+    email.includes('@' && '.com');
+
+  /* 회원가입 통신할 때 사용할 코드
+  const handleSignup = () => {
+    fetch('http://10.58.5.80:3000/users/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        userName: username,
+        password: password,
+        name: name,
+        email: email,
+        phoneNumber: phoneNumber,
+        birth: birthdate,
+      }),
+    });
+  };
+  */
+
+  const handleUserInfo = e => {
+    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+  };
+
+  const goToMain = () => {
+    navigate('/');
+  };
+
+  return (
+    <div className="container">
+      <div className="innerContainer">
+        <div className="innestContainer">
+          <h2 className="Logo">
+            <span>Dev</span>Market 광장
+          </h2>
+          <h2 className="pageTitle">회원정보를 입력 후, 가입을 완료해주세요</h2>
+          {INPUT_LIST.map(input => (
+            <div key={input.key} className="username">
+              <p>{input.name}</p>
+              <input
+                name={input.id}
+                className="signUpInputs"
+                type="text"
+                placeholder={input.placeholder}
+                onChange={handleUserInfo}
+              />
+            </div>
+          ))}
+          <div className="username">
+            <p>비밀번호</p>
+            <input
+              name="password"
+              className="signUpInputs"
+              type="password"
+              placeholder="영어,숫자,특수문자 중 2가지 이상 10~20자"
+              onChange={handleUserInfo}
+            />
+            <input
+              name="rePassword"
+              className="signUpInputs"
+              type="password"
+              placeholder="비밀번호 재입력"
+              onChange={handleUserInfo}
+            />
+          </div>
+          <div className="username">
+            <p>이메일</p>
+            <input
+              name="email"
+              className="signUpInputs"
+              type="text"
+              placeholder="이메일"
+              onChange={handleUserInfo}
+            />
+          </div>
+          <button
+            className="doneButton"
+            disabled={!activateButton}
+            onClick={goToMain}
+          >
+            완료
+          </button>
+          <p className="teamName">DevMarket Team Corp.</p>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Signup;
+
+const INPUT_LIST = [
+  {
+    key: 1,
+    id: 'name',
+    name: '이름',
+    placeholder: '이름',
+  },
+  {
+    key: 2,
+    id: 'birthdate',
+    name: '생년월일',
+    placeholder: '1998/08/24',
+  },
+  {
+    key: 3,
+    id: 'phoneNumber',
+    name: '휴대폰번호',
+    placeholder: '010-1234-5678',
+  },
+  {
+    key: 4,
+    id: 'username',
+    name: '아이디',
+    placeholder: '영문 혹은 영문+숫자, 4~20자',
+  },
+];
