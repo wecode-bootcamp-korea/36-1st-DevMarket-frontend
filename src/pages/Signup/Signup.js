@@ -12,7 +12,6 @@ function Signup() {
     password: '',
     rePassword: '',
     email: '',
-    emailBack: '',
   });
 
   const {
@@ -23,7 +22,6 @@ function Signup() {
     password,
     rePassword,
     email,
-    emailBack,
   } = userInfo;
 
   const activateButton =
@@ -33,7 +31,7 @@ function Signup() {
     username.length >= 4 &&
     password.length >= 10 &&
     rePassword === password &&
-    email.includes('@');
+    email.includes('@' && '.com');
 
   const handleSignup = () => {
     fetch('http://10.58.5.80:3000/users/signup', {
@@ -48,30 +46,10 @@ function Signup() {
         birth: birthdate,
       }),
     });
-    /*
-      .then(response => response.json())
-      .then(data => console.log(data));
-    */
-  };
-
-  const onEmailSelect = () => {
-    const emailSelect = document.getElementsByTagName('select');
-    const emailBack = document.getElementsByClassName('emailBack');
-    const selectedIndex = emailSelect[0].options.selectedIndex;
-    const selectedValue = emailSelect[0].options[selectedIndex].value;
-    if (selectedIndex !== 0) {
-      emailBack.email.disabled = true;
-      userInfo.email = userInfo.email + selectedValue;
-      console.log(userInfo.email);
-    } else {
-      emailBack.email.disabled = false;
-      userInfo.email = userInfo.email + userInfo.emailBack;
-    }
   };
 
   const handleUserInfo = e => {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
-    console.log(userInfo.email);
   };
 
   const goToMain = () => {
@@ -117,29 +95,13 @@ function Signup() {
           </div>
           <div className="username">
             <p>이메일</p>
-            <div className="emailInputs">
-              <input
-                name="email"
-                className="signUpInputs emailFront"
-                type="text"
-                placeholder="이메일 앞자리"
-                onChange={handleUserInfo}
-              />
-              <input
-                name="emailBack"
-                className="signUpInputs emailBack"
-                type="text"
-                placeholder="이메일 뒷자리"
-                onChange={handleUserInfo}
-              />
-            </div>
-            <select id="emailOptions" onChange={onEmailSelect}>
-              <option value="직접입력">직접입력</option>
-              <option value="gmail.com">gmail.com</option>
-              <option value="naver.com">naver.com</option>
-              <option value="outlook.com">outlook.com</option>
-              <option value="yahoo.com">yahoo.com</option>
-            </select>
+            <input
+              name="email"
+              className="signUpInputs"
+              type="text"
+              placeholder="이메일"
+              onChange={handleUserInfo}
+            />
           </div>
           <button
             className="doneButton"
