@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Signup.scss';
 
@@ -6,8 +6,8 @@ function Signup() {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState({
     name: '',
-    birthdate: '',
-    phoneNumber: '',
+    birthdate: 0,
+    phoneNumber: 0,
     username: '',
     password: '',
     rePassword: '',
@@ -33,6 +33,7 @@ function Signup() {
     rePassword === password &&
     email.includes('@' && '.com');
 
+  /* 회원가입 통신할 때 사용할 코드
   const handleSignup = () => {
     fetch('http://10.58.5.80:3000/users/signup', {
       method: 'POST',
@@ -47,6 +48,7 @@ function Signup() {
       }),
     });
   };
+  */
 
   const handleUserInfo = e => {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
@@ -106,7 +108,7 @@ function Signup() {
           <button
             className="doneButton"
             disabled={!activateButton}
-            onClick={handleSignup}
+            onClick={goToMain}
           >
             완료
           </button>
