@@ -48,8 +48,10 @@ function Signup() {
     })
       .then(response => response.json())
       .then(data => {
-        if (data.message === 'success') {
+        if (data.message === 'SUCCESS') {
           goToMain();
+        } else {
+          alert('회원가입이 성공적으로 이루어지지 않았습니다.');
         }
       });
   };
