@@ -51,7 +51,7 @@ function Footer() {
             <li className="customerService">개발상회 고객센터</li>
             <li className="customerServiceNumber">1234-5678</li>
             {FOOTER_TIME.map(info => {
-              return <li>{info.list}</li>;
+              return <li key={info.id}>{info.list}</li>;
             })}
             <li className="businessHour">일요일 및 설,추석은 휴무입니다.</li>
           </ul>
