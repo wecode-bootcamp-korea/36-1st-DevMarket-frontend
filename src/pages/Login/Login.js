@@ -14,16 +14,6 @@ function Login() {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };
 
-  /*
-  const handleLogin = () => {
-    if (activateButton === true) {
-      goToMain();
-    } else {
-      setValLogin(false);
-    }
-  };
-  */
-
   const handleLogin = () => {
     fetch('http://10.58.1.169:3000/users/signin', {
       method: 'POST',
