@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './CartProduct.scss';
 
 const CartProduct = ({
   product,
-  id,
+  idx,
   setProduct,
   removeProduct,
   childCheckRemove,
@@ -12,20 +12,26 @@ const CartProduct = ({
   singlePriceHandle,
 }) => {
   const [count, setCount] = useState(1);
+  const total = product.price * count;
+
   const minusCount = () => {
     setCount(count => count - 1);
   };
-  const [total, setTotal] = useState(product.price);
+
   const plusCount = () => {
     setCount(count => count + 1);
-    setTotal(num => (num += product.price * count));
   };
+
   const validation = count => {
     return count > 1 ? false : true;
   };
 
+  useEffect(() => {
+    singlePriceHandle(product, checkedArr, count, idx);
+  }, [count]);
+
   const [checkBoolean, setCheckBoolean] = useState(true);
-  // console.log(total);
+
   return (
     <div className="cartProduct">
       <input
@@ -38,7 +44,7 @@ const CartProduct = ({
         }}
       />
       <div className="imgBorder">
-        <img src={product.img} />
+        <img src={product.img} alt="" />
       </div>
       <div className="productInfo">
         <div className="pInfo1">
@@ -52,7 +58,6 @@ const CartProduct = ({
               className="minus"
               onClick={() => {
                 minusCount();
-                // singlePriceHandle();
               }}
               disabled={validation(count)}
             >
@@ -63,14 +68,13 @@ const CartProduct = ({
               className="plus"
               onClick={() => {
                 plusCount();
-                singlePriceHandle(product, checkedArr, total, id);
               }}
             >
               ﹢
             </button>
           </div>
           <div className="priceBox">
-            <p>{product.price * count}원</p>
+            <p>{total}원</p>
             <button
               className="cancelBtn"
               onClick={() => removeProduct(product.id)}

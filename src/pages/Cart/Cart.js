@@ -1,4 +1,3 @@
-import { logDOM } from '@testing-library/react';
 import React, { useState, useEffect } from 'react';
 import CartProduct from '../../components/CartProduct/CartProduct';
 import OrderForm from '../../components/OrderForm/OrderForm';
@@ -21,6 +20,17 @@ function Cart() {
       });
   }, []);
 
+  const singlePriceHandle = (
+    productDetail,
+    checkedArrDetail,
+    newCount,
+    idx
+  ) => {
+    // console.log(newCount);
+    let newProductArray = [...checkedArr];
+    newProductArray[idx].count = newCount;
+    return setProduct(newProductArray), setCheckedArr(newProductArray);
+  };
   const [deliveryPrice, setDeliveryPrice] = useState(5000);
 
   const removeProduct = id => {
@@ -37,7 +47,7 @@ function Cart() {
   };
 
   const checkedPriceList = checkedArr.map(product => {
-    return product.price;
+    return product.price * product.count;
   });
 
   const checkedProductTotal = checkedPriceList.reduce((acc, cur) => {
@@ -85,18 +95,6 @@ function Cart() {
     setCheckedArr(removeCheckedProducts);
   };
 
-  const singlePriceHandle = (
-    productDetail,
-    checkedArrDetail,
-    newPrice,
-    idx
-  ) => {
-    console.log('checkedArrDetail:', checkedArrDetail);
-    let newProductArray = [...checkedArr];
-    newProductArray[idx].price = newPrice;
-
-    return setProduct(newProductArray), setCheckedArr(newProductArray);
-  };
   const [allCheckB, setAllCheckB] = useState(true);
 
   return (
