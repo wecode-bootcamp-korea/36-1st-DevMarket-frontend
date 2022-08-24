@@ -70,14 +70,25 @@ function ProductReview() {
 
   // 리뷰등록 통신 코드
   const onPostReview = () => {
-    fetch('http://10.58.5.151:3000/products/review/3', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: localStorage.getItem('token'),
-      },
-      body: JSON.stringify({ content: review }),
-    });
+    fetch(
+      'http://10.58.5.151:3000/products/review/3',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          authorization: localStorage.getItem('token'),
+        },
+        body: JSON.stringify({ content: review }),
+      }
+        .then(response => response.json())
+        .then(data => {
+          if (data.message === 'REVIEW_CREATED') {
+            alert('리뷰등록이 성공적으로 됐습니다.');
+          } else {
+            alert('리뷰등록이 실패하였습니다');
+          }
+        })
+    );
   };
 
   return (
