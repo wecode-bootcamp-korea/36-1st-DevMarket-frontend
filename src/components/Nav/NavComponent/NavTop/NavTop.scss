@@ -9,24 +9,29 @@
     height: 46px;
     display: flex;
     align-items: center;
-
     .list {
-      color: #c0c0c0;
+      color: rgb(187, 187, 187);
       font-size: 12px;
-      line-height: 18px;
-      font-weight: 500;
+      line-height: 15px;
+      font-weight: bold;
       padding-right: 9px;
-
-      a,
-      a:hover,
-      a:focus,
-      a:active {
-        text-decoration: none;
-        color: #c0c0c0;
+      &:after {
+        content: '';
+        top: 4px;
+        right: 0px;
+        width: 1px;
+        height: 12px;
+        margin-left: 6px;
+        border-right: 1px solid rgb(221, 221, 221);
+      }
+      &:last-child {
+        &:after {
+          display: none;
+        }
       }
     }
-    .list:last-child {
-      padding-right: 0px;
+    a {
+      text-decoration: none;
     }
   }
 }
