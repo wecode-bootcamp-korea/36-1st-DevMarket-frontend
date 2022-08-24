@@ -11,7 +11,7 @@ function ProductReview() {
   const [review, setReview] = useState('');
   const [reviewArray, setReviewArray] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const start = searchParams.get('offset');
+  const start = searchParams.get('start');
   const limit = searchParams.get('limit');
   const [id, setId] = useState(0);
 
@@ -46,11 +46,11 @@ function ProductReview() {
   }, [offset, limit]);
 
   */
-
+  /*
   // 리뷰목록 통신 코드
   useEffect(() => {
     fetch(
-      `http://10.58.1.169:3000/products/review/3?_start=${start}&_limit=30`,
+      `http://10.58.1.169:3000/products/3/reviews?start=${start}&limit=30`,
       {
         method: 'GET',
         headers: {
@@ -62,33 +62,31 @@ function ProductReview() {
       .then(response => response.json())
       .then(data => setReviewList(data));
   }, [start, limit]);
+  */
 
   const movePage = pageNumber => {
-    searchParams.set('offset', (pageNumber - 1) * 30);
+    searchParams.set('start', (pageNumber - 1) * 30);
     setSearchParams(searchParams);
   };
 
   // 리뷰등록 통신 코드
   const onPostReview = () => {
-    fetch(
-      'http://10.58.5.151:3000/products/review/3',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          authorization: localStorage.getItem('token'),
-        },
-        body: JSON.stringify({ content: review }),
-      }
-        .then(response => response.json())
-        .then(data => {
-          if (data.message === 'REVIEW_CREATED') {
-            alert('리뷰등록이 성공적으로 됐습니다.');
-          } else {
-            alert('리뷰등록이 실패하였습니다');
-          }
-        })
-    );
+    fetch('http://10.58.1.169:3000/products/3/reviews', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: localStorage.getItem('token'),
+      },
+      body: JSON.stringify({ content: review }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.message === 'REVIEW_CREATED') {
+          alert('리뷰등록이 성공적으로 됐습니다.');
+        } else {
+          alert('리뷰등록이 실패하였습니다');
+        }
+      });
   };
 
   return (
