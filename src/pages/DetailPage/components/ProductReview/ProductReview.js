@@ -55,8 +55,7 @@ function ProductReview() {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          authorization:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjA5OTA2NDUsImV4cCI6MTY2MzU4MjY0NX0.oBeL0UP3fYz7pZM9rgEtE23SxpGHLwzaoJ1OE2dzmus',
+          authorization: localStorage.getItem('token'),
         },
       }
     )
@@ -69,20 +68,17 @@ function ProductReview() {
     setSearchParams(searchParams);
   };
 
-  /*
   // 리뷰등록 통신 코드
   const onPostReview = () => {
     fetch('http://10.58.5.151:3000/products/review/3', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjA5OTA2NDUsImV4cCI6MTY2MzU4MjY0NX0.oBeL0UP3fYz7pZM9rgEtE23SxpGHLwzaoJ1OE2dzmus',
+        authorization: localStorage.getItem('token'),
       },
       body: JSON.stringify({ content: review }),
     });
   };
-  */
 
   return (
     <div className="productReview">
@@ -92,9 +88,8 @@ function ProductReview() {
           placeholder="내용을 입력해주세요"
           onChange={handleReviewInput}
           value={review}
-          // onKeyDown={handleEnterPress}
         />
-        <button className="submitReview" /*onClick={onPostReview}*/>
+        <button className="submitReview" onClick={onPostReview}>
           등록하기
         </button>
       </form>

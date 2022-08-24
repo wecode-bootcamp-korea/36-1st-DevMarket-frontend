@@ -15,13 +15,13 @@ function DetailPage() {
   const [currentId, setCurrentId] = useState(1);
   const [quantity, setQuantity] = useState(1);
 
-  const [product, setProduct] = useState();
+  const [product, setProduct] = useState({});
 
   const params = useParams();
   const productId = params.id;
 
   useEffect(() => {
-    fetch('http://10.58.1.47:3000/products/detail/49', {
+    fetch(`http://10.58.1.47:3000/products/detail/49`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })
@@ -29,7 +29,7 @@ function DetailPage() {
       .then(data => setProduct(data[0]));
   }, []);
 
-  console.log(product);
+  const { amount, id, image, made_in, name, price, weight } = product;
 
   const handleQuantityClick = e => {
     if (e.target.id === 'minus' && quantity !== 1) {
@@ -51,10 +51,13 @@ function DetailPage() {
     fetch('http://10.58.1.47:3000/products/cart', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userId: 4, productId: 44, amount: quantity }),
-    })
+      body: JSON.stringify({ userId: 4, productId: id, amount: quantity }),
+    });
+    goToCart();
+    /*
       .then(response => response.json())
       .then(data => console.log(data));
+    */
   };
 
   return (
@@ -63,7 +66,7 @@ function DetailPage() {
         <div className="leftCol">
           <section className="productImg">
             <div />
-            <img src="./images/minions.jpg" alt="minions" />
+            <img src={image} alt={name} />
           </section>
           <div className="productDetailWrap">
             <div className="detailNavBar">
@@ -122,25 +125,31 @@ function DetailPage() {
         </div>
         <div className="rightCol">
           <section className="sectionTop">
-            <h1 className="productName">[Minions] 미니언즈 장난감</h1>
+            <h1 className="productName">{name}</h1>
             <div className="shipCard">
               <div className="innerCard">
                 <div className="productInfo">
                   <ul>
                     <li>중량</li>
-                    <li>5.5kg</li>
+                    <li>{weight}kg</li>
                   </ul>
                 </div>
                 <div className="productInfo">
                   <ul>
                     <li>제공 수량</li>
-                    <li>1ea</li>
+                    <li>{amount}ea</li>
                   </ul>
                 </div>
                 <div className="productInfo">
                   <ul>
                     <li>기준 단가</li>
-                    <li>1kg 당 900원</li>
+                    <li>1kg 당 {price / weight}원</li>
+                  </ul>
+                </div>
+                <div className="productInfo">
+                  <ul>
+                    <li>원산지</li>
+                    <li>{made_in}</li>
                   </ul>
                 </div>
               </div>
@@ -170,9 +179,9 @@ function DetailPage() {
             <div className="costInfo">
               <span>총 합계금액</span>
               <div className="costInfoRight">
-                <span>1kg 당 900원 / 1ea</span>
+                <span>1kg 당 {price / weight}원 / 1ea</span>
                 <div className="rightBottom">
-                  <span className="cost">{44550 * quantity + '원'}</span>
+                  <span className="cost">{price * quantity + '원'}</span>
                 </div>
               </div>
             </div>
