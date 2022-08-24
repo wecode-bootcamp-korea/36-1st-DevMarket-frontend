@@ -3,6 +3,7 @@ import './CartProduct.scss';
 
 const CartProduct = ({
   product,
+  idx,
   setProduct,
   removeProduct,
   childCheckRemove,
@@ -62,14 +63,14 @@ const CartProduct = ({
               className="plus"
               onClick={() => {
                 plusCount();
-                singlePriceHandle(product, checkedArr, total);
+                singlePriceHandle(product, checkedArr, total, idx);
               }}
             >
               ﹢
             </button>
           </div>
           <div className="priceBox">
-            <p>{product.price}원</p>
+            <p>{product.price * count}원</p>
             <button
               className="cancelBtn"
               onClick={() => removeProduct(product.id)}

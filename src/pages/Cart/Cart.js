@@ -39,7 +39,7 @@ function Cart() {
   const checkedPriceList = checkedArr.map(product => {
     return product.price;
   });
-
+  console.log(checkedArr);
   const checkedProductTotal = checkedPriceList.reduce((acc, cur) => {
     return (acc += cur);
   }, 0);
@@ -85,10 +85,19 @@ function Cart() {
     setCheckedArr(removeCheckedProducts);
   };
 
-  const singlePriceHandle = (productDetail, checkedArrDetail, newPrice) => {
+  const singlePriceHandle = (
+    productDetail,
+    checkedArrDetail,
+    newPrice,
+    idx
+  ) => {
+    console.log(newPrice);
+    console.log(productDetail);
+    console.log('checkedArrDetail:', checkedArrDetail);
+    console.log('idx:', idx);
     return (
-      setProduct([...product, { ...productDetail, price: newPrice }]),
-      setCheckedArr([...checkedArr, { ...checkedArrDetail, price: newPrice }])
+      setProduct([...product[idx], { ...productDetail, price: newPrice }]),
+      setCheckedArr([...checkedArr, { price: newPrice }])
     );
   };
   const [allCheckB, setAllCheckB] = useState(true);
@@ -128,12 +137,12 @@ function Cart() {
               </button>
             </div>
 
-            {product.map(product => (
+            {product.map((product, idx) => (
               <CartProduct
                 product={product}
                 setProduct={setProduct}
                 key={product.id}
-                id={product.id}
+                idx={idx}
                 removeProduct={removeProduct}
                 childCheckRemove={childCheckRemove}
                 setCheckedArr={setCheckedArr}
