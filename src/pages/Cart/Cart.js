@@ -39,7 +39,7 @@ function Cart() {
   const checkedPriceList = checkedArr.map(product => {
     return product.price;
   });
-  console.log(checkedArr);
+
   const checkedProductTotal = checkedPriceList.reduce((acc, cur) => {
     return (acc += cur);
   }, 0);
@@ -91,14 +91,11 @@ function Cart() {
     newPrice,
     idx
   ) => {
-    console.log(newPrice);
-    console.log(productDetail);
     console.log('checkedArrDetail:', checkedArrDetail);
-    console.log('idx:', idx);
-    return (
-      setProduct([...product[idx], { ...productDetail, price: newPrice }]),
-      setCheckedArr([...checkedArr, { price: newPrice }])
-    );
+    let newProductArray = [...checkedArr];
+    newProductArray[idx].price = newPrice;
+
+    return setProduct(newProductArray), setCheckedArr(newProductArray);
   };
   const [allCheckB, setAllCheckB] = useState(true);
 
