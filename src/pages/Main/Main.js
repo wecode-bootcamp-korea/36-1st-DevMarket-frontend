@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import Carousel from '../../components/Carousel/Carousel';
 import './Main.scss';
 
 function Main() {
-  const [menuList, setMenuList] = useState([]);
-
-  useEffect(() => {
-    fetch('/data/hihi.json')
-      .then(response => response.json())
-      .then(result => setMenuList(result));
-  }, []);
-
-  console.log(menuList.products);
-  return <div>hihi</div>;
+  return (
+    <div>
+      <Carousel />
+    </div>
+  );
 }
 
 export default Main;
