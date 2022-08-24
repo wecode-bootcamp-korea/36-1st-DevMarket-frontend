@@ -38,12 +38,14 @@ function NavBottom({ onClick, changeClassname }) {
             onChange={getValue}
           />
           <div className="naviconWrap">
-            <img
-              className="navIcon"
-              src="/images/Nav/user.png"
-              alt="loginImg"
-            />
-            <p className="navIconTag">나의상회</p>
+            <Link to="/cart" style={{ textDecoration: 'none' }}>
+              <img
+                className="navIcon"
+                src="/images/Nav/user.png"
+                alt="loginImg"
+              />
+              <p className="navIconTag">나의상회</p>
+            </Link>
           </div>
           <div className="naviconWrap">
             <Link to="/cart" style={{ textDecoration: 'none' }}>
