@@ -14,6 +14,7 @@ function Login() {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };
 
+  /*
   const handleLogin = () => {
     if (activateButton === true) {
       goToMain();
@@ -21,10 +22,10 @@ function Login() {
       setValLogin(false);
     }
   };
+  */
 
-  /* 로그인 통신할 때 사용할 코드
   const handleLogin = () => {
-    fetch('http://10.58.7.158:3000/users/signin', {
+    fetch('http://10.58.1.169:3000/users/signin', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -32,21 +33,17 @@ function Login() {
         password: userInfo.password,
       }),
     })
-      .then(response => {
-        if (response.ok === true) {
-          return response.json();
-        }
-      })
+      .then(response => response.json())
       .then(data => {
-        if (data.message === 'success') {
+        if (data.message === 'SUCCESS') {
           localStorage.setItem('token', data.token);
           goToMain();
-        } else if (data.message === 'invalid') {
+        }
+        if (data.message === 'FAIL') {
           setValLogin(false);
         }
       });
   };
-    */
 
   const goToMain = () => {
     navigate('/');
