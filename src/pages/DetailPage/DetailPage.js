@@ -15,7 +15,6 @@ function DetailPage() {
   const [currentId, setCurrentId] = useState(1);
   const [quantity, setQuantity] = useState(1);
 
-  /*
   const [product, setProduct] = useState();
 
   const params = useParams();
@@ -25,8 +24,8 @@ function DetailPage() {
     fetch(`http://${productId}`)
       .then(response => response.json())
       .then(result => setProduct(result));
-  }, []);
-*/
+  }, [productId]);
+
   const handleQuantityClick = e => {
     if (e.target.id === 'minus' && quantity !== 1) {
       setQuantity(curr => curr - 1);
@@ -42,6 +41,18 @@ function DetailPage() {
   const goToCart = () => {
     navigate('/cart');
   };
+
+  /*
+  const onPostCart = () => {
+
+    fetch( 'http://', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({}),
+    })
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+  */
 
   return (
     <div className="mainWrap">

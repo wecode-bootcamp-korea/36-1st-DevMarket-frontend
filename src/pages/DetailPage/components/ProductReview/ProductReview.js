@@ -77,16 +77,17 @@ function ProductReview() {
   }, [start, limit]);
 
   // 리뷰등록 통신 코드
-
-  const onPostReview = fetch('http://10.58.5.151:3000/products/review/3', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      authorization:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjA5OTA2NDUsImV4cCI6MTY2MzU4MjY0NX0.oBeL0UP3fYz7pZM9rgEtE23SxpGHLwzaoJ1OE2dzmus',
-      body: JSON.stringify({ content: { review } }),
-    },
-  });
+  const onPostReview = () => {
+    fetch('http://10.58.5.151:3000/products/review/3', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjA5OTA2NDUsImV4cCI6MTY2MzU4MjY0NX0.oBeL0UP3fYz7pZM9rgEtE23SxpGHLwzaoJ1OE2dzmus',
+      },
+      body: JSON.stringify({ content: review }),
+    });
+  };
 
   return (
     <div className="productReview">
