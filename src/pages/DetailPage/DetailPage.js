@@ -17,6 +17,7 @@ function DetailPage() {
 
   const [product, setProduct] = useState();
 
+  /*
   const params = useParams();
   const productId = params.id;
 
@@ -25,6 +26,13 @@ function DetailPage() {
       .then(response => response.json())
       .then(result => setProduct(result));
   }, [productId]);
+  */
+
+  useEffect(() => {
+    fetch('./data/productInfo.json')
+      .then(response => response.json())
+      .then(result => setProduct(result[0]));
+  }, []);
 
   const handleQuantityClick = e => {
     if (e.target.id === 'minus' && quantity !== 1) {
@@ -169,12 +177,8 @@ function DetailPage() {
               <div className="costInfoRight">
                 <span>1kg 당 900원 / 1ea</span>
                 <div className="rightBottom">
-                  <span className="discount">4%</span>
                   <span className="cost">{44550 * quantity + '원'}</span>
                 </div>
-                <span className="discountPrice">
-                  {44550 * quantity * (1 - 0.04) + '원'}
-                </span>
               </div>
             </div>
             <div className="orderButtons">

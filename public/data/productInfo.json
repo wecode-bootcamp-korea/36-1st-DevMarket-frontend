@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "name": "[Minons] 미니언즈 장난감",
+    "weight": "5.5kg",
+    "amount": "1ea",
+    "made_in": "AUS",
+    "img": "./images/minions.jpg",
+    "price": 44550.0
+  }
+]

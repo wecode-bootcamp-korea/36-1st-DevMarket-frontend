@@ -37,14 +37,6 @@ function ProductReview() {
     );
   };
 
-  /* 엔터키 눌르면 등록 되는거 구현중
-  const handleEnterPress = e => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      submitReview();
-    }
-  };
-  */
-
   /*
   // Mock Data를 활용한 코드
   useEffect(() => {
@@ -54,15 +46,11 @@ function ProductReview() {
   }, [offset, limit]);
 
   */
-  const movePage = pageNumber => {
-    searchParams.set('offset', (pageNumber - 1) * 40);
-    setSearchParams(searchParams);
-  };
 
   // 리뷰목록 통신 코드
   useEffect(() => {
     fetch(
-      `http://10.58.5.151:3000/products/review/3?_start=${start}&_limit=40`,
+      `http://10.58.1.169:3000/products/review/3?_start=${start}&_limit=30`,
       {
         method: 'GET',
         headers: {
@@ -76,6 +64,12 @@ function ProductReview() {
       .then(data => setReviewList(data));
   }, [start, limit]);
 
+  const movePage = pageNumber => {
+    searchParams.set('offset', (pageNumber - 1) * 30);
+    setSearchParams(searchParams);
+  };
+
+  /*
   // 리뷰등록 통신 코드
   const onPostReview = () => {
     fetch('http://10.58.5.151:3000/products/review/3', {
@@ -88,6 +82,7 @@ function ProductReview() {
       body: JSON.stringify({ content: review }),
     });
   };
+  */
 
   return (
     <div className="productReview">
@@ -99,7 +94,7 @@ function ProductReview() {
           value={review}
           // onKeyDown={handleEnterPress}
         />
-        <button className="submitReview" onClick={onPostReview}>
+        <button className="submitReview" /*onClick={onPostReview}*/>
           등록하기
         </button>
       </form>
