@@ -6,7 +6,6 @@ function Main() {
   return (
     <div>
       <Carousel />
-      Main
     </div>
   );
 }

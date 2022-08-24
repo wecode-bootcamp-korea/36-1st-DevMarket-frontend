@@ -1,0 +1,50 @@
+[
+  {
+    "cate": 0,
+    "mainmenu": "농수축산물",
+    "subcategory": [
+      {
+        "cate": "2",
+        "name": "축산",
+        "category": [
+          { "cate": 4, "name": "돼지고기" },
+          { "cate": 5, "name": "소고기" },
+          { "cate": 6, "name": "닭고기" }
+        ]
+      },
+      {
+        "cate": "1",
+        "name": "수산",
+        "category": [
+          { "cate": 1, "name": "생선류" },
+          { "cate": 2, "name": "갑각류" },
+          { "cate": 3, "name": "조개류" }
+        ]
+      }
+    ]
+  },
+  {
+    "cate": 1,
+    "mainmenu": "음료",
+    "subcategory": [
+      {
+        "cate": "3",
+        "name": "알콜",
+        "category": [
+          { "cate": 7, "name": "소주" },
+          { "cate": 8, "name": "맥주" },
+          { "cate": 9, "name": "양주" }
+        ]
+      },
+      {
+        "cate": "4",
+        "name": "Non 알콜",
+        "category": [
+          { "cate": 10, "name": "물" },
+          { "cate": 11, "name": "이온음료" },
+          { "cate": 12, "name": "탄산류" }
+        ]
+      }
+    ]
+  }
+]

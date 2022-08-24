@@ -1,0 +1,17 @@
+@import '../../styles/variables.scss';
+
+nav {
+  position: fixed;
+  .navMain {
+    background-color: white;
+    @include flex(center, center);
+    border-bottom: 1px solid rgb(221, 221, 221);
+    width: 100vw;
+
+    .navInner {
+      width: 1080px;
+      min-width: 1000px;
+      position: relative;
+    }
+  }
+}
