@@ -1,3 +1,4 @@
+import { logDOM } from '@testing-library/react';
 import React, { useState, useEffect } from 'react';
 import CartProduct from '../../components/CartProduct/CartProduct';
 import OrderForm from '../../components/OrderForm/OrderForm';
@@ -19,19 +20,18 @@ function Cart() {
         );
       });
   }, []);
-  const lastTotalPrice = product.map(item => {
-    return item.price;
-  });
-  const productTotal = lastTotalPrice.reduce((acc, cur) => {
-    return (acc += cur);
-  }, 0);
-  const [total, setTotal] = useState(productTotal);
+
   const [deliveryPrice, setDeliveryPrice] = useState(5000);
 
   const removeProduct = id => {
     setProduct(
       product.filter(product => {
         return product.id !== id;
+      })
+    );
+    setCheckedArr(
+      checkedArr.filter(check => {
+        return check.id !== id;
       })
     );
   };
@@ -43,7 +43,7 @@ function Cart() {
   const checkedProductTotal = checkedPriceList.reduce((acc, cur) => {
     return (acc += cur);
   }, 0);
-  console.log(checkedProductTotal);
+
   const childCheckRemove = (productDetail, checked) => {
     checked
       ? setCheckedArr([...checkedArr, { ...productDetail, checked: checked }])
@@ -70,9 +70,28 @@ function Cart() {
         ))
     );
     setProduct(removeProducts);
+
+    let removeCheckedProducts;
+    id.forEach(
+      item =>
+        (removeCheckedProducts = product.filter(product => product.id !== item))
+    );
+    id.forEach(
+      item =>
+        (removeCheckedProducts = removeCheckedProducts.filter(
+          removeCheckedProducts => removeCheckedProducts.id !== item
+        ))
+    );
+    setCheckedArr(removeCheckedProducts);
   };
 
-  console.log(checkedProductTotal);
+  const singlePriceHandle = (productDetail, checkedArrDetail, newPrice) => {
+    return (
+      setProduct([...product, { ...productDetail, price: newPrice }]),
+      setCheckedArr([...checkedArr, { ...checkedArrDetail, price: newPrice }])
+    );
+  };
+  const [allCheckB, setAllCheckB] = useState(true);
 
   return (
     <div className="cart">
@@ -84,12 +103,26 @@ function Cart() {
           <div className="box1">
             <div className="box1Top">
               <div className="box1TopLeft">
-                <input type="checkbox" className="checkBox" />
+                <input
+                  type="checkbox"
+                  className="checkBox"
+                  checked={allCheckB}
+                  onClick={() => {
+                    setAllCheckB(
+                      product.length === checkedArr.length ? true : false
+                    );
+                  }}
+                  // checked={product.length === checkedArr.length ? true : false}
+                  // onClick={e => {
+                  //   setAllCheckB(e.target.checked);
+                  // }}
+                />
                 <p className="checkText">전체선택</p>
               </div>
               <button
                 className="cancelBtn"
                 onClick={() => removeChild(checkedId)}
+                disabled={checkedProductTotal <= 0 ? true : false}
               >
                 선택 삭제
               </button>
@@ -97,11 +130,15 @@ function Cart() {
 
             {product.map(product => (
               <CartProduct
+                product={product}
+                setProduct={setProduct}
                 key={product.id}
                 id={product.id}
-                product={product}
                 removeProduct={removeProduct}
                 childCheckRemove={childCheckRemove}
+                setCheckedArr={setCheckedArr}
+                checkedArr={checkedArr}
+                singlePriceHandle={singlePriceHandle}
               />
             ))}
           </div>
@@ -114,6 +151,7 @@ function Cart() {
 
         <OrderForm
           deliveryPrice={deliveryPrice}
+          setDeliveryPrice={setDeliveryPrice}
           product={product}
           checkedProductTotal={checkedProductTotal}
         />

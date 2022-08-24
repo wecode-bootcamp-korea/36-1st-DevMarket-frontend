@@ -4,9 +4,13 @@ import './OrderForm.scss';
 const OrderForm = ({
   deliveryPrice,
   product,
-  validation,
   checkedProductTotal,
+  setDeliveryPrice,
 }) => {
+  setDeliveryPrice(
+    checkedProductTotal >= 50000 ? 0 : checkedProductTotal <= 0 ? 0 : 5000
+  );
+
   return (
     <div className="orderForm">
       <div className="address">
@@ -32,7 +36,10 @@ const OrderForm = ({
         <div className="middleLine"></div>
       </div>
       <div className="orderBtnBox">
-        <button className="orderBtn" disabled={validation}>
+        <button
+          className="orderBtn"
+          disabled={checkedProductTotal <= 0 ? true : false}
+        >
           총 {product.length}건 주문하기(
           {checkedProductTotal + deliveryPrice}
           원)

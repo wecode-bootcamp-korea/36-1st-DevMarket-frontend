@@ -1,19 +1,30 @@
 import React, { useState } from 'react';
 import './CartProduct.scss';
 
-const CartProduct = ({ product, removeProduct, childCheckRemove }) => {
+const CartProduct = ({
+  product,
+  setProduct,
+  removeProduct,
+  childCheckRemove,
+  checkedArr,
+  setCheckedArr,
+  singlePriceHandle,
+}) => {
   const [count, setCount] = useState(1);
   const minusCount = () => {
     setCount(count => count - 1);
   };
+  const [total, setTotal] = useState(product.price);
   const plusCount = () => {
     setCount(count => count + 1);
+    setTotal(num => (num += product.price * count));
   };
   const validation = count => {
     return count > 1 ? false : true;
   };
 
   const [checkBoolean, setCheckBoolean] = useState(true);
+  // console.log(total);
   return (
     <div className="cartProduct">
       <input
@@ -38,18 +49,27 @@ const CartProduct = ({ product, removeProduct, childCheckRemove }) => {
           <div className="countBar">
             <button
               className="minus"
-              onClick={minusCount}
+              onClick={() => {
+                minusCount();
+                // singlePriceHandle();
+              }}
               disabled={validation(count)}
             >
               –
             </button>
             <div className="numCount">{count}</div>
-            <button className="plus" onClick={plusCount}>
+            <button
+              className="plus"
+              onClick={() => {
+                plusCount();
+                singlePriceHandle(product, checkedArr, total);
+              }}
+            >
               ﹢
             </button>
           </div>
           <div className="priceBox">
-            <p>원</p>
+            <p>{product.price}원</p>
             <button
               className="cancelBtn"
               onClick={() => removeProduct(product.id)}

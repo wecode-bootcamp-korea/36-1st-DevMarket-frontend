@@ -1,9 +1,12 @@
 import React from 'react';
 import './TotalPrice.scss';
 
-const TotalPrice = ({ deliveryPrice, orderHidden, checkedProductTotal }) => {
+const TotalPrice = ({ deliveryPrice, checkedProductTotal }) => {
   return (
-    <div className="totalPrice" style={{ display: `${orderHidden}` }}>
+    <div
+      className="totalPrice"
+      style={{ display: `${checkedProductTotal <= 0 ? 'none' : 'block'}` }}
+    >
       <div className="totalTop">
         <p>
           상품금액 {checkedProductTotal}원 + 배송비
