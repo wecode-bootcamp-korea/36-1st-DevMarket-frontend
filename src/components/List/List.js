@@ -1,34 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import Product from '../../pages/Main/Product/Product';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import './List.scss';
 import { PAGE_BUTTONS } from './buttons';
+
+import API from '../../config';
 
 function List() {
   const [productList, setProductList] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const [offset, setOffset] = useState(0);
+  const [sortPage, setSortPage] = useState(API.main);
   const limit = searchParams.get('limit');
-  const navigate = useNavigate();
-  const descendingList = () => {
-    navigate('/descending');
-  };
-  const ascendingList = () => {
-    navigate('/ascending');
-  };
 
   useEffect(() => {
     fetch(
-      `http://10.58.5.120:3000/products/all?${
-        offset === 'none' ? `` : `_start=${offset}&_limit=30`
-      }`,
+      `${sortPage}?${offset === 'none' ? `` : `start=${offset}&limit=30`}`,
       {
         method: 'GET',
       }
     )
       .then(response => response.json())
       .then(result => setProductList(result));
-  }, [offset, limit]);
+  }, [offset, limit, sortPage]);
 
   const movePage = pageNumber => {
     const maxLimit = 30;
@@ -54,12 +48,22 @@ function List() {
             <div className="filterButtons">
               <ul className="listFrame">
                 <li className="list">
-                  <button className="btnFrame" onClick={ascendingList}>
+                  <button
+                    className="btnFrame"
+                    onClick={() => {
+                      setSortPage(API.asc);
+                    }}
+                  >
                     낮은 가격순
                   </button>
                 </li>
                 <li className="list">
-                  <button className="btnFrame" onClick={descendingList}>
+                  <button
+                    className="btnFrame"
+                    onClick={() => {
+                      setSortPage(API.desc);
+                    }}
+                  >
                     높은 가격순
                   </button>
                 </li>
