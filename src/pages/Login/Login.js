@@ -26,7 +26,7 @@ function Login() {
       .then(response => response.json())
       .then(data => {
         if (data.message === 'SUCCESS') {
-          localStorage.setItem('token', data.token);
+          localStorage.setItem('token', data.authorization);
           goToMain();
         }
         if (data.message === 'FAIL') {
