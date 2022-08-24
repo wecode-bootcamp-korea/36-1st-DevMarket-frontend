@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import './NavBottom.scss';
 import Arcodian from './ Arcodian';
+import { Link } from 'react-router-dom';
 
 function NavBottom({ onClick, changeClassname }) {
   const [input, setInput] = useState(false);
@@ -12,18 +13,19 @@ function NavBottom({ onClick, changeClassname }) {
       <div className="navLeft">
         <Arcodian onClick={onClick} changeClassname={changeClassname} />
         <ul className="navUl">
-          <li className="list">든든배송 &middot; </li>
-          <li className="list">상회가만든 &middot; </li>
-          <li className="list">샘플신청 &middot; </li>
-          <li className="list">기획전 </li>
+          {NAV_BOTTOM_LIST.map(list => {
+            return (
+              <li className="list" key={list.id}>
+                {list.list}
+              </li>
+            );
+          })}
         </ul>
       </div>
       <div className="navCenter">
-        <img
-          className="mainLogo"
-          src="https://cdn-mart.baemin.com/front-end/assets-static/bmmart_logo_2021@3x.png"
-          alt="logo"
-        />
+        <Link to="/main" style={{ textDecoration: 'none' }}>
+          <img className="mainLogo" src="/images/Nav/324.png" alt="logo" />
+        </Link>
       </div>
       <div className="navBottomRight">
         <form className="search">
@@ -44,12 +46,14 @@ function NavBottom({ onClick, changeClassname }) {
             <p className="navIconTag">나의상회</p>
           </div>
           <div className="naviconWrap">
-            <img
-              className="navIcon"
-              src="/images/Nav/shopping-cart.png"
-              alt="loginImg"
-            />
-            <p className="navIconTag">장바구니</p>
+            <Link to="/cart" style={{ textDecoration: 'none' }}>
+              <img
+                className="navIcon"
+                src="/images/Nav/shopping-cart.png"
+                alt="loginImg"
+              />
+              <p className="navIconTag">장바구니</p>
+            </Link>
           </div>
         </form>
       </div>
@@ -58,3 +62,10 @@ function NavBottom({ onClick, changeClassname }) {
 }
 
 export default NavBottom;
+
+const NAV_BOTTOM_LIST = [
+  { id: 1, list: ' 든든배송 ' },
+  { id: 2, list: ' 상회가만든 ' },
+  { id: 3, list: ' 샘플신청 ' },
+  { id: 4, list: ' 기획전 ' },
+];
