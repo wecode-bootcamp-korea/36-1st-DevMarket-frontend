@@ -33,7 +33,6 @@ function Signup() {
     rePassword === password &&
     email.includes('@' && '.com');
 
-  /* 회원가입 통신할 때 사용할 코드
   const handleSignup = () => {
     fetch('http://10.58.5.80:3000/users/signup', {
       method: 'POST',
@@ -46,9 +45,14 @@ function Signup() {
         phoneNumber: phoneNumber,
         birth: birthdate,
       }),
-    });
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.message === 'success') {
+          goToMain();
+        }
+      });
   };
-  */
 
   const handleUserInfo = e => {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
