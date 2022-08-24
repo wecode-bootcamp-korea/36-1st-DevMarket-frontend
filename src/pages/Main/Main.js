@@ -4,8 +4,10 @@ import './Main.scss';
 
 function Main() {
   return (
-    <div>
-      <Carousel />
+    <div className="main">
+      <div className="innerWrap">
+        <Carousel />
+      </div>
     </div>
   );
 }

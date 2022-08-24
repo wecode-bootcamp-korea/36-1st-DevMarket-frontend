@@ -8,6 +8,7 @@
   box-shadow: #0000001a 0px 4px 12px 0px;
   z-index: 1;
   position: absolute;
+  left: -10px;
   top: 126px;
 
   .dropdownMainWrap {
@@ -65,7 +66,7 @@
     width: 128px;
     height: auto;
     min-height: 396px;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgb(255, 255, 255);
 
     .dropdownSecondUl {
       width: 100%;
@@ -118,7 +119,7 @@
     height: auto;
     min-height: 396px;
     border-right: 1px solid rgb(238, 238, 238);
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255);
 
     .dropdownThirdUl {
       @include flex(flex-start, center);

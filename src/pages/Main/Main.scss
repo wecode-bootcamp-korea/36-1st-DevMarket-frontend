@@ -1,0 +1,10 @@
+@import '../../styles/variables.scss';
+
+.main {
+  height: 100vw;
+  @include flex(center, center);
+  .innerWrap {
+    width: 1080px;
+    height: 100%;
+  }
+}
