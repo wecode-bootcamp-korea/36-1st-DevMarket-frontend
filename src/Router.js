@@ -6,8 +6,6 @@ import DetailPage from './pages/DetailPage/DetailPage';
 import Login from './pages/Login/Login';
 import Main from './pages/Main/Main';
 import Signup from './pages/Signup/Signup';
-import Descending from './components/List/Descending';
-import Ascending from './components/List/Ascending';
 
 const Router = () => {
   return (
@@ -19,8 +17,6 @@ const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/detail" element={<DetailPage />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/descending" element={<Descending />} />
-        <Route path="/ascending" element={<Ascending />} />
       </Routes>
     </BrowserRouter>
   );
