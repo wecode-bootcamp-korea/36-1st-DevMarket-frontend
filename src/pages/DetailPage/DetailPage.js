@@ -17,22 +17,19 @@ function DetailPage() {
 
   const [product, setProduct] = useState();
 
-  /*
   const params = useParams();
   const productId = params.id;
 
   useEffect(() => {
-    fetch(`http://${productId}`)
+    fetch('http://10.58.1.47:3000/products/detail/49', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    })
       .then(response => response.json())
-      .then(result => setProduct(result));
-  }, [productId]);
-  */
-
-  useEffect(() => {
-    fetch('./data/productInfo.json')
-      .then(response => response.json())
-      .then(result => setProduct(result[0]));
+      .then(data => setProduct(data[0]));
   }, []);
+
+  console.log(product);
 
   const handleQuantityClick = e => {
     if (e.target.id === 'minus' && quantity !== 1) {
@@ -50,17 +47,15 @@ function DetailPage() {
     navigate('/cart');
   };
 
-  /*
   const onPostCart = () => {
-
-    fetch( 'http://', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({}),
+    fetch('http://10.58.1.47:3000/products/cart', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId: 4, productId: 44, amount: quantity }),
     })
-    .then((response) => response.json())
-    .then((data) => console.log(data));
-  */
+      .then(response => response.json())
+      .then(data => console.log(data));
+  };
 
   return (
     <div className="mainWrap">
@@ -182,10 +177,10 @@ function DetailPage() {
               </div>
             </div>
             <div className="orderButtons">
-              <button className="addCart" onClick={goToCart}>
+              <button className="addCart" onClick={onPostCart}>
                 장바구니 담기
               </button>
-              <button className="buyItem" onClick={goToCart}>
+              <button className="buyItem" onClick={onPostCart}>
                 바로구매
               </button>
             </div>
