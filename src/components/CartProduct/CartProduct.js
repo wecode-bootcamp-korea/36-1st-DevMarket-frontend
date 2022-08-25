@@ -4,33 +4,74 @@ import './CartProduct.scss';
 const CartProduct = ({
   product,
   idx,
-  setProduct,
   removeProduct,
   childCheckRemove,
-  checkedArr,
-  setCheckedArr,
   singlePriceHandle,
 }) => {
-  const [count, setCount] = useState(1);
-  const total = product.price * count;
+  const [amount, setAmount] = useState(product.amount);
+  const total = product.price * amount;
 
   const minusCount = () => {
-    setCount(count => count - 1);
+    setAmount(amount => amount - 1);
   };
 
   const plusCount = () => {
-    setCount(count => count + 1);
+    setAmount(amount => amount + 1);
   };
 
-  const validation = count => {
-    return count > 1 ? false : true;
+  const validation = amount => {
+    return amount > 1 ? false : true;
   };
 
   useEffect(() => {
-    singlePriceHandle(product, checkedArr, count, idx);
-  }, [count]);
+    singlePriceHandle(amount, idx);
+  }, [amount]);
 
   const [checkBoolean, setCheckBoolean] = useState(true);
+
+  const minusHandler = () => {
+    fetch('http://10.58.5.164:3000/cart/amount', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJOYW1lIjoiam9leWNob2k3NjI0IiwiaWF0IjoxNjYxMzk2MjM1LCJleHAiOjE2NjM5ODgyMzV9.GD6CDbUDwEtIzUEGlbMcjfsRZyNArVZF2KLZCft64S4',
+      },
+      body: JSON.stringify({
+        amount: -1,
+        productId: product.product_id,
+      }),
+    });
+  };
+
+  const plusHandler = () => {
+    fetch('http://10.58.5.164:3000/cart/amount', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJOYW1lIjoiam9leWNob2k3NjI0IiwiaWF0IjoxNjYxMzk2MjM1LCJleHAiOjE2NjM5ODgyMzV9.GD6CDbUDwEtIzUEGlbMcjfsRZyNArVZF2KLZCft64S4',
+      },
+      body: JSON.stringify({
+        amount: +1,
+        productId: product.product_id,
+      }),
+    });
+  };
+
+  const singleDeleteHandler = () => {
+    fetch('http://10.58.5.164:3000/cart', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJOYW1lIjoiam9leWNob2k3NjI0IiwiaWF0IjoxNjYxMzk2MjM1LCJleHAiOjE2NjM5ODgyMzV9.GD6CDbUDwEtIzUEGlbMcjfsRZyNArVZF2KLZCft64S4',
+      },
+      body: JSON.stringify({
+        productId: product.product_id,
+      }),
+    });
+  };
 
   return (
     <div className="cartProduct">
@@ -44,11 +85,11 @@ const CartProduct = ({
         }}
       />
       <div className="imgBorder">
-        <img src={product.img} alt="" />
+        <img src={product.image} alt="" />
       </div>
       <div className="productInfo">
         <div className="pInfo1">
-          <p>{product.title}</p>
+          <p>{product.name}</p>
           <div className="moveDetail">상세보기</div>
         </div>
 
@@ -58,26 +99,31 @@ const CartProduct = ({
               className="minus"
               onClick={() => {
                 minusCount();
+                minusHandler();
               }}
-              disabled={validation(count)}
+              disabled={validation(amount)}
             >
               –
             </button>
-            <div className="numCount">{count}</div>
+            <div className="numCount">{product.amount}</div>
             <button
               className="plus"
               onClick={() => {
                 plusCount();
+                plusHandler();
               }}
             >
               ﹢
             </button>
           </div>
           <div className="priceBox">
-            <p>{total}원</p>
+            <p>{Number(total).toLocaleString()}원</p>
             <button
               className="cancelBtn"
-              onClick={() => removeProduct(product.id)}
+              onClick={() => {
+                removeProduct(product.product_id);
+                singleDeleteHandler();
+              }}
             >
               ✕
             </button>

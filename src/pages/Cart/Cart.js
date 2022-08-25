@@ -7,8 +7,18 @@ import './Cart.scss';
 function Cart() {
   const [product, setProduct] = useState([]);
   const [checkedArr, setCheckedArr] = useState([]);
+  const [deliveryPrice, setDeliveryPrice] = useState(5000);
+  // http://10.58.5.164:3000/cart/list
+  // '/data/cartProduct.json'
   useEffect(() => {
-    fetch('/data/cartProduct.json')
+    fetch('http://10.58.5.164:3000/cart/list', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJOYW1lIjoiam9leWNob2k3NjI0IiwiaWF0IjoxNjYxMzk2MjM1LCJleHAiOjE2NjM5ODgyMzV9.GD6CDbUDwEtIzUEGlbMcjfsRZyNArVZF2KLZCft64S4',
+      },
+    })
       .then(response => response.json())
       .then(result => {
         setProduct(result);
@@ -20,36 +30,46 @@ function Cart() {
       });
   }, []);
 
-  const singlePriceHandle = (
-    productDetail,
-    checkedArrDetail,
-    newCount,
-    idx
-  ) => {
-    // console.log(newCount);
-    let newProductArray = [...checkedArr];
-    newProductArray[idx].count = newCount;
-    return setProduct(newProductArray), setCheckedArr(newProductArray);
+  const checkedDeleteHandler = () => {
+    checkedArr.forEach(item => {
+      return fetch('http://10.58.5.164:3000/cart', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          authorization:
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJOYW1lIjoiam9leWNob2k3NjI0IiwiaWF0IjoxNjYxMzk2MjM1LCJleHAiOjE2NjM5ODgyMzV9.GD6CDbUDwEtIzUEGlbMcjfsRZyNArVZF2KLZCft64S4',
+        },
+        body: JSON.stringify({
+          productId: item.product_id,
+        }),
+      });
+    });
   };
-  const [deliveryPrice, setDeliveryPrice] = useState(5000);
 
+  const singlePriceHandle = (newAmount, idx) => {
+    let newProductArray = [...product];
+    newProductArray[idx].amount = newAmount;
+    // setCheckedArr(newProductArray);
+    setProduct(newProductArray);
+  };
+  // setCheckedArr(newProductArray)
+  // setProduct(newProductArray),
   const removeProduct = id => {
     setProduct(
       product.filter(product => {
-        return product.id !== id;
+        return product.product_id !== id;
       })
     );
     setCheckedArr(
       checkedArr.filter(check => {
-        return check.id !== id;
+        return check.product_id !== id;
       })
     );
   };
 
-  const checkedPriceList = checkedArr.map(product => {
-    return product.price * product.count;
+  const checkedPriceList = checkedArr.map(checkedArr => {
+    return checkedArr.price * checkedArr.amount;
   });
-
   const checkedProductTotal = checkedPriceList.reduce((acc, cur) => {
     return (acc += cur);
   }, 0);
@@ -59,24 +79,27 @@ function Cart() {
       ? setCheckedArr([...checkedArr, { ...productDetail, checked: checked }])
       : setCheckedArr(
           checkedArr.filter(check => {
-            return check.id !== productDetail.id;
+            return check.product_id !== productDetail.product_id;
           })
         );
   };
 
   const checkedId = checkedArr.map(item => {
-    return item.id;
+    return item.product_id;
   });
 
   const removeChild = id => {
     let removeProducts;
     id.forEach(
-      item => (removeProducts = product.filter(product => product.id !== item))
+      item =>
+        (removeProducts = product.filter(
+          product => product.product_id !== item
+        ))
     );
     id.forEach(
       item =>
         (removeProducts = removeProducts.filter(
-          removeProducts => removeProducts.id !== item
+          removeProducts => removeProducts.product_id !== item
         ))
     );
     setProduct(removeProducts);
@@ -84,19 +107,21 @@ function Cart() {
     let removeCheckedProducts;
     id.forEach(
       item =>
-        (removeCheckedProducts = product.filter(product => product.id !== item))
+        (removeCheckedProducts = product.filter(
+          product => product.product_id !== item
+        ))
     );
     id.forEach(
       item =>
         (removeCheckedProducts = removeCheckedProducts.filter(
-          removeCheckedProducts => removeCheckedProducts.id !== item
+          removeCheckedProducts => removeCheckedProducts.product_id !== item
         ))
     );
     setCheckedArr(removeCheckedProducts);
   };
 
+  console.log('확인', checkedArr);
   const [allCheckB, setAllCheckB] = useState(true);
-
   return (
     <div className="cart">
       <div className="cartTitle">
@@ -125,7 +150,10 @@ function Cart() {
               </div>
               <button
                 className="cancelBtn"
-                onClick={() => removeChild(checkedId)}
+                onClick={() => {
+                  removeChild(checkedId);
+                  checkedDeleteHandler();
+                }}
                 disabled={checkedProductTotal <= 0 ? true : false}
               >
                 선택 삭제
@@ -136,7 +164,7 @@ function Cart() {
               <CartProduct
                 product={product}
                 setProduct={setProduct}
-                key={product.id}
+                key={product.product_id}
                 idx={idx}
                 removeProduct={removeProduct}
                 childCheckRemove={childCheckRemove}
@@ -158,6 +186,7 @@ function Cart() {
           setDeliveryPrice={setDeliveryPrice}
           product={product}
           checkedProductTotal={checkedProductTotal}
+          checkedArr={checkedArr}
         />
       </div>
     </div>
