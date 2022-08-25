@@ -44,7 +44,7 @@ function Login() {
       <div className="innerContainer">
         <div className="innestContainer">
           <h2 className="logo">
-            <span className="teamLogo">Dev</span>Market 광장
+            <img className="logo" src="./images/logo.jpg" alt="logo" />
           </h2>
           <h1 className="pageTitle">로그인</h1>
           <p className="description">
