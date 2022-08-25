@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import './FirstSec.scss';
 import { useSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';

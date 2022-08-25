@@ -27,7 +27,7 @@ const Carousel = () => {
 
   return (
     <div className="carousel">
-      <div className="container">
+      <div className="carouselContainer">
         <div
           className="images"
           style={{ transform: `translateX(${count * -1080}px)` }}

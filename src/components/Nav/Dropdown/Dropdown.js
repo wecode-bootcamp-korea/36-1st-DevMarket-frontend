@@ -11,7 +11,7 @@ function Dropdown({ menuList, changeClassname }) {
   const [id, setId] = useState('');
 
   useEffect(() => {
-    fetch(`http://10.58.5.120:3000products/list?cate=${cate}&prod=${id}`, {
+    fetch(`http://10.58.5.120:3000/products/list?cate=${cate}&prod=${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

@@ -22,6 +22,7 @@ const Nav = () => {
   const onScroll = e => {
     setScroll(e.currentTarget.scrollY);
   };
+
   window.addEventListener('scroll', onScroll);
 
   return (

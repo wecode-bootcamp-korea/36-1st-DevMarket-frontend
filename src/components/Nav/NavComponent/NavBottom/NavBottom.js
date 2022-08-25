@@ -23,8 +23,8 @@ function NavBottom({ onClick, changeClassname }) {
         </ul>
       </div>
       <div className="navCenter">
-        <Link to="/main" style={{ textDecoration: 'none' }}>
-          <img className="mainLogo" src="/images/Nav/324.png" alt="logo" />
+        <Link to="/" style={{ textDecoration: 'none' }}>
+          <img className="mainLogo" src="/images/Nav/123456.jpg" alt="logo" />
         </Link>
       </div>
       <div className="navBottomRight">
