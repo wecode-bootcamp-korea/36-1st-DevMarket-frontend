@@ -20,20 +20,19 @@ function DetailPage() {
 
   const params = useParams();
   const productId = params.id;
-
   const handleXCart = () => {
     setMessageModal(false);
     goToCart();
   };
 
   useEffect(() => {
-    fetch(`http://10.58.5.164:3000/products/detail/36`, {
+    fetch(`http://10.58.5.164:3000/products/detail/${productId}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })
       .then(response => response.json())
       .then(data => setProduct(data[0]));
-  }, []);
+  }, [productId]);
 
   const { amount, id, image, made_in, name, price, weight } = product;
 
@@ -61,7 +60,6 @@ function DetailPage() {
         authorization: localStorage.getItem('token'),
       },
       body: JSON.stringify({
-        userId: 4,
         productId: id,
         amount: quantity,
       }),
@@ -72,6 +70,12 @@ function DetailPage() {
           setMessageModal(true);
         }
       });
+  };
+
+  const MAPPING_OBJ = {
+    1: <ProductDetail />,
+    2: <ProductReview productId={productId} />,
+    3: <ProductInquiry />,
   };
 
   return (
@@ -253,11 +257,5 @@ function DetailPage() {
 }
 
 export default DetailPage;
-
-const MAPPING_OBJ = {
-  1: <ProductDetail />,
-  2: <ProductReview />,
-  3: <ProductInquiry />,
-};
 
 const TAB_ARR = ['상품 상세', '상품 후기', '상품 문의'];

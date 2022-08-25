@@ -6,7 +6,7 @@ import SingleReview from './SingleReview/SingleReview';
 import MessageModal from '../MessageModal/MessageModal';
 import '../ProductReview/ProductReview.scss';
 
-function ProductReview() {
+function ProductReview({ productId }) {
   const [reviewList, setReviewList] = useState([]);
   const [review, setReview] = useState('');
   const [reviewArray, setReviewArray] = useState([]);
@@ -46,7 +46,7 @@ function ProductReview() {
   // 리뷰목록 통신 코드
   useEffect(() => {
     fetch(
-      `http://10.58.5.164:3000/products/22/reviews?start=${start}&limit=30`,
+      `http://10.58.5.164:3000/products/${productId}/reviews?start=${start}&limit=30`,
       {
         method: 'GET',
         headers: {
@@ -59,7 +59,7 @@ function ProductReview() {
       .then(data => {
         setReviewList(data);
       });
-  }, [start, limit]);
+  }, [start, limit, productId]);
 
   const movePage = pageNumber => {
     searchParams.set('start', (pageNumber - 1) * 30);
@@ -68,7 +68,7 @@ function ProductReview() {
 
   // 리뷰등록 통신 코드
   const onPostReview = () => {
-    fetch('http://10.58.5.164:3000/products/22/reviews', {
+    fetch(`http://10.58.5.164:3000/products/${productId}/reviews`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
