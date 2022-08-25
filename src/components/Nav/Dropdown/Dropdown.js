@@ -1,9 +1,9 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, component } from 'react';
 import FirstSec from './FirstSec/FirstSec';
 import './Dropdown.scss';
 
-function Dropdown({ menuList }) {
+function Dropdown({ menuList, changeClassname }) {
   const [currentId, setCurrentID] = useState(0);
   const [openCategory, setOpenCategory] = useState();
   const [isMouseLeave, setIsMouseLeave] = useState('hide');
@@ -30,7 +30,12 @@ function Dropdown({ menuList }) {
   };
 
   return (
-    <div className="dropdown">
+    <div
+      className={`dropdown ${changeClassname}`}
+      onClick={e => {
+        e.stopPropagation();
+      }}
+    >
       <div className="dropdownMainWrap" onMouseEnter={hideList}>
         <ul className="dropdownFirstUl">
           {menuList.map(({ cate, mainmenu }) => {

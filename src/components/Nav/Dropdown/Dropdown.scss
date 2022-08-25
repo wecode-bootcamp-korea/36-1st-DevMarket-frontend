@@ -10,6 +10,10 @@
   position: absolute;
   left: -10px;
   top: 126px;
+  & out {
+    top: -273px;
+    z-index: -10;
+  }
 
   .dropdownMainWrap {
     @include flex(flex-start, '');
