@@ -114,7 +114,7 @@ function Signup() {
           <button
             className="doneButton"
             disabled={!activateButton}
-            onClick={goToMain}
+            onClick={handleSignup}
           >
             완료
           </button>
