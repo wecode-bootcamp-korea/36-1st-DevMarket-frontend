@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 function FirstSec({ data, onHover, id, cateType, setId, setCate }) {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [address, setAddress] = useState('');
 
   const handleSetParams = cateType => {
     searchParams.set('cate', cateType);
