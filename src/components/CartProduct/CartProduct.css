@@ -1,0 +1,281 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.cartProduct {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: baseline;
+      -ms-flex-pack: baseline;
+          justify-content: baseline;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 712px;
+  padding: 24px 0;
+  border-bottom: 1px solid #dedede;
+}
+
+.cartProduct .checkBox {
+  width: 24px;
+  height: 24px;
+  accent-color: #24a5a1;
+}
+
+.cartProduct .imgBorder {
+  width: 88px;
+  height: 88px;
+  margin-left: 16px;
+  border: 1px solid #dedede;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.cartProduct .imgBorder img {
+  width: 88px;
+  height: 88px;
+}
+
+.cartProduct .productInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 568px;
+  margin-left: 16px;
+}
+
+.cartProduct .productInfo .pInfo1 {
+  width: 316px;
+}
+
+.cartProduct .productInfo .pInfo1 a {
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.cartProduct .productInfo .pInfo1 p {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.cartProduct .productInfo .pInfo1 .moveDetail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 116px;
+  height: 36px;
+  margin-top: 16px;
+  border-radius: 30px;
+  border: 1px solid gray;
+}
+
+.cartProduct .productInfo .pInfo2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 252px;
+}
+
+.cartProduct .productInfo .pInfo2 .countBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 112px;
+  height: 40px;
+  margin-left: 10px;
+  border: 1px solid #dedede;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.cartProduct .productInfo .pInfo2 .countBar .minus,
+.cartProduct .productInfo .pInfo2 .countBar .plus {
+  width: 36px;
+  height: 40;
+  background-color: white;
+  border: none;
+  font-size: 20px;
+}
+
+.cartProduct .productInfo .pInfo2 .countBar .numCount {
+  width: 30px;
+  border: none;
+  background-color: white;
+  font-size: 20px;
+  text-align: center;
+}
+
+.cartProduct .productInfo .pInfo2 .priceBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cartProduct .productInfo .pInfo2 .priceBox p {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.cartProduct .productInfo .pInfo2 .priceBox .cancelBtn {
+  margin-left: 16px;
+  border: none;
+  background-color: transparent;
+  color: gray;
+  font-size: 15px;
+}
+/*# sourceMappingURL=CartProduct.css.map */

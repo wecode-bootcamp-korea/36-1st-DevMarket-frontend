@@ -1,0 +1,126 @@
+.footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100vw;
+  height: 275px;
+  font-size: 12px;
+}
+
+.footer .footerNav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 1080px;
+  height: 48px;
+}
+
+.footer .footerNav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.footer .footerNav ul .footerNavDividingLine {
+  height: 10px;
+  margin: 0 10px;
+  border-left: 1px solid gray;
+}
+
+.footer .footerNav ul .footerNavDividingLine:last-child {
+  display: none;
+}
+
+.footer .footerNavOutLine {
+  width: 100vw;
+  min-width: 1080px;
+  border-bottom: 1px solid gray;
+}
+
+.footer .footerMainWrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  width: 1080px;
+  height: 220px;
+  padding-top: 20px;
+  color: gray;
+}
+
+.footer .footerMainWrap .companyDetailInfo {
+  width: 530px;
+  height: 200px;
+}
+
+.footer .footerMainWrap .companyDetailInfo ul li {
+  margin-bottom: 7px;
+}
+
+.footer .footerMainWrap .companyDetailInfo ul .responsibilityWrap {
+  margin: 24px 0 24px 0;
+}
+
+.footer .footerMainWrap .companyDetailInfo ul .responsibilityWrap .responsibilityText {
+  margin-bottom: 7px;
+}
+
+.footer .footerMainWrap .financeServiceInfo {
+  width: 320px;
+  height: 200px;
+}
+
+.footer .footerMainWrap .financeServiceInfo li {
+  margin-top: 7px;
+}
+
+.footer .footerMainWrap .financeServiceInfo .financeService {
+  margin-bottom: 12px;
+  color: black;
+  font-weight: bold;
+}
+
+.footer .footerMainWrap .financeServiceInfo .serviceDescription {
+  margin: 30px 0 12px 0;
+}
+
+.footer .footerMainWrap .customerServiceInfo {
+  width: 150px;
+  height: 200px;
+}
+
+.footer .footerMainWrap .customerServiceInfo li {
+  margin-bottom: 6px;
+}
+
+.footer .footerMainWrap .customerServiceInfo .customerService {
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.footer .footerMainWrap .customerServiceInfo .customerServiceNumber {
+  color: black;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.footer .footerMainWrap .customerServiceInfo .businessHour {
+  font-size: 12px;
+}
+/*# sourceMappingURL=Footer.css.map */

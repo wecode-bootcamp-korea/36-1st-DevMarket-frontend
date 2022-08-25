@@ -1,0 +1,104 @@
+.cart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 150px auto 80px;
+  width: 1080px;
+  font-size: 17px;
+}
+
+.cart .cartTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 80px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.cart .cartBoxAll {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.cart .cartBoxAll .cart2Box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.cart .cartBoxAll .cart2Box .box1 {
+  width: 712px;
+}
+
+.cart .cartBoxAll .cart2Box .box1 .box1Top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 50px;
+  border-bottom: 1.3px solid black;
+}
+
+.cart .cartBoxAll .cart2Box .box1 .box1Top .box1TopLeft {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cart .cartBoxAll .cart2Box .box1 .box1Top .box1TopLeft .checkBox {
+  width: 22px;
+  height: 22px;
+  border: 1px solid red;
+  accent-color: #24a5a1;
+}
+
+.cart .cartBoxAll .cart2Box .box1 .box1Top .box1TopLeft .checkText {
+  margin-left: 4px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.cart .cartBoxAll .cart2Box .box1 .box1Top .cancelBtn {
+  width: 75px;
+  height: 32px;
+  background-color: white;
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.cart .cartBoxAll .cart2Box .box1 .box1Top .cancelBtn:disabled {
+  background-color: #f8f8f8;
+}
+/*# sourceMappingURL=Cart.css.map */

@@ -24,7 +24,7 @@ function NavBottom({ onClick, changeClassname }) {
       </div>
       <div className="navCenter">
         <Link to="/" style={{ textDecoration: 'none' }}>
-          <img className="mainLogo" src="/images/Nav/123456.jpg" alt="logo" />
+          <img className="mainLogo" src="/images/Nav/logo1.gif" alt="logo" />
         </Link>
       </div>
       <div className="navBottomRight">
