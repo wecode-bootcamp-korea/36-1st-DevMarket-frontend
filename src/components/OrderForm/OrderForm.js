@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './OrderForm.scss';
 
 const OrderForm = ({
@@ -8,9 +8,11 @@ const OrderForm = ({
   setDeliveryPrice,
   checkedArr,
 }) => {
-  setDeliveryPrice(
-    checkedProductTotal >= 50000 ? 0 : checkedProductTotal <= 0 ? 0 : 5000
-  );
+  useEffect(() => {
+    setDeliveryPrice(
+      checkedProductTotal >= 50000 ? 0 : checkedProductTotal <= 0 ? 0 : 5000
+    );
+  }, [checkedProductTotal]);
 
   return (
     <div className="orderForm">

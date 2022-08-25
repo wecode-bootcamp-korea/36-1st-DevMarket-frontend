@@ -7,8 +7,10 @@ const CartProduct = ({
   removeProduct,
   childCheckRemove,
   singlePriceHandle,
+  checkedArr,
 }) => {
   const [amount, setAmount] = useState(product.amount);
+  const [checkBoolean, setCheckBoolean] = useState(true);
   const total = product.price * amount;
 
   const minusCount = () => {
@@ -27,15 +29,13 @@ const CartProduct = ({
     singlePriceHandle(amount, idx);
   }, [amount]);
 
-  const [checkBoolean, setCheckBoolean] = useState(true);
-
   const minusHandler = () => {
     fetch('http://10.58.5.164:3000/cart/amount', {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJOYW1lIjoiam9leWNob2k3NjI0IiwiaWF0IjoxNjYxMzk2MjM1LCJleHAiOjE2NjM5ODgyMzV9.GD6CDbUDwEtIzUEGlbMcjfsRZyNArVZF2KLZCft64S4',
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjE0MDQzNDEsImV4cCI6MTY2Mzk5NjM0MX0.Noi_H2uXk6FhUUJJjiL1WL7HVcMAe9-SewYa-oxwnWc',
       },
       body: JSON.stringify({
         amount: -1,
@@ -50,7 +50,7 @@ const CartProduct = ({
       headers: {
         'Content-Type': 'application/json',
         authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJOYW1lIjoiam9leWNob2k3NjI0IiwiaWF0IjoxNjYxMzk2MjM1LCJleHAiOjE2NjM5ODgyMzV9.GD6CDbUDwEtIzUEGlbMcjfsRZyNArVZF2KLZCft64S4',
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjE0MDQzNDEsImV4cCI6MTY2Mzk5NjM0MX0.Noi_H2uXk6FhUUJJjiL1WL7HVcMAe9-SewYa-oxwnWc',
       },
       body: JSON.stringify({
         amount: +1,
@@ -65,7 +65,7 @@ const CartProduct = ({
       headers: {
         'Content-Type': 'application/json',
         authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJOYW1lIjoiam9leWNob2k3NjI0IiwiaWF0IjoxNjYxMzk2MjM1LCJleHAiOjE2NjM5ODgyMzV9.GD6CDbUDwEtIzUEGlbMcjfsRZyNArVZF2KLZCft64S4',
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjE0MDQzNDEsImV4cCI6MTY2Mzk5NjM0MX0.Noi_H2uXk6FhUUJJjiL1WL7HVcMAe9-SewYa-oxwnWc',
       },
       body: JSON.stringify({
         productId: product.product_id,

@@ -8,6 +8,7 @@ function Cart() {
   const [product, setProduct] = useState([]);
   const [checkedArr, setCheckedArr] = useState([]);
   const [deliveryPrice, setDeliveryPrice] = useState(5000);
+  const [allCheckB, setAllCheckB] = useState(true);
   // http://10.58.5.164:3000/cart/list
   // '/data/cartProduct.json'
   useEffect(() => {
@@ -16,7 +17,7 @@ function Cart() {
       headers: {
         'Content-Type': 'application/json',
         authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJOYW1lIjoiam9leWNob2k3NjI0IiwiaWF0IjoxNjYxMzk2MjM1LCJleHAiOjE2NjM5ODgyMzV9.GD6CDbUDwEtIzUEGlbMcjfsRZyNArVZF2KLZCft64S4',
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjE0MDQzNDEsImV4cCI6MTY2Mzk5NjM0MX0.Noi_H2uXk6FhUUJJjiL1WL7HVcMAe9-SewYa-oxwnWc',
       },
     })
       .then(response => response.json())
@@ -37,7 +38,7 @@ function Cart() {
         headers: {
           'Content-Type': 'application/json',
           authorization:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJOYW1lIjoiam9leWNob2k3NjI0IiwiaWF0IjoxNjYxMzk2MjM1LCJleHAiOjE2NjM5ODgyMzV9.GD6CDbUDwEtIzUEGlbMcjfsRZyNArVZF2KLZCft64S4',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjE0MDQzNDEsImV4cCI6MTY2Mzk5NjM0MX0.Noi_H2uXk6FhUUJJjiL1WL7HVcMAe9-SewYa-oxwnWc',
         },
         body: JSON.stringify({
           productId: item.product_id,
@@ -67,12 +68,25 @@ function Cart() {
     );
   };
 
-  const checkedPriceList = checkedArr.map(checkedArr => {
-    return checkedArr.price * checkedArr.amount;
-  });
-  const checkedProductTotal = checkedPriceList.reduce((acc, cur) => {
-    return (acc += cur);
-  }, 0);
+  const [checkedPriceList, setCheckedPriceList] = useState([]);
+  const [checkedProductTotal, setCheckedProductTotal] = useState(0);
+  useEffect(() => {
+    setCheckedPriceList(
+      checkedArr.map(checkedArr => {
+        return checkedArr.price * checkedArr.amount;
+      })
+    );
+  }, [checkedArr]);
+
+  useEffect(() => {
+    setCheckedProductTotal(
+      checkedPriceList.reduce((acc, cur) => {
+        return (acc += cur);
+      }, 0)
+    );
+  }, [checkedPriceList]);
+
+  console.log(checkedProductTotal);
 
   const childCheckRemove = (productDetail, checked) => {
     checked
@@ -120,8 +134,6 @@ function Cart() {
     setCheckedArr(removeCheckedProducts);
   };
 
-  console.log('확인', checkedArr);
-  const [allCheckB, setAllCheckB] = useState(true);
   return (
     <div className="cart">
       <div className="cartTitle">
@@ -136,7 +148,7 @@ function Cart() {
                   type="checkbox"
                   className="checkBox"
                   checked={allCheckB}
-                  onClick={() => {
+                  onChange={() => {
                     setAllCheckB(
                       product.length === checkedArr.length ? true : false
                     );
