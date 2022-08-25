@@ -15,16 +15,7 @@ function Login() {
   };
 
   const handleLogin = () => {
-    if (activateButton === true) {
-      goToMain();
-    } else {
-      setValLogin(false);
-    }
-  };
-
-  /* 로그인 통신할 때 사용할 코드
-  const handleLogin = () => {
-    fetch('http://10.58.7.158:3000/users/signin', {
+    fetch('http://10.58.5.164:3000/users/signin', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -32,21 +23,16 @@ function Login() {
         password: userInfo.password,
       }),
     })
-      .then(response => {
-        if (response.ok === true) {
-          return response.json();
-        }
-      })
+      .then(response => response.json())
       .then(data => {
-        if (data.message === 'success') {
-          localStorage.setItem('token', data.token);
+        if (data.message === 'SUCCESS') {
+          localStorage.setItem('token', data.authorization);
           goToMain();
-        } else if (data.message === 'invalid') {
+        } else {
           setValLogin(false);
         }
       });
   };
-    */
 
   const goToMain = () => {
     navigate('/');
@@ -57,7 +43,7 @@ function Login() {
       <div className="innerContainer">
         <div className="innestContainer">
           <h2 className="logo">
-            <span className="teamLogo">Dev</span>Market 광장
+            <img className="logo" src="./images/logo.jpg" alt="logo" />
           </h2>
           <h1 className="pageTitle">로그인</h1>
           <p className="description">

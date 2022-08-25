@@ -20,14 +20,9 @@
     flex-direction: column;
     width: 100%;
     .logo {
-      font-family: BMHANNA;
-      font-size: 24px;
-      .teamLogo {
-        color: #28559a;
-      }
+      width: 300px;
     }
     .pageTitle {
-      margin-top: 40px;
       font-weight: 530;
       font-size: 28px;
       line-height: 48px;
@@ -82,6 +77,7 @@
           height: 24px;
           border-radius: 2px;
           background: rgb(255, 255, 255);
+          accent-color: #24a5a1;
           cursor: pointer;
         }
         p {
@@ -113,7 +109,7 @@
       height: 56px;
       padding: 0px 16px;
       color: rgb(255, 255, 255);
-      background: rgb(61, 92, 255);
+      background: rgb(44, 193, 188);
       border: 0px;
       border-radius: 5px;
       font-size: 18px;
