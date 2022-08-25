@@ -12,7 +12,7 @@ function EditReview({
   const [messageModal, setMessageModal] = useState(false);
   const onEditSubmit = event => {
     event.preventDefault();
-    fetch(`http://10.58.1.169:3000/products/reviews/${productId}`, {
+    fetch(`http://10.58.5.164:3000/products/reviews/${productId}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',

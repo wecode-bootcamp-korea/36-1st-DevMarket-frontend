@@ -46,7 +46,7 @@ function ProductReview() {
   // 리뷰목록 통신 코드
   useEffect(() => {
     fetch(
-      `http://10.58.1.169:3000/products/3/reviews?start=${start}&limit=30`,
+      `http://10.58.5.164:3000/products/22/reviews?start=${start}&limit=30`,
       {
         method: 'GET',
         headers: {
@@ -68,7 +68,7 @@ function ProductReview() {
 
   // 리뷰등록 통신 코드
   const onPostReview = () => {
-    fetch('http://10.58.1.169:3000/products/3/reviews', {
+    fetch('http://10.58.5.164:3000/products/22/reviews', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

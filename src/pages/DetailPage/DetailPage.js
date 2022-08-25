@@ -20,6 +20,8 @@ function DetailPage() {
 
   const params = useParams();
   const productId = params.id;
+  console.log(params);
+  console.log(productId);
 
   const handleXCart = () => {
     setMessageModal(false);
@@ -58,8 +60,7 @@ function DetailPage() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJOYW1lIjoiam9leWNob2k3NjI0IiwiaWF0IjoxNjYxMzk2MjM1LCJleHAiOjE2NjM5ODgyMzV9.GD6CDbUDwEtIzUEGlbMcjfsRZyNArVZF2KLZCft64S4',
+        authorization: localStorage.getItem('token'),
       },
       body: JSON.stringify({
         userId: 4,
