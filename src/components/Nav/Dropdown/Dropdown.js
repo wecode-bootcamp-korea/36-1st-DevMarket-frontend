@@ -1,25 +1,25 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import FirstSec from './FirstSec/FirstSec';
 import './Dropdown.scss';
 
-function Dropdown({ menuList }) {
+function Dropdown({ menuList, changeClassname }) {
   const [currentId, setCurrentID] = useState(0);
   const [openCategory, setOpenCategory] = useState();
   const [isMouseLeave, setIsMouseLeave] = useState('hide');
   const [cate, setCate] = useState('');
   const [id, setId] = useState('');
 
-  useEffect(() => {
-    fetch(`http://10.58.5.120:3000/products/list?cate=${cate}&prod=${id}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then(res => res.json())
-      .then(result => console.log(result));
-  }, [cate, id]);
+  // useEffect(() => {
+  //   fetch(`http://10.58.5.120:3000/products/list?cate=${cate}&prod=${id}`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   })
+  //     .then(res => res.json())
+  //     .then(result => console.log(result));
+  // }, [cate, id]);
 
   const showList = () => {
     setIsMouseLeave('show');
@@ -30,7 +30,12 @@ function Dropdown({ menuList }) {
   };
 
   return (
-    <div className="dropdown">
+    <div
+      className={`dropdown ${changeClassname}`}
+      onClick={e => {
+        e.stopPropagation();
+      }}
+    >
       <div className="dropdownMainWrap" onMouseEnter={hideList}>
         <ul className="dropdownFirstUl">
           {menuList.map(({ cate, mainmenu }) => {
