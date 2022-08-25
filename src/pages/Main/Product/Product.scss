@@ -5,6 +5,10 @@
   &:nth-of-type(5n + 1) {
     margin-left: 0px;
   }
+  .linkStyle {
+    text-decoration: none;
+    color: black;
+  }
 
   .imageContainer {
     width: 100%;
@@ -17,11 +21,6 @@
   .productDescription {
     margin-top: 8px;
     text-decoration: none;
-
-    .linkStyle {
-      text-decoration: none;
-      color: black;
-    }
 
     .name {
       margin-bottom: 4px;

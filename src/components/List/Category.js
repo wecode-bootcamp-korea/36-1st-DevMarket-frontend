@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Product from '../../pages/Main/Product/Product';
 import { useSearchParams } from 'react-router-dom';
-import './List.scss';
+import './Category.scss';
+import { PAGE_BUTTONS } from './buttons';
 
 import API from '../../config';
 
-function List() {
+function Category() {
   const [productList, setProductList] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const [offset, setOffset] = useState(0);
@@ -61,15 +62,18 @@ function List() {
         </section>
       </div>
       <div className="page">
-        <button className="pageBtn" onClick={() => movePage(1)}>
-          1
-        </button>
-        <button className="pageBtn" onClick={() => movePage(2)}>
-          2
-        </button>
+        {PAGE_BUTTONS.map(({ id, buttonIndex, className }) => (
+          <button
+            key={id}
+            className={className}
+            onClick={() => movePage(buttonIndex)}
+          >
+            {buttonIndex}
+          </button>
+        ))}
       </div>
     </div>
   );
 }
 
-export default List;
+export default Category;

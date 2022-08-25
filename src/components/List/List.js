@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Product from '../../pages/Main/Product/Product';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import './List.scss';
 import { PAGE_BUTTONS } from './buttons';
 
@@ -24,11 +24,9 @@ function List() {
       .then(result => setProductList(result));
   }, [offset, limit, sortPage]);
 
-  console.log(productList);
-
   const movePage = pageNumber => {
     const maxLimit = 30;
-    const settingOffset = (pageNumber - 1) * 10;
+    const settingOffset = (pageNumber - 1) * 30;
     searchParams.set('offset', settingOffset);
     searchParams.set('limit', maxLimit);
     setOffset(settingOffset);
@@ -77,18 +75,18 @@ function List() {
           {productList.map(productInfo => {
             return <Product productInfo={productInfo} key={productInfo.id} />;
           })}
+          <div className="page">
+            {PAGE_BUTTONS.map(({ id, buttonIndex, className }) => (
+              <button
+                key={id}
+                className={className}
+                onClick={() => movePage(buttonIndex)}
+              >
+                {buttonIndex}
+              </button>
+            ))}
+          </div>
         </section>
-      </div>
-      <div className="page">
-        {PAGE_BUTTONS.map(({ id, buttonIndex, className }) => (
-          <button
-            key={id}
-            className={className}
-            onClick={() => movePage(buttonIndex)}
-          >
-            {buttonIndex}
-          </button>
-        ))}
       </div>
     </div>
   );

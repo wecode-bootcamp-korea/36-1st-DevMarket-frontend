@@ -7,6 +7,7 @@ import DetailPage from './pages/DetailPage/DetailPage';
 import Login from './pages/Login/Login';
 import Main from './pages/Main/Main';
 import Signup from './pages/Signup/Signup';
+import Category from './components/List/Category';
 
 const Router = () => {
   return (
@@ -18,6 +19,7 @@ const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/detail/:id" element={<DetailPage />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/product/list" element={<Category />} />
       </Routes>
       <Footer />
     </BrowserRouter>

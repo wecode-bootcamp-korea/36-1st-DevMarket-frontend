@@ -1,6 +1,6 @@
-import React from 'react';
 import './FirstSec.scss';
 import { useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function FirstSec({ data, onHover, id, cateType, setId, setCate }) {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -14,9 +14,11 @@ function FirstSec({ data, onHover, id, cateType, setId, setCate }) {
   };
 
   return (
-    <li onMouseMove={onHover} onClick={() => handleSetParams(cateType, id)}>
-      <span>{data}</span>
-    </li>
+    <Link to={`/product/list?cate=${cateType}&prod=${id}`}>
+      <li onMouseMove={onHover} onClick={() => handleSetParams(cateType, id)}>
+        <span>{data}</span>
+      </li>
+    </Link>
   );
 }
 
