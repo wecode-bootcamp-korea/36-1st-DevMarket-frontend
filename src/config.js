@@ -3,6 +3,7 @@ const API = {
   main: `${BASE_URL}/all`,
   asc: `${BASE_URL}/ascending`,
   desc: `${BASE_URL}/descending`,
+  list: `${BASE_URL}/list`,
 };
 
 export default API;

@@ -7,16 +7,16 @@ const Product = ({ productInfo }) => {
   const changePrice = process.toLocaleString();
   return (
     <div className="productContainer">
-      <div className="imageContainer">
-        <img src={productInfo.image} alt="이미지" />
-      </div>
-      <div className="productDescription">
-        <Link to={`/detail/${productInfo.id}`} className="linkStyle">
+      <Link to={`/detail/${productInfo.id}`} className="linkStyle">
+        <div className="imageContainer">
+          <img src={productInfo.image} alt="이미지" />
+        </div>
+        <div className="productDescription">
           <p className="name">{productInfo.name}</p>
           <p className="weight">{productInfo.weight}kg</p>
           <p className="cost">{changePrice}원</p>
-        </Link>
-      </div>
+        </div>
+      </Link>
     </div>
   );
 };

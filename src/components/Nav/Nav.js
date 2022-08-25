@@ -23,7 +23,7 @@ const Nav = () => {
     setScroll(e.currentTarget.scrollY);
   };
   window.addEventListener('scroll', onScroll);
-  window.addEventListener('click', () => setShowDropDown(false));
+
   return (
     <nav style={scroll < 30 ? { top: 0 - scroll } : { top: -30 }}>
       <div className="navMain">

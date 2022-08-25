@@ -17,7 +17,7 @@
     width: 128px;
     height: 100%;
     min-height: 396px;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255);
     background: rgb(89, 80, 72);
 
     .dropdownFirstUl {
@@ -65,7 +65,7 @@
     width: 128px;
     height: auto;
     min-height: 396px;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255);
 
     .dropdownSecondUl {
       width: 100%;
@@ -118,7 +118,7 @@
     height: auto;
     min-height: 396px;
     border-right: 1px solid rgb(238, 238, 238);
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255);
 
     .dropdownThirdUl {
       @include flex(flex-start, center);
