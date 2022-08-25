@@ -22,7 +22,7 @@ function MessageModal({
           />
         </div>
         <div className="text">
-          {createReview === true && <p>리뷰등록이 성공적으로 됐습니다.</p>}
+          {createReview === true && <p>리뷰가 성공적으로 등록됐습니다.</p>}
           {addCart === true && <p>상품이 성공적으로 장바구니에 담겼습니다.</p>}
           {removeReview === true && <p>리뷰가 성공적으로 삭제됐습니다.</p>}
           {editReview === true && <p>리뷰가 성공적으로 수정됐습니다.</p>}

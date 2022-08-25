@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import '../ProductInquiry/ProductInquiry.scss';
 import InquiryModal from './InquiryModal/InquiryModal';
-import MessageModal from '../MessageModal/MessageModal';
 
 function ProductInquiry() {
   const [modal, setModal] = useState(false);

@@ -20,8 +20,6 @@ function DetailPage() {
 
   const params = useParams();
   const productId = params.id;
-  console.log(params);
-  console.log(productId);
 
   const handleXCart = () => {
     setMessageModal(false);
@@ -29,7 +27,7 @@ function DetailPage() {
   };
 
   useEffect(() => {
-    fetch(`http://10.58.5.164:3000/products/detail/24`, {
+    fetch(`http://10.58.5.164:3000/products/detail/36`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })
