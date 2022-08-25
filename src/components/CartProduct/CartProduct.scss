@@ -21,6 +21,7 @@
     margin: 0 auto;
     img {
       width: 88px;
+      height: 88px;
     }
   }
   .productInfo {
@@ -29,6 +30,11 @@
     margin-left: 16px;
     .pInfo1 {
       width: 316px;
+      a {
+        color: black;
+        font-weight: 700;
+        text-decoration: none;
+      }
       p {
         font-size: 15px;
         font-weight: 500;

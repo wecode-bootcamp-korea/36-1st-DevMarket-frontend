@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './OrderForm.scss';
 
 const OrderForm = ({
   deliveryPrice,
-  product,
   checkedProductTotal,
   setDeliveryPrice,
   checkedArr,
@@ -18,7 +18,9 @@ const OrderForm = ({
     <div className="orderForm">
       <div className="address">
         <p>더 다양한 상품을 만나보세요</p>
-        <button>이동</button>
+        <Link to="/">
+          <button>이동</button>
+        </Link>
       </div>
       <div className="orderInfo">
         <div className="productPrice">

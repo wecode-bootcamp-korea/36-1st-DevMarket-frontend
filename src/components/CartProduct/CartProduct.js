@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './CartProduct.scss';
 
 const CartProduct = ({
@@ -7,7 +8,6 @@ const CartProduct = ({
   removeProduct,
   childCheckRemove,
   singlePriceHandle,
-  checkedArr,
 }) => {
   const [amount, setAmount] = useState(product.amount);
   const [checkBoolean, setCheckBoolean] = useState(true);
@@ -35,7 +35,7 @@ const CartProduct = ({
       headers: {
         'Content-Type': 'application/json',
         authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjE0MDQzNDEsImV4cCI6MTY2Mzk5NjM0MX0.Noi_H2uXk6FhUUJJjiL1WL7HVcMAe9-SewYa-oxwnWc',
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjE0MjA0MzEsImV4cCI6MTY2NDAxMjQzMX0.NFV1gYxrp4W5VlqQpL5dzB17mjLbLgm11SKtkavsqAI',
       },
       body: JSON.stringify({
         amount: -1,
@@ -50,7 +50,7 @@ const CartProduct = ({
       headers: {
         'Content-Type': 'application/json',
         authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjE0MDQzNDEsImV4cCI6MTY2Mzk5NjM0MX0.Noi_H2uXk6FhUUJJjiL1WL7HVcMAe9-SewYa-oxwnWc',
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjE0MjA0MzEsImV4cCI6MTY2NDAxMjQzMX0.NFV1gYxrp4W5VlqQpL5dzB17mjLbLgm11SKtkavsqAI',
       },
       body: JSON.stringify({
         amount: +1,
@@ -65,7 +65,7 @@ const CartProduct = ({
       headers: {
         'Content-Type': 'application/json',
         authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjE0MDQzNDEsImV4cCI6MTY2Mzk5NjM0MX0.Noi_H2uXk6FhUUJJjiL1WL7HVcMAe9-SewYa-oxwnWc',
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjE0MjA0MzEsImV4cCI6MTY2NDAxMjQzMX0.NFV1gYxrp4W5VlqQpL5dzB17mjLbLgm11SKtkavsqAI',
       },
       body: JSON.stringify({
         productId: product.product_id,
@@ -90,7 +90,9 @@ const CartProduct = ({
       <div className="productInfo">
         <div className="pInfo1">
           <p>{product.name}</p>
-          <div className="moveDetail">상세보기</div>
+          <Link to={`./detail/${product.product_id}`}>
+            <div className="moveDetail">상세보기</div>
+          </Link>
         </div>
 
         <div className="pInfo2">

@@ -7,17 +7,19 @@ import './Cart.scss';
 function Cart() {
   const [product, setProduct] = useState([]);
   const [checkedArr, setCheckedArr] = useState([]);
+  const [countArr, setCountArr] = useState([]);
   const [deliveryPrice, setDeliveryPrice] = useState(5000);
-  const [allCheckB, setAllCheckB] = useState(true);
-  // http://10.58.5.164:3000/cart/list
-  // '/data/cartProduct.json'
+  const [checkedPriceList, setCheckedPriceList] = useState([]);
+  const [checkedProductTotal, setCheckedProductTotal] = useState(0);
+  const [freeDelivery, setFreeDelivery] = useState(0);
+
   useEffect(() => {
     fetch('http://10.58.5.164:3000/cart/list', {
-      method: 'POST',
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjE0MDQzNDEsImV4cCI6MTY2Mzk5NjM0MX0.Noi_H2uXk6FhUUJJjiL1WL7HVcMAe9-SewYa-oxwnWc',
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjE0MjA0MzEsImV4cCI6MTY2NDAxMjQzMX0.NFV1gYxrp4W5VlqQpL5dzB17mjLbLgm11SKtkavsqAI',
       },
     })
       .then(response => response.json())
@@ -31,6 +33,32 @@ function Cart() {
       });
   }, []);
 
+  useEffect(() => {
+    setFreeDelivery(
+      50000 - checkedProductTotal <= 0
+        ? '무료배송'
+        : `${(
+            50000 - checkedProductTotal
+          ).toLocaleString()}원 추가 구매시 무료배송`
+    );
+  });
+
+  useEffect(() => {
+    setCheckedPriceList(
+      checkedArr.map(checkedArr => {
+        return checkedArr.price * checkedArr.amount;
+      })
+    );
+  }, [checkedArr, countArr]);
+
+  useEffect(() => {
+    setCheckedProductTotal(
+      checkedPriceList.reduce((acc, cur) => {
+        return (acc += cur);
+      }, 0)
+    );
+  }, [checkedPriceList]);
+
   const checkedDeleteHandler = () => {
     checkedArr.forEach(item => {
       return fetch('http://10.58.5.164:3000/cart', {
@@ -38,7 +66,7 @@ function Cart() {
         headers: {
           'Content-Type': 'application/json',
           authorization:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjE0MDQzNDEsImV4cCI6MTY2Mzk5NjM0MX0.Noi_H2uXk6FhUUJJjiL1WL7HVcMAe9-SewYa-oxwnWc',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjE0MjA0MzEsImV4cCI6MTY2NDAxMjQzMX0.NFV1gYxrp4W5VlqQpL5dzB17mjLbLgm11SKtkavsqAI',
         },
         body: JSON.stringify({
           productId: item.product_id,
@@ -49,12 +77,14 @@ function Cart() {
 
   const singlePriceHandle = (newAmount, idx) => {
     let newProductArray = [...product];
+    let newCheckedArray = [...checkedArr];
     newProductArray[idx].amount = newAmount;
-    // setCheckedArr(newProductArray);
+    newCheckedArray[idx].amount = newAmount;
+    setCheckedArr(newCheckedArray);
     setProduct(newProductArray);
+    setCountArr(newCheckedArray);
   };
-  // setCheckedArr(newProductArray)
-  // setProduct(newProductArray),
+
   const removeProduct = id => {
     setProduct(
       product.filter(product => {
@@ -67,26 +97,6 @@ function Cart() {
       })
     );
   };
-
-  const [checkedPriceList, setCheckedPriceList] = useState([]);
-  const [checkedProductTotal, setCheckedProductTotal] = useState(0);
-  useEffect(() => {
-    setCheckedPriceList(
-      checkedArr.map(checkedArr => {
-        return checkedArr.price * checkedArr.amount;
-      })
-    );
-  }, [checkedArr]);
-
-  useEffect(() => {
-    setCheckedProductTotal(
-      checkedPriceList.reduce((acc, cur) => {
-        return (acc += cur);
-      }, 0)
-    );
-  }, [checkedPriceList]);
-
-  console.log(checkedProductTotal);
 
   const childCheckRemove = (productDetail, checked) => {
     checked
@@ -144,21 +154,7 @@ function Cart() {
           <div className="box1">
             <div className="box1Top">
               <div className="box1TopLeft">
-                <input
-                  type="checkbox"
-                  className="checkBox"
-                  checked={allCheckB}
-                  onChange={() => {
-                    setAllCheckB(
-                      product.length === checkedArr.length ? true : false
-                    );
-                  }}
-                  // checked={product.length === checkedArr.length ? true : false}
-                  // onClick={e => {
-                  //   setAllCheckB(e.target.checked);
-                  // }}
-                />
-                <p className="checkText">전체선택</p>
+                <p className="checkText">{freeDelivery}</p>
               </div>
               <button
                 className="cancelBtn"
@@ -181,7 +177,6 @@ function Cart() {
                 removeProduct={removeProduct}
                 childCheckRemove={childCheckRemove}
                 setCheckedArr={setCheckedArr}
-                checkedArr={checkedArr}
                 singlePriceHandle={singlePriceHandle}
               />
             ))}
@@ -196,7 +191,6 @@ function Cart() {
         <OrderForm
           deliveryPrice={deliveryPrice}
           setDeliveryPrice={setDeliveryPrice}
-          product={product}
           checkedProductTotal={checkedProductTotal}
           checkedArr={checkedArr}
         />
