@@ -138,7 +138,7 @@ const INPUT_LIST = [
     key: 2,
     id: 'birthdate',
     name: '생년월일',
-    placeholder: '1998/08/24',
+    placeholder: '1998-08-24',
   },
   {
     key: 3,
