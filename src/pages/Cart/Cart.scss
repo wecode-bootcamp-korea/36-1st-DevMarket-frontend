@@ -2,12 +2,12 @@
 .cart {
   display: flex;
   flex-direction: column;
-  margin: 0 auto 80px;
+  margin: 150px auto 80px;
   width: 1080px;
   font-size: 17px;
   .cartTitle {
     @include flex(center, center);
-    height: 120px;
+    height: 80px;
     font-size: 25px;
     font-weight: bold;
   }
