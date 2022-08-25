@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Product from '../../pages/Main/Product/Product';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import './List.scss';
-import { PAGE_BUTTONS } from './buttons';
 
 import API from '../../config';
 
@@ -10,21 +9,17 @@ function List() {
   const [productList, setProductList] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const [offset, setOffset] = useState(0);
-  const [sortPage, setSortPage] = useState(API.main);
   const limit = searchParams.get('limit');
+  const cate = searchParams.get('cate');
+  const prod = searchParams.get('prod');
 
   useEffect(() => {
-    fetch(
-      `${sortPage}?${offset === 'none' ? `` : `start=${offset}&limit=30`}`,
-      {
-        method: 'GET',
-      }
-    )
+    fetch(`${API.list}?cate=${cate}&prod=${prod}&start=${offset}&limit=5`, {
+      method: 'GET',
+    })
       .then(response => response.json())
       .then(result => setProductList(result));
-  }, [offset, limit, sortPage]);
-
-  console.log(productList);
+  }, [cate, prod, offset, limit]);
 
   const movePage = pageNumber => {
     const maxLimit = 30;
@@ -50,24 +45,10 @@ function List() {
             <div className="filterButtons">
               <ul className="listFrame">
                 <li className="list">
-                  <button
-                    className="btnFrame"
-                    onClick={() => {
-                      setSortPage(API.asc);
-                    }}
-                  >
-                    낮은 가격순
-                  </button>
+                  <button className="btnFrame">낮은 가격순</button>
                 </li>
                 <li className="list">
-                  <button
-                    className="btnFrame"
-                    onClick={() => {
-                      setSortPage(API.desc);
-                    }}
-                  >
-                    높은 가격순
-                  </button>
+                  <button className="btnFrame">높은 가격순</button>
                 </li>
               </ul>
             </div>
@@ -80,15 +61,12 @@ function List() {
         </section>
       </div>
       <div className="page">
-        {PAGE_BUTTONS.map(({ id, buttonIndex, className }) => (
-          <button
-            key={id}
-            className={className}
-            onClick={() => movePage(buttonIndex)}
-          >
-            {buttonIndex}
-          </button>
-        ))}
+        <button className="pageBtn" onClick={() => movePage(1)}>
+          1
+        </button>
+        <button className="pageBtn" onClick={() => movePage(2)}>
+          2
+        </button>
       </div>
     </div>
   );

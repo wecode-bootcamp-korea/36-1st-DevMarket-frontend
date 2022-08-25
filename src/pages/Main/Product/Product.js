@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Product.scss';
 
 const Product = ({ productInfo }) => {
@@ -10,9 +11,11 @@ const Product = ({ productInfo }) => {
         <img src={productInfo.image} alt="이미지" />
       </div>
       <div className="productDescription">
-        <p className="name">{productInfo.name}</p>
-        <p className="weight">{productInfo.weight}kg</p>
-        <p className="cost">{changePrice}원</p>
+        <Link to={`/detail/${productInfo.id}`} className="linkStyle">
+          <p className="name">{productInfo.name}</p>
+          <p className="weight">{productInfo.weight}kg</p>
+          <p className="cost">{changePrice}원</p>
+        </Link>
       </div>
     </div>
   );

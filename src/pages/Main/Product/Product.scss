@@ -16,6 +16,13 @@
   }
   .productDescription {
     margin-top: 8px;
+    text-decoration: none;
+
+    .linkStyle {
+      text-decoration: none;
+      color: black;
+    }
+
     .name {
       margin-bottom: 4px;
       font-size: 14px;
