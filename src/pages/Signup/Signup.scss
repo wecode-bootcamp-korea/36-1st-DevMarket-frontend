@@ -19,15 +19,12 @@
     @include flex(center, center);
     flex-direction: column;
     width: 100%;
-    .Logo {
+    .logo {
       font-family: BMHANNA;
-      font-size: 24px;
-      span {
-        color: #28559a;
-      }
+      width: 250px;
     }
     .pageTitle {
-      margin-top: 40px;
+      margin-top: 20px;
       font-weight: 530;
       font-size: 18px;
       line-height: 48px;
@@ -70,7 +67,7 @@
     .doneButton {
       width: 100%;
       height: 46px;
-      background: #3778c2;
+      background: rgb(44, 193, 188);
       font-size: 14px;
       font-weight: 700;
       letter-spacing: -0.5px;
