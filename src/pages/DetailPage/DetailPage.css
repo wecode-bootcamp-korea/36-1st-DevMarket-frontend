@@ -1,0 +1,386 @@
+.mainWrap {
+  width: 100%;
+}
+
+.mainWrap .innerContainer {
+  width: 1080px;
+  margin: 150px auto;
+  padding: 64px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.mainWrap .leftCol {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-right: 50px;
+  max-width: 660px;
+}
+
+.mainWrap .productImg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.mainWrap .productImg div {
+  width: 80px;
+  margin-right: 16px;
+}
+
+.mainWrap .productImg img {
+  width: 464px;
+  height: 464px;
+}
+
+.mainWrap .productDetailWrap {
+  width: 100%;
+  margin-top: 64px;
+}
+
+.mainWrap .detailNavBar {
+  width: 660px;
+  height: 54px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.mainWrap .navTab {
+  height: 54px;
+  -webkit-box-flex: 0.5;
+      -ms-flex: 0.5 1 0%;
+          flex: 0.5 1 0%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid #dddddd;
+}
+
+.mainWrap .productDetail {
+  width: 100%;
+  margin-top: 24px;
+  padding: 0px 5px;
+}
+
+.mainWrap .productDetail img {
+  width: 100%;
+}
+
+.mainWrap .sellerInfoWrap {
+  margin-top: 30px;
+}
+
+.mainWrap .sellerInfoWrap h2 {
+  font-size: 18px;
+  font-weight: 700;
+  padding-left: 16px;
+}
+
+.mainWrap .sellerInfoWrap .sellerInfo {
+  padding: 16px;
+  font-size: 14px;
+  border-top: 1px solid #eeeeee;
+  margin-top: 10px;
+}
+
+.mainWrap .sellerInfoWrap .sellerInfo ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.mainWrap .sellerInfoWrap .sellerInfo ul li:first-of-type {
+  margin-right: 30px;
+}
+
+.mainWrap .sellerInfoWrap .sellerInfo ul:not(:last-of-type) {
+  margin-bottom: 20px;
+}
+
+.mainWrap .sellerInfoWrap:not(:last-of-type) {
+  margin-bottom: 30px;
+}
+
+.mainWrap .rightCol {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 368px;
+}
+
+.mainWrap .rightCol .productName {
+  margin: 8px 0px 0px;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 36px;
+}
+
+.mainWrap .rightCol .shipCard {
+  margin-top: 20px;
+}
+
+.mainWrap .rightCol .shipCard .innerCard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  padding: 16px;
+  width: 100%;
+}
+
+.mainWrap .rightCol .productInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.mainWrap .rightCol .productInfo ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 15px;
+  margin: 16px;
+}
+
+.mainWrap .rightCol .productInfo ul li:first-of-type {
+  font-weight: bold;
+}
+
+.mainWrap .rightCol .sectionBottom {
+  margin-top: 24px;
+}
+
+.mainWrap .rightCol .quantityUI {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.mainWrap .rightCol .quantityUI span {
+  font-size: 16px;
+  padding-left: 12px;
+}
+
+.mainWrap .rightCol .quantityUI .quantityBar {
+  width: 112px;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid #eeeeee;
+  border-radius: 4px;
+}
+
+.mainWrap .rightCol .quantityUI .quantityBar button {
+  width: 40px;
+  height: 40px;
+  padding: 4px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.mainWrap .rightCol .quantityUI .quantityBar .handleQuantity {
+  padding-right: 0px;
+}
+
+.mainWrap .rightCol .quantityUI .quantityBar input {
+  width: 40px;
+  height: 24px;
+  font-size: 16px;
+  text-align: center;
+  border: none;
+}
+
+.mainWrap .rightCol .costInfo {
+  margin: 20px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.mainWrap .rightCol .costInfo span {
+  font-size: 16px;
+  font-weight: 700;
+  padding-left: 12px;
+}
+
+.mainWrap .rightCol .costInfo .costInfoRight {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.mainWrap .rightCol .costInfo .costInfoRight span {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.mainWrap .rightCol .costInfo .costInfoRight .rightBottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.mainWrap .rightCol .costInfo .costInfoRight .rightBottom .cost {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.mainWrap .rightCol .orderButtons {
+  width: 100%;
+  height: 56px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.mainWrap .rightCol .orderButtons button {
+  width: 148px;
+  height: 56px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  background: #73675c;
+  color: white;
+  font-size: 16px;
+  letter-spacing: -0.5px;
+  font-weight: 700;
+  padding: 0px 16px;
+}
+
+.mainWrap .rightCol .orderButtons button:last-of-type {
+  background: #2ac1bc;
+}
+
+.mainWrap .recentViews {
+  position: absolute;
+  top: 220px;
+  left: 50%;
+  margin-left: 580px;
+}
+
+.mainWrap .recentViews h2 {
+  text-align: center;
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 500;
+}
+
+.mainWrap .recentViews .numberOfViews {
+  padding: 4px 0px;
+  text-align: center;
+  color: #f45452;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+}
+
+.mainWrap .recentViews .itemList {
+  width: 100%;
+  border: 1px solid #dddddd;
+}
+
+.mainWrap .recentViews .itemList button {
+  background: none;
+  width: 80px;
+  height: 26px;
+  margin: 0px 9px;
+  border: none;
+  border-bottom: 1px solid #dddddd;
+}
+
+.mainWrap .recentViews .itemList button:last-of-type {
+  border-bottom: none;
+  border-top: 1px solid #dddddd;
+}
+
+.mainWrap .recentViews .itemList .itemBox {
+  width: 80px;
+  height: 194px;
+  margin: 10px 9px;
+  overflow: scroll;
+}
+
+.mainWrap .recentViews .itemList .itemBox::-webkit-scrollbar {
+  display: none;
+}
+
+.mainWrap .recentViews .itemList .itemBox li {
+  padding: 10px;
+}
+
+.mainWrap .recentViews .itemList .itemBox img {
+  width: 60px;
+  height: 60px;
+}
+/*# sourceMappingURL=DetailPage.css.map */

@@ -1,0 +1,50 @@
+.productContainer {
+  width: 200px;
+  margin-left: 20px;
+  margin-bottom: 24px;
+}
+
+.productContainer:nth-of-type(5n + 1) {
+  margin-left: 0px;
+}
+
+.productContainer .imageContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.productContainer .imageContainer img {
+  width: 100%;
+  height: 200px;
+}
+
+.productContainer .productDescription {
+  margin-top: 8px;
+  text-decoration: none;
+}
+
+.productContainer .productDescription .linkStyle {
+  text-decoration: none;
+  color: black;
+}
+
+.productContainer .productDescription .name {
+  margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.productContainer .productDescription .weight {
+  font-size: 12px;
+  line-height: 18px;
+  color: #888888;
+}
+
+.productContainer .productDescription .cost {
+  margin-top: 4px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  color: #333333;
+}
+/*# sourceMappingURL=Product.css.map */

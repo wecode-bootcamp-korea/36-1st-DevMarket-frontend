@@ -1,0 +1,51 @@
+.navTopWrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 46px;
+  position: relative;
+}
+
+.navTopWrap .navUl {
+  height: 46px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navTopWrap .navUl .list {
+  color: #bbbbbb;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: bold;
+  padding-right: 9px;
+  cursor: pointer;
+}
+
+.navTopWrap .navUl .list:after {
+  content: '';
+  top: 4px;
+  right: 0px;
+  width: 1px;
+  height: 12px;
+  margin-left: 6px;
+  border-right: 1px solid #dddddd;
+}
+
+.navTopWrap .navUl .list:last-child:after {
+  display: none;
+}
+
+.navTopWrap .navUl a {
+  text-decoration: none;
+}
+/*# sourceMappingURL=NavTop.css.map */

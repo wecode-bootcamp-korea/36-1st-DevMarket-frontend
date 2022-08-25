@@ -1,0 +1,133 @@
+@font-face {
+  font-family: BMHANNA;
+  src: url(./BMHANNA_11yrs_ttf.ttf);
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: 1000;
+  background-color: white;
+}
+
+.container .innerContainer {
+  max-width: 448px;
+  padding: 48px 40px;
+  border: 1px solid #eceef2;
+  border-radius: 5px;
+  margin-top: 200px;
+  margin-bottom: 200px;
+}
+
+.container .innestContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+
+.container .innestContainer .logo {
+  font-family: BMHANNA;
+  width: 250px;
+}
+
+.container .innestContainer .pageTitle {
+  margin-top: 20px;
+  font-weight: 530;
+  font-size: 18px;
+  line-height: 48px;
+  margin-bottom: 30px;
+}
+
+.container .innestContainer .username {
+  width: 100%;
+}
+
+.container .innestContainer .username p {
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.container .innestContainer .signUpInputs {
+  width: 100%;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 24px;
+  outline: none;
+  text-align: left;
+  border: 1px solid #d7dbe6;
+  background: white;
+  margin-bottom: 12px;
+}
+
+.container .innestContainer .signUpInputs::-webkit-input-placeholder {
+  color: #c8c8c8;
+}
+
+.container .innestContainer .signUpInputs:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.container .innestContainer select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #d7dbe6;
+  margin-bottom: 12px;
+}
+
+.container .innestContainer .doneButton {
+  width: 100%;
+  height: 46px;
+  background: #2cc1bc;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: white;
+  border-radius: 5px;
+  border: 0px;
+  margin-top: 10px;
+  padding: 0px 16px;
+  cursor: pointer;
+}
+
+.container .innestContainer .doneButton:active {
+  -webkit-transform: scale(0.99);
+          transform: scale(0.99);
+}
+
+.container .innestContainer .doneButton:disabled {
+  opacity: 0.5;
+}
+
+.container .innestContainer .teamName {
+  margin-top: 40px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #8e929f;
+}
+/*# sourceMappingURL=Signup.css.map */

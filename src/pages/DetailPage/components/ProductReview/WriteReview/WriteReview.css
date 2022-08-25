@@ -1,0 +1,64 @@
+.singleReview {
+  padding: 24px 4px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.reviewer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.reviewer .name {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.reviewer .time {
+  font-size: 13px;
+  margin-left: 8px;
+  color: #bbbbbb;
+}
+
+.reviewer .editMark {
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.reviewer .xMark {
+  margin-left: 20px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.iconContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.reviewContent {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  white-space: pre-wrap;
+}
+/*# sourceMappingURL=WriteReview.css.map */

@@ -1,0 +1,200 @@
+@font-face {
+  font-family: BMHANNA;
+  src: url(./BMHANNA_11yrs_ttf.ttf);
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: 1000;
+  background-color: white;
+}
+
+.container .insideContainer {
+  max-width: 448px;
+  padding: 48px 40px;
+  border: 1px solid #eceef2;
+  border-radius: 5px;
+}
+
+.container .innestContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+
+.container .innestContainer .logo {
+  width: 300px;
+}
+
+.container .innestContainer .pageTitle {
+  font-weight: 530;
+  font-size: 28px;
+  line-height: 48px;
+}
+
+.container .innestContainer .description {
+  margin-top: 8px;
+  margin-bottom: 30px;
+  color: #8e929f;
+  text-align: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.container .innestContainer .userInfoInput {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 12px;
+  border: 1px solid #d7dbe6;
+  border-radius: 5px;
+  background: white;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  outline: none;
+}
+
+.container .innestContainer .userInfoInput::-webkit-input-placeholder {
+  color: #c8c8c8;
+}
+
+.container .innestContainer .userInfoInput:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.container .innestContainer .errorMsg {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  color: #f45452;
+  background-color: rgba(244, 0, 0, 0.1);
+  font-size: 12px;
+}
+
+.container .innestContainer .innerNav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  margin-top: 4px;
+  margin-bottom: 32px;
+}
+
+.container .innestContainer .innerNav .saveIdInput {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .innestContainer .innerNav .saveIdInput .saveIdBox {
+  position: relative;
+  top: 3px;
+  width: 24px;
+  height: 24px;
+  border-radius: 2px;
+  background: white;
+  accent-color: #24a5a1;
+  cursor: pointer;
+}
+
+.container .innestContainer .innerNav .saveIdInput p {
+  padding-left: 6px;
+  color: #333333;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.container .innestContainer .innerNav .findIdPassword {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .innestContainer .innerNav .findIdPassword :not(:last-child) {
+  margin-right: 8px;
+  height: 100%;
+}
+
+.container .innestContainer .innerNav .findIdPassword .findInfo,
+.container .innestContainer .innerNav .findIdPassword .signUp {
+  color: #8e929f;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: normal;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.container .innestContainer button {
+  width: 100%;
+  height: 56px;
+  padding: 0px 16px;
+  color: white;
+  background: #2cc1bc;
+  border: 0px;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  cursor: pointer;
+}
+
+.container .innestContainer button:active {
+  -webkit-transform: scale(0.99);
+          transform: scale(0.99);
+}
+
+.container .innestContainer button:disabled {
+  opacity: 0.5;
+}
+
+.container .innestContainer .teamName {
+  margin-top: 40px;
+  color: #8e929f;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+}
+/*# sourceMappingURL=Login.css.map */

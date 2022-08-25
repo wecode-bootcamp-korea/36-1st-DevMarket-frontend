@@ -1,0 +1,26 @@
+nav {
+  position: fixed;
+  z-index: 10;
+}
+
+nav .navMain {
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #dddddd;
+  width: 100vw;
+}
+
+nav .navMain .navInner {
+  width: 1080px;
+  min-width: 1000px;
+  position: relative;
+}
+/*# sourceMappingURL=Nav.css.map */
