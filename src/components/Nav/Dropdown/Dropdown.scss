@@ -39,6 +39,7 @@
         padding: 0px 24px;
         cursor: pointer;
         border-bottom: 1px solid rgba(34, 33, 33, 0.25);
+        color: rgb(255, 255, 255);
         &:hover {
           background-color: white;
           color: #000;
@@ -166,6 +167,6 @@
     }
   }
 }
-Link {
+a {
   text-decoration: none;
 }

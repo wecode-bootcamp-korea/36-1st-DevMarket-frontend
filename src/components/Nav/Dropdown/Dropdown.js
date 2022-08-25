@@ -18,7 +18,7 @@ function Dropdown({ menuList, changeClassname }) {
       },
     })
       .then(res => res.json())
-      .then(result => console.log(result));
+      .then(result => setCate(result));
   }, [cate, id]);
 
   const showList = () => {
