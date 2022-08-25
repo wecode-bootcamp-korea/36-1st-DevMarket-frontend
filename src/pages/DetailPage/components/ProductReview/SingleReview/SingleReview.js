@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import EditReview from '../EditReview/EditReview';
 import MessageModal from '../../MessageModal/MessageModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

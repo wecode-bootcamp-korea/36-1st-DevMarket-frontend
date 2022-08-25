@@ -27,7 +27,7 @@ function DetailPage() {
   };
 
   useEffect(() => {
-    fetch(`http://10.58.5.164:3000/products/detail/32`, {
+    fetch(`http://10.58.5.164:3000/products/detail/24`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })
@@ -56,13 +56,15 @@ function DetailPage() {
   const onPostCart = () => {
     fetch('http://10.58.5.164:3000/products/cart', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJOYW1lIjoiam9leWNob2k3NjI0IiwiaWF0IjoxNjYxMzk2MjM1LCJleHAiOjE2NjM5ODgyMzV9.GD6CDbUDwEtIzUEGlbMcjfsRZyNArVZF2KLZCft64S4',
+      },
       body: JSON.stringify({
         userId: 4,
         productId: id,
         amount: quantity,
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJOYW1lIjoiam9leWNob2k3NjI0IiwiaWF0IjoxNjYxMzk2MjM1LCJleHAiOjE2NjM5ODgyMzV9.GD6CDbUDwEtIzUEGlbMcjfsRZyNArVZF2KLZCft64S4',
       }),
     })
       .then(response => response.json())

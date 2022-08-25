@@ -3,7 +3,6 @@ import { useSearchParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import SingleReview from './SingleReview/SingleReview';
-import WriteReview from './WriteReview/WriteReview';
 import MessageModal from '../MessageModal/MessageModal';
 import '../ProductReview/ProductReview.scss';
 
@@ -101,17 +100,9 @@ function ProductReview() {
           <MessageModal createReview={messageModal} handleX={handleXClick} />
         )}
       </form>
-      {/*
-      {reviewArray.map(review => (
-        <WriteReview
-          review={review}
-          key={review.id}
-          removeReview={removeReview}
-        />
-      ))}
-      */}
       {reviewList.map(review => (
         <SingleReview
+          key={id}
           productId={review.id}
           review={review}
           removeReview={removeReview}
