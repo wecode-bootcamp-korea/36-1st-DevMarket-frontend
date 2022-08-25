@@ -40,7 +40,7 @@ function Login() {
 
   return (
     <div className="container">
-      <div className="innerContainer">
+      <div className="insideContainer">
         <div className="innestContainer">
           <h2 className="logo">
             <img className="logo" src="./images/logo.jpg" alt="logo" />
