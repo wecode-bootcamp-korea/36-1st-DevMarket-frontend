@@ -1,0 +1,55 @@
+@import '../../styles/variables.scss';
+.cart {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 80px;
+  width: 1080px;
+  font-size: 17px;
+  .cartTitle {
+    @include flex(center, center);
+    height: 120px;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .cartBoxAll {
+    @include flex(space-between, null);
+    .cart2Box {
+      @include flex(space-between, null);
+      flex-direction: column;
+      .box1 {
+        width: 712px;
+        .box1Top {
+          @include flex(space-between, center);
+          width: 100%;
+          height: 50px;
+          border-bottom: 1.3px solid black;
+          .box1TopLeft {
+            @include flex(null, center);
+            .checkBox {
+              width: 22px;
+              height: 22px;
+              border: 1px solid red;
+              accent-color: #24a5a1;
+            }
+            .checkText {
+              margin-left: 4px;
+              font-size: 16px;
+              font-weight: bold;
+            }
+          }
+          .cancelBtn {
+            width: 75px;
+            height: 32px;
+            background-color: white;
+            border: 1px solid rgb(219, 219, 219);
+            border-radius: 4px;
+            font-size: 16px;
+            &:disabled {
+              background-color: rgb(248, 248, 248);
+            }
+          }
+        }
+      }
+    }
+  }
+}
