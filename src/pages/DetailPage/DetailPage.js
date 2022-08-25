@@ -234,16 +234,16 @@ function DetailPage() {
           <div className="itemBox">
             <ul>
               <li>
-                <img src="./images/minions.jpg" alt="minions" />
+                <img src="/images/detail/minions.jpg" alt="minions" />
               </li>
               <li>
-                <img src="./images/minions.jpg" alt="minions" />
+                <img src="/images/detail/minions.jpg" alt="minions" />
               </li>
               <li>
-                <img src="./images/minions.jpg" alt="minions" />
+                <img src="/images/detail/minions.jpg" alt="minions" />
               </li>
               <li>
-                <img src="./images/minions.jpg" alt="minions" />
+                <img src="/images/detail/minions.jpg" alt="minions" />
               </li>
             </ul>
           </div>
