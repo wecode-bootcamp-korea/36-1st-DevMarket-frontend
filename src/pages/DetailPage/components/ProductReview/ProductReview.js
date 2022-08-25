@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import SingleReview from './SingleReview/SingleReview';
 import WriteReview from './WriteReview/WriteReview';
+import MessageModal from '../MessageModal/MessageModal';
 import '../ProductReview/ProductReview.scss';
 
 function ProductReview() {
@@ -14,6 +15,12 @@ function ProductReview() {
   const start = searchParams.get('start');
   const limit = searchParams.get('limit');
   const [id, setId] = useState(0);
+  const [messageModal, setMessageModal] = useState(false);
+
+  const handleXClick = () => {
+    setMessageModal(false);
+    window.location.reload();
+  };
 
   const submitReview = event => {
     event.preventDefault();
@@ -37,16 +44,6 @@ function ProductReview() {
     );
   };
 
-  /*
-  // Mock Data를 활용한 코드
-  useEffect(() => {
-    fetch(`./data/reviews.json?_start=${offset}&_limit=${limit}`)
-      .then(res => res.json())
-      .then(setReviewList);
-  }, [offset, limit]);
-
-  */
-  /*
   // 리뷰목록 통신 코드
   useEffect(() => {
     fetch(
@@ -60,9 +57,10 @@ function ProductReview() {
       }
     )
       .then(response => response.json())
-      .then(data => setReviewList(data));
+      .then(data => {
+        setReviewList(data);
+      });
   }, [start, limit]);
-  */
 
   const movePage = pageNumber => {
     searchParams.set('start', (pageNumber - 1) * 30);
@@ -82,9 +80,7 @@ function ProductReview() {
       .then(response => response.json())
       .then(data => {
         if (data.message === 'REVIEW_CREATED') {
-          alert('리뷰등록이 성공적으로 됐습니다.');
-        } else {
-          alert('리뷰등록이 실패하였습니다');
+          setMessageModal(true);
         }
       });
   };
@@ -101,7 +97,11 @@ function ProductReview() {
         <button className="submitReview" onClick={onPostReview}>
           등록하기
         </button>
+        {messageModal === true && (
+          <MessageModal createReview={messageModal} handleX={handleXClick} />
+        )}
       </form>
+      {/*
       {reviewArray.map(review => (
         <WriteReview
           review={review}
@@ -109,8 +109,14 @@ function ProductReview() {
           removeReview={removeReview}
         />
       ))}
+      */}
       {reviewList.map(review => (
-        <SingleReview key={review.id} review={review} />
+        <SingleReview
+          productId={review.id}
+          review={review}
+          removeReview={removeReview}
+          handleX={handleXClick}
+        />
       ))}
       <div className="pageButtons">
         <button className="pageButton" onClick={() => movePage(1)}>

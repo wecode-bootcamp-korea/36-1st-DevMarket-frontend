@@ -8,20 +8,26 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import ProductDetail from './components/ProductDetail/ProductDetail';
 import ProductReview from './components/ProductReview/ProductReview';
 import ProductInquiry from './components/ProductInquiry/ProductInquiry';
+import MessageModal from './components/MessageModal/MessageModal';
 import './DetailPage.scss';
 
 function DetailPage() {
   const navigate = useNavigate();
   const [currentId, setCurrentId] = useState(1);
   const [quantity, setQuantity] = useState(1);
-
+  const [messageModal, setMessageModal] = useState(false);
   const [product, setProduct] = useState({});
 
   const params = useParams();
   const productId = params.id;
 
+  const handleXCart = () => {
+    setMessageModal(false);
+    goToCart();
+  };
+
   useEffect(() => {
-    fetch(`http://10.58.1.47:3000/products/detail/49`, {
+    fetch(`http://10.58.5.164:3000/products/detail/32`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })
@@ -48,16 +54,23 @@ function DetailPage() {
   };
 
   const onPostCart = () => {
-    fetch('http://10.58.1.47:3000/products/cart', {
+    fetch('http://10.58.5.164:3000/products/cart', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userId: 4, productId: id, amount: quantity }),
-    });
-    goToCart();
-    /*
+      body: JSON.stringify({
+        userId: 4,
+        productId: id,
+        amount: quantity,
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJOYW1lIjoiam9leWNob2k3NjI0IiwiaWF0IjoxNjYxMzk2MjM1LCJleHAiOjE2NjM5ODgyMzV9.GD6CDbUDwEtIzUEGlbMcjfsRZyNArVZF2KLZCft64S4',
+      }),
+    })
       .then(response => response.json())
-      .then(data => console.log(data));
-    */
+      .then(data => {
+        if (data.message === 'PRODUCT_ADDED') {
+          setMessageModal(true);
+        }
+      });
   };
 
   return (
@@ -143,7 +156,7 @@ function DetailPage() {
                 <div className="productInfo">
                   <ul>
                     <li>기준 단가</li>
-                    <li>1kg 당 {price / weight}원</li>
+                    <li>1kg 당 {Number(price / weight).toLocaleString()}원</li>
                   </ul>
                 </div>
                 <div className="productInfo">
@@ -179,9 +192,13 @@ function DetailPage() {
             <div className="costInfo">
               <span>총 합계금액</span>
               <div className="costInfoRight">
-                <span>1kg 당 {price / weight}원 / 1ea</span>
+                <span>
+                  1kg 당 {Number(price / weight).toLocaleString()}원 / 1ea
+                </span>
                 <div className="rightBottom">
-                  <span className="cost">{price * quantity + '원'}</span>
+                  <span className="cost">
+                    {Number(price * quantity).toLocaleString() + '원'}
+                  </span>
                 </div>
               </div>
             </div>
@@ -189,6 +206,12 @@ function DetailPage() {
               <button className="addCart" onClick={onPostCart}>
                 장바구니 담기
               </button>
+              {messageModal === true && (
+                <MessageModal
+                  addCart={messageModal}
+                  handleXCart={handleXCart}
+                />
+              )}
               <button className="buyItem" onClick={onPostCart}>
                 바로구매
               </button>
