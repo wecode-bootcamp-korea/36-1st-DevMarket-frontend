@@ -34,7 +34,7 @@ function Signup() {
     email.includes('@' && '.com');
 
   const handleSignup = () => {
-    fetch('http://10.58.5.80:3000/users/signup', {
+    fetch('http://10.58.5.164:3000/users/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -68,9 +68,9 @@ function Signup() {
     <div className="container">
       <div className="innerContainer">
         <div className="innestContainer">
-          <h2 className="Logo">
-            <span>Dev</span>Market 광장
-          </h2>
+          <div>
+            <img className="logo" src="./images/logo.jpg" alt="logo" />
+          </div>
           <h2 className="pageTitle">회원정보를 입력 후, 가입을 완료해주세요</h2>
           {INPUT_LIST.map(input => (
             <div key={input.key} className="username">
