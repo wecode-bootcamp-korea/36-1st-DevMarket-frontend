@@ -11,6 +11,7 @@ const CartProduct = ({
 }) => {
   const [amount, setAmount] = useState(product.amount);
   const [checkBoolean, setCheckBoolean] = useState(true);
+
   const total = product.price * amount;
 
   const minusCount = () => {
@@ -19,6 +20,10 @@ const CartProduct = ({
 
   const plusCount = () => {
     setAmount(amount => amount + 1);
+  };
+
+  const disableBtn = check => {
+    return check ? false : true;
   };
 
   const validation = amount => {
@@ -103,7 +108,7 @@ const CartProduct = ({
                 minusCount();
                 minusHandler();
               }}
-              disabled={validation(amount)}
+              disabled={(disableBtn(checkBoolean), validation(amount))}
             >
               –
             </button>
@@ -114,6 +119,7 @@ const CartProduct = ({
                 plusCount();
                 plusHandler();
               }}
+              disabled={disableBtn(checkBoolean)}
             >
               ﹢
             </button>
