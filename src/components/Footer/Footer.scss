@@ -1,0 +1,88 @@
+@import '../../styles/variables.scss';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 275px;
+  font-size: 12px;
+  .footerNav {
+    @include flex(null, center);
+    width: 1080px;
+    height: 48px;
+    ul {
+      display: flex;
+      .footerNavDividingLine {
+        height: 10px;
+        margin: 0 10px;
+        border-left: 1px solid gray;
+        &:last-child {
+          display: none;
+        }
+      }
+    }
+  }
+  .footerNavOutLine {
+    width: 100vw;
+    min-width: 1080px;
+    border-bottom: 1px solid gray;
+  }
+  .footerMainWrap {
+    @include flex(space-between, start);
+    width: 1080px;
+    height: 220px;
+    padding-top: 20px;
+    color: gray;
+    .companyDetailInfo {
+      width: 530px;
+      height: 200px;
+      ul {
+        li {
+          margin-bottom: 7px;
+        }
+        .responsibilityWrap {
+          margin: 24px 0 24px 0;
+          .responsibilityText {
+            margin-bottom: 7px;
+          }
+        }
+      }
+    }
+    .financeServiceInfo {
+      width: 320px;
+      height: 200px;
+      li {
+        margin-top: 7px;
+      }
+      .financeService {
+        margin-bottom: 12px;
+        color: black;
+        font-weight: bold;
+      }
+      .serviceDescription {
+        margin: 30px 0 12px 0;
+      }
+    }
+    .customerServiceInfo {
+      width: 150px;
+      height: 200px;
+      li {
+        margin-bottom: 6px;
+      }
+      .customerService {
+        color: black;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      .customerServiceNumber {
+        color: black;
+        font-size: 30px;
+        font-weight: bold;
+      }
+      .businessHour {
+        font-size: 12px;
+      }
+    }
+  }
+}

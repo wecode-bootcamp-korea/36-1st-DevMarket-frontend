@@ -33,9 +33,8 @@ function Signup() {
     rePassword === password &&
     email.includes('@' && '.com');
 
-  /* 회원가입 통신할 때 사용할 코드
   const handleSignup = () => {
-    fetch('http://10.58.5.80:3000/users/signup', {
+    fetch('http://10.58.5.164:3000/users/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -46,9 +45,16 @@ function Signup() {
         phoneNumber: phoneNumber,
         birth: birthdate,
       }),
-    });
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.message === 'SUCCESS') {
+          goToMain();
+        } else {
+          alert('회원가입이 성공적으로 이루어지지 않았습니다.');
+        }
+      });
   };
-  */
 
   const handleUserInfo = e => {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
@@ -62,9 +68,9 @@ function Signup() {
     <div className="container">
       <div className="innerContainer">
         <div className="innestContainer">
-          <h2 className="Logo">
-            <span>Dev</span>Market 광장
-          </h2>
+          <div>
+            <img className="logo" src="./images/logo.jpg" alt="logo" />
+          </div>
           <h2 className="pageTitle">회원정보를 입력 후, 가입을 완료해주세요</h2>
           {INPUT_LIST.map(input => (
             <div key={input.key} className="username">
@@ -108,7 +114,7 @@ function Signup() {
           <button
             className="doneButton"
             disabled={!activateButton}
-            onClick={goToMain}
+            onClick={handleSignup}
           >
             완료
           </button>
@@ -132,7 +138,7 @@ const INPUT_LIST = [
     key: 2,
     id: 'birthdate',
     name: '생년월일',
-    placeholder: '1998/08/24',
+    placeholder: '1998-08-24',
   },
   {
     key: 3,

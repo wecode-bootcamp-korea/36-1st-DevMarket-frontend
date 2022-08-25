@@ -1,0 +1,253 @@
+@import '../../styles/variables.scss';
+
+.mainWrap {
+  width: 100%;
+  .innerContainer {
+    width: 1080px;
+    margin: 150px auto;
+    padding: 64px 0px;
+    display: flex;
+    align-items: flex-start;
+  }
+  .leftCol {
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+    max-width: 660px;
+  }
+  .productImg {
+    display: flex;
+    div {
+      width: 80px;
+      margin-right: 16px;
+    }
+    img {
+      width: 464px;
+      height: 464px;
+    }
+  }
+  .productDetailWrap {
+    width: 100%;
+    margin-top: 64px;
+  }
+  .detailNavBar {
+    width: 660px;
+    height: 54px;
+    display: flex;
+  }
+  .navTab {
+    height: 54px;
+    flex: 0.5 1 0%;
+    @include flex(center, center);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid rgb(221, 221, 221);
+  }
+  .productDetail {
+    width: 100%;
+    margin-top: 24px;
+    padding: 0px 5px;
+    img {
+      width: 100%;
+    }
+  }
+  .sellerInfoWrap {
+    margin-top: 30px;
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      padding-left: 16px;
+    }
+    .sellerInfo {
+      padding: 16px;
+      font-size: 14px;
+      border-top: 1px solid #eeeeee;
+      margin-top: 10px;
+      ul {
+        display: flex;
+        li:first-of-type {
+          margin-right: 30px;
+        }
+        &:not(:last-of-type) {
+          margin-bottom: 20px;
+        }
+      }
+    }
+    &:not(:last-of-type) {
+      margin-bottom: 30px;
+    }
+  }
+  .rightCol {
+    display: flex;
+    flex-direction: column;
+    width: 368px;
+    .productName {
+      margin: 8px 0px 0px;
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 36px;
+    }
+    .shipCard {
+      margin-top: 20px;
+      .innerCard {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgb(221, 221, 221);
+        border-radius: 4px;
+        padding: 16px;
+        width: 100%;
+      }
+    }
+    .productInfo {
+      display: flex;
+      flex-direction: column;
+      ul {
+        display: flex;
+        justify-content: space-between;
+        font-size: 15px;
+        margin: 16px;
+        li {
+          &:first-of-type {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+    .sectionBottom {
+      margin-top: 24px;
+    }
+    .quantityUI {
+      width: 100%;
+      @include flex(space-between, center);
+      span {
+        font-size: 16px;
+        padding-left: 12px;
+      }
+      .quantityBar {
+        width: 112px;
+        height: 40px;
+        @include flex(null, center);
+        border: 1px solid rgb(238, 238, 238);
+        border-radius: 4px;
+        button {
+          width: 40px;
+          height: 40px;
+          padding: 4px;
+          cursor: pointer;
+          background: none;
+          border: none;
+        }
+        .handleQuantity {
+          padding-right: 0px;
+        }
+        input {
+          width: 40px;
+          height: 24px;
+          font-size: 16px;
+          text-align: center;
+          border: none;
+        }
+      }
+    }
+    .costInfo {
+      margin: 20px 0px;
+      @include flex(space-between, center);
+      span {
+        font-size: 16px;
+        font-weight: 700;
+        padding-left: 12px;
+      }
+      .costInfoRight {
+        flex-direction: column;
+        @include flex(null, flex-end);
+        span {
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 5px;
+        }
+        .rightBottom {
+          @include flex(flex-end, center);
+          flex-wrap: wrap;
+          .cost {
+            font-size: 20px;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+    .orderButtons {
+      width: 100%;
+      height: 56px;
+      @include flex(space-around, null);
+      button {
+        width: 148px;
+        height: 56px;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+        background: rgb(115, 103, 92);
+        color: rgb(255, 255, 255);
+        font-size: 16px;
+        letter-spacing: -0.5px;
+        font-weight: 700;
+        padding: 0px 16px;
+        &:last-of-type {
+          background: rgb(42, 193, 188);
+        }
+      }
+    }
+  }
+  .recentViews {
+    position: absolute;
+    top: 220px;
+    left: 50%;
+    margin-left: 580px;
+    h2 {
+      text-align: center;
+      font-size: 15px;
+      line-height: 22px;
+      font-weight: 500;
+    }
+    .numberOfViews {
+      padding: 4px 0px;
+      text-align: center;
+      color: rgb(244, 84, 82);
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 700;
+    }
+    .itemList {
+      width: 100%;
+      border: 1px solid rgb(221, 221, 221);
+      button {
+        background: none;
+        width: 80px;
+        height: 26px;
+        margin: 0px 9px;
+        border: none;
+        border-bottom: 1px solid rgb(221, 221, 221);
+        &:last-of-type {
+          border-bottom: none;
+          border-top: 1px solid rgb(221, 221, 221);
+        }
+      }
+      .itemBox {
+        width: 80px;
+        height: 194px;
+        margin: 10px 9px;
+        overflow: scroll;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        li {
+          padding: 10px;
+        }
+        img {
+          width: 60px;
+          height: 60px;
+        }
+      }
+    }
+  }
+}
