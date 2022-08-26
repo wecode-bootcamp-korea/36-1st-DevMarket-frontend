@@ -25,7 +25,7 @@ function SingleReview({ review, productId, handleX }) {
 
   const onRemoveReview = event => {
     event.preventDefault();
-    fetch(`http://10.58.5.164:3000/products/reviews/${productId}`, {
+    fetch(`http://10.58.0.245:3000/products/reviews/${productId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

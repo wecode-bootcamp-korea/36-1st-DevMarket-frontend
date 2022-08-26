@@ -32,7 +32,7 @@ function Category() {
   };
 
   return (
-    <div className="mainContainer">
+    <div className="categoryMainContainer">
       <div className="innerContainer">
         <div className="filterNav">
           <div>

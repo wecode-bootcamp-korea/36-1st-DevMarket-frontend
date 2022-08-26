@@ -9,17 +9,17 @@ function Cart() {
   const [checkedArr, setCheckedArr] = useState([]);
   const [countArr, setCountArr] = useState([]);
   const [deliveryPrice, setDeliveryPrice] = useState(5000);
+  const [freeDelivery, setFreeDelivery] = useState(0);
   const [checkedPriceList, setCheckedPriceList] = useState([]);
   const [checkedProductTotal, setCheckedProductTotal] = useState(0);
-  const [freeDelivery, setFreeDelivery] = useState(0);
 
   useEffect(() => {
-    fetch('http://10.58.5.164:3000/cart/list', {
+    fetch('http://10.58.0.245:3000/cart/list', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjE0MjA0MzEsImV4cCI6MTY2NDAxMjQzMX0.NFV1gYxrp4W5VlqQpL5dzB17mjLbLgm11SKtkavsqAI',
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjksInVzZXJOYW1lIjoic2ltb24wMDAwIiwiaWF0IjoxNjYxNDc2MzYyLCJleHAiOjE2NjQwNjgzNjJ9.zcVWGCFZzeEYwVgwKO74kc9sMwOC3blkQy6WOxU9itg',
       },
     })
       .then(response => response.json())
@@ -32,6 +32,22 @@ function Cart() {
         );
       });
   }, []);
+
+  const checkedDeleteHandler = () => {
+    checkedArr.forEach(item => {
+      return fetch('http://10.58.0.245:3000/cart', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          authorization:
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjksInVzZXJOYW1lIjoic2ltb24wMDAwIiwiaWF0IjoxNjYxNDc2MzYyLCJleHAiOjE2NjQwNjgzNjJ9.zcVWGCFZzeEYwVgwKO74kc9sMwOC3blkQy6WOxU9itg',
+        },
+        body: JSON.stringify({
+          productId: item.product_id,
+        }),
+      });
+    });
+  };
 
   useEffect(() => {
     setFreeDelivery(
@@ -58,22 +74,6 @@ function Cart() {
       }, 0)
     );
   }, [checkedPriceList]);
-
-  const checkedDeleteHandler = () => {
-    checkedArr.forEach(item => {
-      return fetch('http://10.58.5.164:3000/cart', {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          authorization:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjE0MjA0MzEsImV4cCI6MTY2NDAxMjQzMX0.NFV1gYxrp4W5VlqQpL5dzB17mjLbLgm11SKtkavsqAI',
-        },
-        body: JSON.stringify({
-          productId: item.product_id,
-        }),
-      });
-    });
-  };
 
   const singlePriceHandle = (newAmount, idx) => {
     let newProductArray = [...product];

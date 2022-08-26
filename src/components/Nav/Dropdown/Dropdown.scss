@@ -37,6 +37,7 @@
         height: 56px;
         max-height: 56px;
         padding: 0px 24px;
+        color: rgba(255, 255, 255);
         cursor: pointer;
         border-bottom: 1px solid rgba(34, 33, 33, 0.25);
         &:hover {
@@ -166,6 +167,6 @@
     }
   }
 }
-Link {
+a {
   text-decoration: none;
 }

@@ -35,12 +35,12 @@ const CartProduct = ({
   }, [amount]);
 
   const minusHandler = () => {
-    fetch('http://10.58.5.164:3000/cart/amount', {
+    fetch('http://10.58.0.245:3000/cart/amount', {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjE0MjA0MzEsImV4cCI6MTY2NDAxMjQzMX0.NFV1gYxrp4W5VlqQpL5dzB17mjLbLgm11SKtkavsqAI',
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjksInVzZXJOYW1lIjoic2ltb24wMDAwIiwiaWF0IjoxNjYxNDc2MzYyLCJleHAiOjE2NjQwNjgzNjJ9.zcVWGCFZzeEYwVgwKO74kc9sMwOC3blkQy6WOxU9itg',
       },
       body: JSON.stringify({
         amount: -1,
@@ -50,12 +50,12 @@ const CartProduct = ({
   };
 
   const plusHandler = () => {
-    fetch('http://10.58.5.164:3000/cart/amount', {
+    fetch('http://10.58.0.245:3000/cart/amount', {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjE0MjA0MzEsImV4cCI6MTY2NDAxMjQzMX0.NFV1gYxrp4W5VlqQpL5dzB17mjLbLgm11SKtkavsqAI',
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjksInVzZXJOYW1lIjoic2ltb24wMDAwIiwiaWF0IjoxNjYxNDc2MzYyLCJleHAiOjE2NjQwNjgzNjJ9.zcVWGCFZzeEYwVgwKO74kc9sMwOC3blkQy6WOxU9itg',
       },
       body: JSON.stringify({
         amount: +1,
@@ -65,12 +65,12 @@ const CartProduct = ({
   };
 
   const singleDeleteHandler = () => {
-    fetch('http://10.58.5.164:3000/cart', {
+    fetch('http://10.58.0.245:3000/cart', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
         authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJOYW1lIjoiY3dvbmhvMTYiLCJpYXQiOjE2NjE0MjA0MzEsImV4cCI6MTY2NDAxMjQzMX0.NFV1gYxrp4W5VlqQpL5dzB17mjLbLgm11SKtkavsqAI',
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjksInVzZXJOYW1lIjoic2ltb24wMDAwIiwiaWF0IjoxNjYxNDc2MzYyLCJleHAiOjE2NjQwNjgzNjJ9.zcVWGCFZzeEYwVgwKO74kc9sMwOC3blkQy6WOxU9itg',
       },
       body: JSON.stringify({
         productId: product.product_id,
@@ -95,7 +95,7 @@ const CartProduct = ({
       <div className="productInfo">
         <div className="pInfo1">
           <p>{product.name}</p>
-          <Link to={`./detail/${product.product_id}`}>
+          <Link to={`/detail/${product.product_id}`}>
             <div className="moveDetail">상세보기</div>
           </Link>
         </div>

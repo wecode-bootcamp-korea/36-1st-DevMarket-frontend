@@ -34,7 +34,7 @@ function Signup() {
     email.includes('@' && '.com');
 
   const handleSignup = () => {
-    fetch('http://10.58.5.164:3000/users/signup', {
+    fetch('http://10.58.0.245:3000/users/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -48,7 +48,7 @@ function Signup() {
     })
       .then(response => response.json())
       .then(data => {
-        if (data.message === 'SUCCESS') {
+        if (data.message === 'SIGNUP_SUCCESS') {
           goToMain();
         } else {
           alert('회원가입이 성공적으로 이루어지지 않았습니다.');
